@@ -75,6 +75,7 @@ namespace jlsCore
                 app.UseHsts();
             }
 
+            app.UseAuthentication();
             app.UseMvc();
             app.UseStaticFiles();
             

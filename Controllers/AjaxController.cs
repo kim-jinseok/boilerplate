@@ -15,7 +15,7 @@ using ToolBox;
 namespace jlsCore.Controllers
 {
 
-
+    [Authorize]
     [Route("api/[controller]/[action]")]
     [ApiController]
     public class AjaxController : ControllerBase

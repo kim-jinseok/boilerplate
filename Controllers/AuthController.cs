@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
-namespace Vue2Spa.Controllers
+namespace jlsCore.Controllers
 {
     [Route("api/[controller]/[action]")]
     [ApiController]

@@ -1,24 +1,52 @@
 <template>
-  <div>   
-    <h2>Login</h2>
-    <form @submit.prevent="handleSubmit" v-show="!loggingIn">
-      <div class="form-group">
-        <label for="user_id">user_id</label>
-        <input type="text" v-focus value="admin" v-model="user_id" name="user_id" class="form-control" :class="{ 'is-invalid': submitted && !user_id }" />
-        <div v-show="submitted && !user_id" class="invalid-feedback">user_id is required</div>
-      </div>
-      <div class="form-group">
-        <label htmlFor="user_pw">user_pw</label>
-        <input type="password" value="1" v-model="user_pw" name="user_pw" class="form-control" @keyup.enter="handleSubmit" :class="{ 'is-invalid': submitted && !user_pw }" />
-        <div v-show="submitted && !user_pw" class="invalid-feedback">user_pw is required</div>
-      </div>
-      <div class="form-group">
-        <button class="btn btn-primary" :disabled="loggingIn">Login</button>
-      </div>
-    </form>
-    <button class="btn btn-primary" v-show="loggingIn" @click.prevent="logout">로그아웃</button>
-    1111
-  </div>
+  <a-form
+    id="components-form-demo-normal-login"
+    :form="form"
+    class="login-form"
+    @submit="handleSubmit"
+  >
+    <a-form-item>
+      <a-input
+        v-decorator="[
+          'user_id',
+          { rules: [{ required: true, message: '아이디를 입력해주세요.' }] }
+        ]"
+        placeholder="Username"
+      >
+        <a-icon
+          slot="prefix"
+          type="user"
+          style="color: rgba(0,0,0,.25)"
+        />
+      </a-input>
+    </a-form-item>
+    <a-form-item>
+      <a-input
+        v-decorator="[
+          'user_pw',
+          { rules: [{ required: true, message: '비밀번호를 입력해주세요.' }] }
+        ]"
+        type="password"
+        placeholder="Password"
+      >
+        <a-icon
+          slot="prefix"
+          type="lock"
+          style="color: rgba(0,0,0,.25)"
+        />
+      </a-input>
+    </a-form-item>
+    <a-form-item>
+    
+      <a-button
+        type="primary"
+        html-type="submit"
+        class="login-form-button"
+      >
+        Log in
+      </a-button>
+    </a-form-item>
+  </a-form>
 </template>
 <script>
 
@@ -31,7 +59,8 @@
       return {
         user_id: '',
         user_pw: '',
-        submitted: false
+        submitted: false,
+        form: this.$form.createForm(this),
       }
     },
     created() {
@@ -49,20 +78,30 @@
  
       },
       handleSubmit(e) {
-        const { user_id, user_pw } = this;
-        
-        if (user_id && user_pw) {
-          userService.login(user_id, user_pw).then((data) => {
-           
-            if (data) {
-              this.$store.state.loggin = true 
-              this.$router.push("/")
+        e.preventDefault();
 
-            } else {
-              this.$router.push("auth")
+        this.form.validateFields((err, v) => {
+          if (!err) {
+         
+        
+            if (v.user_id && v.user_pw) {
+              userService.login(v.user_id, v.user_pw).then((data) => {
+                
+                if (data) {
+                  this.$store.state.loggin = true 
+                  this.$router.push("/")
+
+                } else {
+                  this.$router.push("auth")
+                }
+              });
             }
-          });
-        }
+            
+            //console.log('Received values of form: ', values);
+          }
+        });
+
+        
       }
     }
   }

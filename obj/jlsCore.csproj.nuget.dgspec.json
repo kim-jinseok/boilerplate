@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\03.Study\\NewBoilerPlate\\jlscore\\jlsCore.csproj": {}
+    "d:\\03.Study\\NewBoilerPlate\\jlsCore\\jlsCore.csproj": {}
   },
   "projects": {
-    "D:\\03.Study\\NewBoilerPlate\\jlscore\\jlsCore.csproj": {
+    "d:\\03.Study\\NewBoilerPlate\\jlsCore\\jlsCore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\03.Study\\NewBoilerPlate\\jlscore\\jlsCore.csproj",
+        "projectUniqueName": "d:\\03.Study\\NewBoilerPlate\\jlsCore\\jlsCore.csproj",
         "projectName": "jlsCore",
-        "projectPath": "D:\\03.Study\\NewBoilerPlate\\jlscore\\jlsCore.csproj",
+        "projectPath": "d:\\03.Study\\NewBoilerPlate\\jlsCore\\jlsCore.csproj",
         "packagesPath": "C:\\Users\\kjs\\.nuget\\packages\\",
-        "outputPath": "D:\\03.Study\\NewBoilerPlate\\jlscore\\obj\\",
+        "outputPath": "d:\\03.Study\\NewBoilerPlate\\jlsCore\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

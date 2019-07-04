@@ -15,5 +15,13 @@
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.5.0" />
   </ItemGroup>
-
+<Target Name="PrepublishScript" BeforeTargets="PrepareForPublish" Condition=" '$(IsCrossTargetingBuild)' != 'true' ">
+    <!-- Build our single page application content -->
+    <exec command="npm install" WorkingDirectory="$(FrontEndLocalPath)" />
+    <exec command="npm run build" WorkingDirectory="$(FrontEndLocalPath)" />
+    <ItemGroup>
+      <Dist Include="$(FrontEndLocalPath)\wwwroot\**;" />
+    </ItemGroup>
+    <Copy SourceFiles="@(Dist)" DestinationFolder="$(PublishDir)\wwwroot\%(RecursiveDir)" SkipUnchangedFiles="true" />
+  </Target>
 </Project>

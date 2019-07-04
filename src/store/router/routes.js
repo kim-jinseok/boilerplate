@@ -1,13 +1,5 @@
-import CounterExample from '../../components/counter-example'
-import FetchData from '../../components/fetch-data'
-import HomePage from '../../components/home-page'
-import About from '../../components/about'
-import Auth from '../../components/auth.vue'
-import Trello from '../../components/study/trello'
-import Home from '../../components/study/Home'
-import Login from '../../components/study/Login'
-import NotFound from '../../components/study/NotFound'
-import Card from '../../components/study/Card'
+import Home from '../../components/home'
+import Auth from '../../components/auth'
 
 
 
@@ -22,23 +14,7 @@ import Card from '../../components/study/Card'
 
 
 export const routes = [
-    { name: 'homepage', path: '/', component: HomePage, display: 'HomePage', icon: 'home', meta: { requiresLogin: true } },
-    { name: 'about', path: '/about', component: About, display: 'About Template', icon: 'info' },
-    { name: 'counter', path: '/counter', component: CounterExample, display: 'Counter', icon: 'graduation-cap', meta: { requiresLogin: true } },
-    { name: 'fetch-data', path: '/fetch-data', component: FetchData, display: 'Data', icon: 'list' },
-    {
-        name: 'trello',
-        path: '/study/trello/:bid',
-        component: Trello,
-        display: 'Trello',
-        icon: 'list',
-        children: [
-            { name: 'card', path: 'c/:cid', component: Card }
-        ]
-    },
-    { name: 'login', path: '/login', component: Login, display: 'login', icon: 'list' },
-    { name: 'home', path: '/home', component: Home, display: 'Home', icon: 'graduation-cap' },
-    { name: 'error', path: '/error', component: NotFound },
+    { name: 'main', path: '/', component: Home, display: 'About Template', icon: 'info' },
     { name: 'auth', path: '/auth', component: Auth, display: 'Auth', icon: 'graduation-cap' }
 
 ]

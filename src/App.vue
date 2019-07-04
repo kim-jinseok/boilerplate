@@ -31,7 +31,7 @@
         <a-avatar shape="square"  icon="logout" @click.prevent="logout" class="imgLogo" />
       </a-layout-header>
       <a-layout-content :style="{ margin: '24px 16px 0' }">
-        <div :style="{ padding: '24px', background: '#fff', minHeight: '360px' }">
+        <div :style="{ padding: '24px', background: '#fff', minHeight: '500px' }">
          
               <router-view></router-view>
            
@@ -46,13 +46,11 @@
 <script>
 import { userService } from './modules/auth';
   import NavMenu from './components/nav-menu'
-  import NotFound from './components/study/NotFound'
   import { routes } from './store/router/routes.js'
 
   export default {
     components: {
-      'nav-menu': NavMenu,
-      'error': NotFound
+      'nav-menu': NavMenu
     },
     data() {
 

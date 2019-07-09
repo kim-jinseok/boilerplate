@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\shhan\\Desktop\\독수리\\boilerplate-master (1)\\boilerplate-master\\jlsCore.csproj": {}
+    "c:\\Users\\shhan\\Desktop\\독수리\\boilerplate-master (1)\\boilerplate-master\\jlsCore.csproj": {}
   },
   "projects": {
-    "C:\\Users\\shhan\\Desktop\\독수리\\boilerplate-master (1)\\boilerplate-master\\jlsCore.csproj": {
+    "c:\\Users\\shhan\\Desktop\\독수리\\boilerplate-master (1)\\boilerplate-master\\jlsCore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\shhan\\Desktop\\독수리\\boilerplate-master (1)\\boilerplate-master\\jlsCore.csproj",
+        "projectUniqueName": "c:\\Users\\shhan\\Desktop\\독수리\\boilerplate-master (1)\\boilerplate-master\\jlsCore.csproj",
         "projectName": "jlsCore",
-        "projectPath": "C:\\Users\\shhan\\Desktop\\독수리\\boilerplate-master (1)\\boilerplate-master\\jlsCore.csproj",
+        "projectPath": "c:\\Users\\shhan\\Desktop\\독수리\\boilerplate-master (1)\\boilerplate-master\\jlsCore.csproj",
         "packagesPath": "C:\\Users\\shhan\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\shhan\\Desktop\\독수리\\boilerplate-master (1)\\boilerplate-master\\obj\\",
+        "outputPath": "c:\\Users\\shhan\\Desktop\\독수리\\boilerplate-master (1)\\boilerplate-master\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

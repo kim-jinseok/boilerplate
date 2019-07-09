@@ -55,22 +55,14 @@ import { userService } from './modules/auth';
   import NavMenu from './components/nav-menu'
   import NotFound from './components/study/NotFound'
   import { routes } from './store/router/routes.js'
-<<<<<<< HEAD
-=======
  
  const gData = [] 
->>>>>>> 4a17492000222f7a08a1dfbba5b28f2f0a3d2cb8
 
   export default {
     components: {
       'nav-menu': NavMenu,
       'error': NotFound
     },
-<<<<<<< HEAD
-    data() {
-
-      return {
-=======
     created() {
       this.getCategory()
     },
@@ -78,13 +70,10 @@ import { userService } from './modules/auth';
 
       return {
         gData,
->>>>>>> 4a17492000222f7a08a1dfbba5b28f2f0a3d2cb8
         routes,
       }
     },
     methods: {
-<<<<<<< HEAD
-=======
       async getCategory(){
           let param = { user_id : this.$store.state.user.userid}
           let m = await fw.getCategory(param);
@@ -92,7 +81,6 @@ import { userService } from './modules/auth';
           this.gData = m;
           
       },
->>>>>>> 4a17492000222f7a08a1dfbba5b28f2f0a3d2cb8
       logout() {
         userService.logout();
 
@@ -109,11 +97,7 @@ import { userService } from './modules/auth';
         console.log(collapsed, type);
       },
       onBreakpoint(broken) {
-<<<<<<< HEAD
-        console.log(broken);
-=======
       
->>>>>>> 4a17492000222f7a08a1dfbba5b28f2f0a3d2cb8
       }
     }
   }

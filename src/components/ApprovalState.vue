@@ -37,17 +37,6 @@
 const columns = [{
   title: '배포제목',
   dataIndex: 'name',
-<<<<<<< HEAD
-  width :'50px'
-}, {
-  title: '요청자',
-  dataIndex: 'age',
-  width :'10px'
-}, {
-  title: '요청일',
-  dataIndex: 'address',
-  width :'20px',
-=======
   width :'50%'
 }, {
   title: '요청자',
@@ -57,7 +46,6 @@ const columns = [{
   title: '요청일',
   dataIndex: 'address',
   width :'20%',
->>>>>>> 4a17492000222f7a08a1dfbba5b28f2f0a3d2cb8
   align : 'right'
 
 }];
@@ -96,10 +84,6 @@ export default {
 }
 </script>
 <style>
-<<<<<<< HEAD
-
-=======
->>>>>>> 4a17492000222f7a08a1dfbba5b28f2f0a3d2cb8
 .card-container {
   background: #F5F5F5;
   overflow: hidden;

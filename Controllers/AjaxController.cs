@@ -101,8 +101,6 @@ namespace jlsCore.Controllers
                 return new JsonResult(new ajaxError(ex.Message));
             }
         }
-<<<<<<< HEAD
-=======
         public class Category
         {
             public string category_name;
@@ -139,7 +137,6 @@ namespace jlsCore.Controllers
 
              return new JsonResult(build(0));
         }
->>>>>>> 4a17492000222f7a08a1dfbba5b28f2f0a3d2cb8
     }
 
     internal class ajaxError

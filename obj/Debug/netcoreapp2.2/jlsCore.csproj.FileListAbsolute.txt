@@ -1,0 +1,48 @@
+D:\03.Study\NewBoilerPlate\jlscore\bin\Debug\netcoreapp2.2\jlsCore.deps.json
+D:\03.Study\NewBoilerPlate\jlscore\bin\Debug\netcoreapp2.2\jlsCore.runtimeconfig.json
+D:\03.Study\NewBoilerPlate\jlscore\bin\Debug\netcoreapp2.2\jlsCore.runtimeconfig.dev.json
+D:\03.Study\NewBoilerPlate\jlscore\bin\Debug\netcoreapp2.2\jlsCore.dll
+D:\03.Study\NewBoilerPlate\jlscore\bin\Debug\netcoreapp2.2\jlsCore.pdb
+D:\03.Study\NewBoilerPlate\jlscore\obj\Debug\netcoreapp2.2\jlsCore.csprojAssemblyReference.cache
+D:\03.Study\NewBoilerPlate\jlscore\obj\Debug\netcoreapp2.2\jlsCore.csproj.CoreCompileInputs.cache
+D:\03.Study\NewBoilerPlate\jlscore\obj\Debug\netcoreapp2.2\jlsCore.RazorAssemblyInfo.cache
+D:\03.Study\NewBoilerPlate\jlscore\obj\Debug\netcoreapp2.2\jlsCore.RazorAssemblyInfo.cs
+D:\03.Study\NewBoilerPlate\jlscore\obj\Debug\netcoreapp2.2\jlsCore.AssemblyInfoInputs.cache
+D:\03.Study\NewBoilerPlate\jlscore\obj\Debug\netcoreapp2.2\jlsCore.AssemblyInfo.cs
+D:\03.Study\NewBoilerPlate\jlscore\obj\Debug\netcoreapp2.2\jlsCore.RazorTargetAssemblyInfo.cache
+D:\03.Study\NewBoilerPlate\jlscore\obj\Debug\netcoreapp2.2\jlsCore.dll
+D:\03.Study\NewBoilerPlate\jlscore\obj\Debug\netcoreapp2.2\jlsCore.pdb
+D:\03.Study\NewBoilerPlate\jlscore\bin\Debug\netcoreapp2.2\ToolBox.dll
+D:\03.Study\NewBoilerPlate\jlscore\obj\Debug\netcoreapp2.2\jlsCore.csproj.CopyComplete
+C:\Users\shhan\Desktop\독수리\boilerplate-master (1)\boilerplate-master\bin\Debug\netcoreapp2.2\jlsCore.deps.json
+C:\Users\shhan\Desktop\독수리\boilerplate-master (1)\boilerplate-master\bin\Debug\netcoreapp2.2\jlsCore.runtimeconfig.json
+C:\Users\shhan\Desktop\독수리\boilerplate-master (1)\boilerplate-master\bin\Debug\netcoreapp2.2\jlsCore.runtimeconfig.dev.json
+C:\Users\shhan\Desktop\독수리\boilerplate-master (1)\boilerplate-master\bin\Debug\netcoreapp2.2\jlsCore.dll
+C:\Users\shhan\Desktop\독수리\boilerplate-master (1)\boilerplate-master\bin\Debug\netcoreapp2.2\jlsCore.pdb
+C:\Users\shhan\Desktop\독수리\boilerplate-master (1)\boilerplate-master\bin\Debug\netcoreapp2.2\ToolBox.dll
+C:\Users\shhan\Desktop\독수리\boilerplate-master (1)\boilerplate-master\obj\Debug\netcoreapp2.2\jlsCore.csprojAssemblyReference.cache
+C:\Users\shhan\Desktop\독수리\boilerplate-master (1)\boilerplate-master\obj\Debug\netcoreapp2.2\jlsCore.csproj.CoreCompileInputs.cache
+C:\Users\shhan\Desktop\독수리\boilerplate-master (1)\boilerplate-master\obj\Debug\netcoreapp2.2\jlsCore.RazorAssemblyInfo.cache
+C:\Users\shhan\Desktop\독수리\boilerplate-master (1)\boilerplate-master\obj\Debug\netcoreapp2.2\jlsCore.RazorAssemblyInfo.cs
+C:\Users\shhan\Desktop\독수리\boilerplate-master (1)\boilerplate-master\obj\Debug\netcoreapp2.2\jlsCore.AssemblyInfoInputs.cache
+C:\Users\shhan\Desktop\독수리\boilerplate-master (1)\boilerplate-master\obj\Debug\netcoreapp2.2\jlsCore.AssemblyInfo.cs
+C:\Users\shhan\Desktop\독수리\boilerplate-master (1)\boilerplate-master\obj\Debug\netcoreapp2.2\jlsCore.RazorTargetAssemblyInfo.cache
+C:\Users\shhan\Desktop\독수리\boilerplate-master (1)\boilerplate-master\obj\Debug\netcoreapp2.2\jlsCore.csproj.CopyComplete
+C:\Users\shhan\Desktop\독수리\boilerplate-master (1)\boilerplate-master\obj\Debug\netcoreapp2.2\jlsCore.dll
+C:\Users\shhan\Desktop\독수리\boilerplate-master (1)\boilerplate-master\obj\Debug\netcoreapp2.2\jlsCore.pdb
+C:\Users\shhan\Desktop\jlsCoreProject\boilerplate-master (1)\boilerplate-master\bin\Debug\netcoreapp2.2\jlsCore.deps.json
+C:\Users\shhan\Desktop\jlsCoreProject\boilerplate-master (1)\boilerplate-master\bin\Debug\netcoreapp2.2\jlsCore.runtimeconfig.json
+C:\Users\shhan\Desktop\jlsCoreProject\boilerplate-master (1)\boilerplate-master\bin\Debug\netcoreapp2.2\jlsCore.runtimeconfig.dev.json
+C:\Users\shhan\Desktop\jlsCoreProject\boilerplate-master (1)\boilerplate-master\bin\Debug\netcoreapp2.2\jlsCore.dll
+C:\Users\shhan\Desktop\jlsCoreProject\boilerplate-master (1)\boilerplate-master\bin\Debug\netcoreapp2.2\jlsCore.pdb
+C:\Users\shhan\Desktop\jlsCoreProject\boilerplate-master (1)\boilerplate-master\bin\Debug\netcoreapp2.2\ToolBox.dll
+C:\Users\shhan\Desktop\jlsCoreProject\boilerplate-master (1)\boilerplate-master\obj\Debug\netcoreapp2.2\jlsCore.csprojAssemblyReference.cache
+C:\Users\shhan\Desktop\jlsCoreProject\boilerplate-master (1)\boilerplate-master\obj\Debug\netcoreapp2.2\jlsCore.csproj.CoreCompileInputs.cache
+C:\Users\shhan\Desktop\jlsCoreProject\boilerplate-master (1)\boilerplate-master\obj\Debug\netcoreapp2.2\jlsCore.RazorAssemblyInfo.cache
+C:\Users\shhan\Desktop\jlsCoreProject\boilerplate-master (1)\boilerplate-master\obj\Debug\netcoreapp2.2\jlsCore.RazorAssemblyInfo.cs
+C:\Users\shhan\Desktop\jlsCoreProject\boilerplate-master (1)\boilerplate-master\obj\Debug\netcoreapp2.2\jlsCore.AssemblyInfoInputs.cache
+C:\Users\shhan\Desktop\jlsCoreProject\boilerplate-master (1)\boilerplate-master\obj\Debug\netcoreapp2.2\jlsCore.AssemblyInfo.cs
+C:\Users\shhan\Desktop\jlsCoreProject\boilerplate-master (1)\boilerplate-master\obj\Debug\netcoreapp2.2\jlsCore.RazorTargetAssemblyInfo.cache
+C:\Users\shhan\Desktop\jlsCoreProject\boilerplate-master (1)\boilerplate-master\obj\Debug\netcoreapp2.2\jlsCore.csproj.CopyComplete
+C:\Users\shhan\Desktop\jlsCoreProject\boilerplate-master (1)\boilerplate-master\obj\Debug\netcoreapp2.2\jlsCore.dll
+C:\Users\shhan\Desktop\jlsCoreProject\boilerplate-master (1)\boilerplate-master\obj\Debug\netcoreapp2.2\jlsCore.pdb

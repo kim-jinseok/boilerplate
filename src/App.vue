@@ -14,21 +14,8 @@
           defaultExpandAll
           @select="onSelect"
           @expand="onExpand"
-<<<<<<< HEAD
-        >
-          <a-tree-node title="parent 0" key="0-0">
-            <a-tree-node title="leaf 0-0" key="0-0-0" isLeaf />
-            <a-tree-node title="leaf 0-1" key="0-0-1" isLeaf />
-          </a-tree-node>
-          <a-tree-node title="parent 1" key="0-1">
-            <a-tree-node title="leaf 1-0" key="0-1-0" isLeaf />
-            <a-tree-node title="leaf 1-1" key="0-1-1" isLeaf />
-          </a-tree-node>
-        </a-directory-tree>
-=======
           :treeData="gData"
         />
->>>>>>> 4a17492000222f7a08a1dfbba5b28f2f0a3d2cb8
     </a-layout-sider>
     <a-layout>
       <a-layout-header :style="{ background: '#fff', padding: 0, textAlign:'center' }">

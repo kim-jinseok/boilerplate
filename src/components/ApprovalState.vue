@@ -33,7 +33,7 @@
   </div>
 </template>
 <script>
-
+ 
 const columns = [{
   title: '배포제목',
   dataIndex: 'name',

@@ -14,16 +14,8 @@
           defaultExpandAll
           @select="onSelect"
           @expand="onExpand"
-        >
-          <a-tree-node title="parent 0" key="0-0">
-            <a-tree-node title="leaf 0-0" key="0-0-0" isLeaf />
-            <a-tree-node title="leaf 0-1" key="0-0-1" isLeaf />
-          </a-tree-node>
-          <a-tree-node title="parent 1" key="0-1">
-            <a-tree-node title="leaf 1-0" key="0-1-0" isLeaf />
-            <a-tree-node title="leaf 1-1" key="0-1-1" isLeaf />
-          </a-tree-node>
-        </a-directory-tree>
+          :treeData="gData"
+        />
     </a-layout-sider>
     <a-layout>
       <a-layout-header :style="{ background: '#fff', padding: 0, textAlign:'center' }">
@@ -50,19 +42,32 @@ import { userService } from './modules/auth';
   import NavMenu from './components/nav-menu'
   import NotFound from './components/study/NotFound'
   import { routes } from './store/router/routes.js'
+ 
+ const gData = [] 
 
   export default {
     components: {
       'nav-menu': NavMenu,
       'error': NotFound
     },
+    created() {
+      this.getCategory()
+    },
     data() {
 
       return {
+        gData,
         routes,
       }
     },
     methods: {
+      async getCategory(){
+          let param = { user_id : this.$store.state.user.userid}
+          let m = await fw.getCategory(param);
+
+          this.gData = m;
+          
+      },
       logout() {
         userService.logout();
 
@@ -79,7 +84,7 @@ import { userService } from './modules/auth';
         console.log(collapsed, type);
       },
       onBreakpoint(broken) {
-        console.log(broken);
+      
       }
     }
   }

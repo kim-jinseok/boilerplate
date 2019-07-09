@@ -1,7 +1,6 @@
 {
   "format": 1,
   "restore": {
-<<<<<<< HEAD
     "C:\\Users\\shhan\\Desktop\\jlsCoreProject\\boilerplate-master (1)\\boilerplate-master\\jlsCore.csproj": {}
   },
   "projects": {
@@ -13,29 +12,12 @@
         "projectPath": "C:\\Users\\shhan\\Desktop\\jlsCoreProject\\boilerplate-master (1)\\boilerplate-master\\jlsCore.csproj",
         "packagesPath": "C:\\Users\\shhan\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\shhan\\Desktop\\jlsCoreProject\\boilerplate-master (1)\\boilerplate-master\\obj\\",
-=======
-    "D:\\03.Study\\NewBoilerPlate\\jlsCore\\jlsCore.csproj": {}
-  },
-  "projects": {
-    "D:\\03.Study\\NewBoilerPlate\\jlsCore\\jlsCore.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "D:\\03.Study\\NewBoilerPlate\\jlsCore\\jlsCore.csproj",
-        "projectName": "jlsCore",
-        "projectPath": "D:\\03.Study\\NewBoilerPlate\\jlsCore\\jlsCore.csproj",
-        "packagesPath": "C:\\Users\\kjs\\.nuget\\packages\\",
-        "outputPath": "D:\\03.Study\\NewBoilerPlate\\jlsCore\\obj\\",
->>>>>>> 4a17492000222f7a08a1dfbba5b28f2f0a3d2cb8
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-<<<<<<< HEAD
           "C:\\Users\\shhan\\AppData\\Roaming\\NuGet\\NuGet.Config",
-=======
-          "C:\\Users\\kjs\\AppData\\Roaming\\NuGet\\NuGet.Config",
->>>>>>> 4a17492000222f7a08a1dfbba5b28f2f0a3d2cb8
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -43,10 +25,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-<<<<<<< HEAD
-=======
-          "http://nuget.grapecity.com/nuget": {},
->>>>>>> 4a17492000222f7a08a1dfbba5b28f2f0a3d2cb8
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {

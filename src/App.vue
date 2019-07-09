@@ -14,6 +14,7 @@
           defaultExpandAll
           @select="onSelect"
           @expand="onExpand"
+<<<<<<< HEAD
         >
           <a-tree-node title="parent 0" key="0-0">
             <a-tree-node title="leaf 0-0" key="0-0-0" isLeaf />
@@ -24,6 +25,10 @@
             <a-tree-node title="leaf 1-1" key="0-1-1" isLeaf />
           </a-tree-node>
         </a-directory-tree>
+=======
+          :treeData="gData"
+        />
+>>>>>>> 4a17492000222f7a08a1dfbba5b28f2f0a3d2cb8
     </a-layout-sider>
     <a-layout>
       <a-layout-header :style="{ background: '#fff', padding: 0, textAlign:'center' }">
@@ -50,19 +55,44 @@ import { userService } from './modules/auth';
   import NavMenu from './components/nav-menu'
   import NotFound from './components/study/NotFound'
   import { routes } from './store/router/routes.js'
+<<<<<<< HEAD
+=======
+ 
+ const gData = [] 
+>>>>>>> 4a17492000222f7a08a1dfbba5b28f2f0a3d2cb8
 
   export default {
     components: {
       'nav-menu': NavMenu,
       'error': NotFound
     },
+<<<<<<< HEAD
     data() {
 
       return {
+=======
+    created() {
+      this.getCategory()
+    },
+    data() {
+
+      return {
+        gData,
+>>>>>>> 4a17492000222f7a08a1dfbba5b28f2f0a3d2cb8
         routes,
       }
     },
     methods: {
+<<<<<<< HEAD
+=======
+      async getCategory(){
+          let param = { user_id : this.$store.state.user.userid}
+          let m = await fw.getCategory(param);
+
+          this.gData = m;
+          
+      },
+>>>>>>> 4a17492000222f7a08a1dfbba5b28f2f0a3d2cb8
       logout() {
         userService.logout();
 
@@ -79,7 +109,11 @@ import { userService } from './modules/auth';
         console.log(collapsed, type);
       },
       onBreakpoint(broken) {
+<<<<<<< HEAD
         console.log(broken);
+=======
+      
+>>>>>>> 4a17492000222f7a08a1dfbba5b28f2f0a3d2cb8
       }
     }
   }

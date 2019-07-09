@@ -30,6 +30,7 @@ C:\Users\shhan\Desktop\독수리\boilerplate-master (1)\boilerplate-master\obj\D
 C:\Users\shhan\Desktop\독수리\boilerplate-master (1)\boilerplate-master\obj\Debug\netcoreapp2.2\jlsCore.csproj.CopyComplete
 C:\Users\shhan\Desktop\독수리\boilerplate-master (1)\boilerplate-master\obj\Debug\netcoreapp2.2\jlsCore.dll
 C:\Users\shhan\Desktop\독수리\boilerplate-master (1)\boilerplate-master\obj\Debug\netcoreapp2.2\jlsCore.pdb
+<<<<<<< HEAD
 C:\Users\shhan\Desktop\jlsCoreProject\boilerplate-master (1)\boilerplate-master\bin\Debug\netcoreapp2.2\jlsCore.deps.json
 C:\Users\shhan\Desktop\jlsCoreProject\boilerplate-master (1)\boilerplate-master\bin\Debug\netcoreapp2.2\jlsCore.runtimeconfig.json
 C:\Users\shhan\Desktop\jlsCoreProject\boilerplate-master (1)\boilerplate-master\bin\Debug\netcoreapp2.2\jlsCore.runtimeconfig.dev.json
@@ -46,3 +47,5 @@ C:\Users\shhan\Desktop\jlsCoreProject\boilerplate-master (1)\boilerplate-master\
 C:\Users\shhan\Desktop\jlsCoreProject\boilerplate-master (1)\boilerplate-master\obj\Debug\netcoreapp2.2\jlsCore.csproj.CopyComplete
 C:\Users\shhan\Desktop\jlsCoreProject\boilerplate-master (1)\boilerplate-master\obj\Debug\netcoreapp2.2\jlsCore.dll
 C:\Users\shhan\Desktop\jlsCoreProject\boilerplate-master (1)\boilerplate-master\obj\Debug\netcoreapp2.2\jlsCore.pdb
+=======
+>>>>>>> 4a17492000222f7a08a1dfbba5b28f2f0a3d2cb8

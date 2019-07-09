@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
   "FilePath": "c:\\Users\\shhan\\Desktop\\jlsCoreProject\\boilerplate-master (1)\\boilerplate-master\\jlsCore.csproj",
+=======
+  "FilePath": "d:\\03.Study\\NewBoilerPlate\\jlsCore\\jlsCore.csproj",
+>>>>>>> 4a17492000222f7a08a1dfbba5b28f2f0a3d2cb8
   "Configuration": {
     "ConfigurationName": "MVC-2.1",
     "LanguageVersion": "2.1",

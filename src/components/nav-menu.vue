@@ -31,8 +31,11 @@
 <script>
   import { routes } from '../store/router/routes.js'
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 4a17492000222f7a08a1dfbba5b28f2f0a3d2cb8
   export default {
    
 

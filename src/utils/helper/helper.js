@@ -136,9 +136,12 @@ export default {
 
 
             }
+<<<<<<< HEAD
             /// return await axios.post('/api/ajax/dbGetResultAsJson', param).then(callback).catch(function (data) {
             ///  console.log(data);
             /// });
+=======
+>>>>>>> 4a17492000222f7a08a1dfbba5b28f2f0a3d2cb8
         }
 
 

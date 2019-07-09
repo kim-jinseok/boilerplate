@@ -101,6 +101,45 @@ namespace jlsCore.Controllers
                 return new JsonResult(new ajaxError(ex.Message));
             }
         }
+<<<<<<< HEAD
+=======
+        public class Category
+        {
+            public string category_name;
+            public int category_id;
+            public int parent_id;
+            public string hierarchy_id;
+            public int key;
+            public string title;
+            public List<Category> Children = new List<Category>();
+        }
+         [HttpPost]
+        public async Task<JsonResult> CategoryData(JToken data)
+        {
+            dynamic param = new
+            {
+                user_id = data["user_id"].ToString()
+            };
+            
+            List<Category> items = JsonConvert.DeserializeObject<List<Category>>(Helper.DB.GetResultAsJson("category_get", param));
+
+
+           var lookup = items.ToLookup(x => x.parent_id);
+           Func<int, List<Category>> build = null;
+
+           build = pid =>
+                lookup[pid]
+                    .Select(x => new Category()
+                    {
+                        key = x.category_id,
+                        title = x.category_name,
+                        Children = build(x.category_id),
+                    })
+                    .ToList(); 
+
+             return new JsonResult(build(0));
+        }
+>>>>>>> 4a17492000222f7a08a1dfbba5b28f2f0a3d2cb8
     }
 
     internal class ajaxError

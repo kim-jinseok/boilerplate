@@ -371,8 +371,6 @@
                $this.showPartner = false
                }
 
-                console.log( ' $this.releasePartnerLine')
-                console.log(  $this.releasePartnerLine)
 
           //파일
           if(!helper.isNull(result[0].file_list)){

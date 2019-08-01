@@ -122,7 +122,7 @@
     },
     methods:{
        getRecApprovalDetail(params){
-         
+
           if (event.target.classList.contains('datatable table')) return;
           let aid = params.approvalId;
           this.$router.push('/approvalStateDetail/'+ aid);

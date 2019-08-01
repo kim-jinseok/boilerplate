@@ -1,5 +1,5 @@
 {
-  "FilePath": "c:\\Users\\shhan\\Desktop\\jlsCoreProject\\boilerplate-master (1)\\boilerplate-master\\jlsCore.csproj",
+  "FilePath": "c:\\Users\\shhan\\Desktop\\jlsCoreProject\\vutify_project\\boilerplate\\jlsCore.csproj",
   "Configuration": {
     "ConfigurationName": "MVC-2.1",
     "LanguageVersion": "2.1",
@@ -2941,5 +2941,6 @@
     "CSharpLanguageVersion": 703
   },
   "RootNamespace": "jlsCore",
-  "Documents": []
+  "Documents": [],
+  "SerializationFormat": "0.1"
 }

@@ -107,9 +107,9 @@ namespace jlsCore.Controllers
             public int category_id;
             public int parent_id;
             public string hierarchy_id;
-            public int key;
-            public string title;
-            public List<Category> Children = new List<Category>();
+            public int id;
+            public string name;
+            public List<Category> children = new List<Category>();
         }
          [HttpPost]
         public async Task<JsonResult> CategoryData(JToken data)
@@ -129,14 +129,47 @@ namespace jlsCore.Controllers
                 lookup[pid]
                     .Select(x => new Category()
                     {
-                        key = x.category_id,
-                        title = x.category_name,
-                        Children = build(x.category_id),
+                        id = x.category_id,
+                        name = x.category_name,
+                        children = build(x.category_id),
                     })
                     .ToList(); 
 
              return new JsonResult(build(0));
         }
+
+
+
+        public class Board
+        {
+            public string board_type;
+            public int board_id;
+            public int category_id;
+        }
+
+        [HttpPost]
+        public async Task<JsonResult> BoardData(JToken data)
+        {
+            dynamic param = new
+            {
+                category_id = data["category_id"].ToString(),
+                user_id = data["user_id"].ToString()
+            };
+            
+            List<Board> board = JsonConvert.DeserializeObject<List<Board>>(Helper.DB.GetResultAsJson("board_get", param));
+
+            board.Select(x => new Board()
+                    {
+                        board_id = x.board_id,
+                        board_type = x.board_type
+                    })
+                    .ToList(); 
+
+             return new JsonResult(board);
+        }
+
+
+
     }
 
     internal class ajaxError

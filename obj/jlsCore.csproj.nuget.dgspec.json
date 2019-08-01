@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\shhan\\Desktop\\jlsCoreProject\\boilerplate-master (1)\\boilerplate-master\\jlsCore.csproj": {}
+    "C:\\Users\\shhan\\Desktop\\jlsCoreProject\\vutify_project\\boilerplate\\jlsCore.csproj": {}
   },
   "projects": {
-    "C:\\Users\\shhan\\Desktop\\jlsCoreProject\\boilerplate-master (1)\\boilerplate-master\\jlsCore.csproj": {
+    "C:\\Users\\shhan\\Desktop\\jlsCoreProject\\vutify_project\\boilerplate\\jlsCore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\shhan\\Desktop\\jlsCoreProject\\boilerplate-master (1)\\boilerplate-master\\jlsCore.csproj",
+        "projectUniqueName": "C:\\Users\\shhan\\Desktop\\jlsCoreProject\\vutify_project\\boilerplate\\jlsCore.csproj",
         "projectName": "jlsCore",
-        "projectPath": "C:\\Users\\shhan\\Desktop\\jlsCoreProject\\boilerplate-master (1)\\boilerplate-master\\jlsCore.csproj",
+        "projectPath": "C:\\Users\\shhan\\Desktop\\jlsCoreProject\\vutify_project\\boilerplate\\jlsCore.csproj",
         "packagesPath": "C:\\Users\\shhan\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\shhan\\Desktop\\jlsCoreProject\\boilerplate-master (1)\\boilerplate-master\\obj\\",
+        "outputPath": "C:\\Users\\shhan\\Desktop\\jlsCoreProject\\vutify_project\\boilerplate\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

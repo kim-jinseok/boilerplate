@@ -1,94 +1,123 @@
 <template>
-<div>
-  <div>
-    <a-row type="flex">
-        <a-col :span="8" class="title">문서검색</a-col>
-    </a-row>
-    <br />
-    <br />
-    <div :style="{ background: 'rgba(250, 250, 250, 1)', padding: '26px 16px 16px' }">
-        <a-input-group compact>
-          <a-select defaultValue="파일명">
-            <a-select-option value="파일명">파일명</a-select-option>
-            <a-select-option value="확장명">확장명</a-select-option>
-            <a-select-option value="작성자">작성자</a-select-option>
-          </a-select>
-          <a-input style="width: 70%"  defaultValue="입력하세요." />
-        </a-input-group>
-        <br />
-    <div class="btn-group">
-      <a-button class="btn" type="primary" ghost>검색</a-button>
-      <a-button class="btn" type="danger" ghost>초기화</a-button>
-    </div>
-  </div>
-  </div>
-  
-  <br />
-  <br />
+   <v-jumbotron height="2000px">
+    <!-- <v-container fill-height>
+      <v-layout align-center>
+        <v-flex> -->
+          <h5 class="display-1" style="font-size:26px !important">문서검색</h5>
+          <v-divider class="my-3"></v-divider>
+       <v-layout row wrap>
+          <v-flex xs4 sm2 d-flex>
+            <v-select
+            :items="items"
+            label="유형선택"
+            outline
+            ></v-select>
+          </v-flex>
+          <v-flex xs8 sm2 d-flex>
+          <v-text-field
+            v-model="searchValue"
+            label="검색어를 입력하세요"
+            style="padding-top:22px;"
+          ></v-text-field>
+           </v-flex>
+      </v-layout>
+        <v-layout row wrap style="padding-top:20px;">
+          <v-flex  xs6 sm2 text-xs-right>
+        <v-btn color="primary" dark>검색
+          <v-icon dark right>check_circle</v-icon>
+        </v-btn>
+         </v-flex>
+         <v-flex  xs6 sm2 text-xs-letf>
+        <v-btn color="red" dark>초기화
+         <v-icon dark right>block</v-icon>
+        </v-btn>
+          </v-flex>
+      </v-layout>
+          <h5 class="display-1" style="font-size:26px !important">결재현황</h5>
+          <v-divider class="my-3"></v-divider>
 
-    <div>
-  <a-row type="flex">
-       <a-col :span="8" class="title">결재현황</a-col>
-  </a-row>
-    <br />
-    <br />
-    <div class="a-card" >
-      <a-row  :gutter="16">
-        <a-col :span="12">
-         <router-link to="/approvalState" class="nav-link">
-           <a-card  title="상신함"  :bordered=true>
-            <p>0건</p>
-          </a-card>
-          </router-link>
-        </a-col>
-        <a-col :span="12">
-           <router-link to="/approvalState" class="nav-link">
-          <a-card   title="결재함" :bordered=true>
-            <p>0건</p>
-          </a-card> 
-        </router-link>
-        </a-col>
-      </a-row>
-    </div>
-    </div>
-  </div>
+          <v-layout row wrap>
+            <v-flex xs6 class="reportLine" >
+              <v-card color="blue-grey darken-2" class="white--text" @click="getApprovalState">
+              <v-card-title primary-title >
+                  <div class="headline">결재함</div>
+              </v-card-title>
+              <v-card-actions>
+                <v-btn flat dark>0건</v-btn>
+              </v-card-actions>
+             </v-card>
+          </v-flex>
+           <v-flex xs6 class="approvalLine">
+            <v-card color="blue-grey darken-2" class="white--text"  @click="getreleasedState" >
+              <v-card-title primary-title>
+                  <div class="headline" >배포함</div>
+              </v-card-title>
+              <v-card-actions>
+                <v-btn flat dark>0건</v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-flex>
+        </v-layout>
+<!--            
+        </v-flex>
+      </v-layout>
+    </v-container> -->
+  </v-jumbotron>
 </template>
 
 <script>
-export default {
-  data () {
-    return {
+import ApprovalState from './approvalState'
+import ReleasedState from './releasedState'
+import { routes } from '../store/router/routes.js'
 
-
+  export default {
+    components :{
+      ApprovalState,
+      ReleasedState
+    },
+    data: () => ({
+      size: 'sm',
+      items: [
+        { text: '파일명', value: 'fileName' },
+        { text: '확장명', value: 'extension' },
+        { text: '작성자', value: 'createUser' }
+      ],
+      searchValue: '',
+      reportCount : '0',
+      approvalCount : '0',
+    }),
+    methods:{
+      getApprovalState(){
+         this.$router.push("/approvalState")
+      },
+      getreleasedState(){
+         this.$router.push("/releasedState")
+      }
+      
     }
   }
-}
 </script>
 <style>
-.title{
- font-size: 25px;
-
+.display-1{
+  color:white;
+  padding-top: 45px ;
 }
-.btn-group{
-  margin: 10px;
-  text-align: center;
+.theme--dark.v-jumbotron .v-jumbotron__content{
+  padding-left: 10px;
 }
-
-.btn{
-  margin: 10px;
-  text-align: center;
+.v-input .theme--dark{
+  padding-left: 15px;
 }
-.ant-card-head{
-  background-color: #bae7ff;
-  padding: 20px;
-  font-weight:500; 
-  text-align: center;
-  font-size: 35px;
+.v-messages__message{
+  padding-top: 8px;
+  padding-left: 50px;
 }
-.ant-card-body{
-  text-align: center;
-  font-weight:600; 
-  font-size: 30px;
+.reportLine {
+  padding-right : 5px;
+}
+.approvalLine{
+  padding-left : 5px;
+  padding-right : 10px;
 }
 </style>
  

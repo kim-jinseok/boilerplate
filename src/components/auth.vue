@@ -1,56 +1,26 @@
 <template>
-  <a-form
-    id="components-form-demo-normal-login"
-    :form="form"
-    class="login-form"
-    @submit="handleSubmit"
-  >
-    <a-form-item>
-      <a-input
-        v-decorator="[
-          'user_id',
-          { rules: [{ required: true, message: '아이디를 입력해주세요.' }] }
-        ]"
-        placeholder="Username"
-      >
-        <a-icon
-          slot="prefix"
-          type="user"
-          style="color: rgba(0,0,0,.25)"
-        />
-      </a-input>
-    </a-form-item>
-    <a-form-item>
-      <a-input
-        v-decorator="[
-          'user_pw',
-          { rules: [{ required: true, message: '비밀번호를 입력해주세요.' }] }
-        ]"
-        type="password"
-        placeholder="Password"
-      >
-        <a-icon
-          slot="prefix"
-          type="lock"
-          style="color: rgba(0,0,0,.25)"
-        />
-      </a-input>
-    </a-form-item>
-    <a-form-item>
-    
-      <a-button
-        type="primary"
-        html-type="submit"
-        class="login-form-button"
-      >
-        Log in
-      </a-button>
-    </a-form-item>
-  </a-form>
+  <form class='form'
+   @submit.prevent="handleSubmit()">
+    <v-text-field class="v-text-field"
+      label="user_id"
+      v-model="user_id"
+      required
+    ></v-text-field>
+    <v-text-field class="v-text-field"
+      label="user_pw"
+      type="password"
+      v-model="user_pw"
+      required=""
+    ></v-text-field>
+    <v-btn @click="submit">submit</v-btn>
+    <v-btn @click="clear">clear</v-btn>
+  </form>
+
 </template>
 <script>
 
   import { userService } from '../modules/auth';
+import { setTimeout } from 'timers';
 
 
   export default {
@@ -60,7 +30,7 @@
         user_id: '',
         user_pw: '',
         submitted: false,
-        form: this.$form.createForm(this),
+        select: null
       }
     },
     created() {
@@ -71,38 +41,60 @@
       }
     },
     methods: {
-      logout() {
-        userService.logout();
 
-        this.$store.state.loggin = false
- 
-      },
-      handleSubmit(e) {
-        e.preventDefault();
-
-        this.form.validateFields((err, v) => {
-          if (!err) {
-         
+       submit() {
+        this.handleSubmit();
+       },
+        handleSubmit() {
         
-            if (v.user_id && v.user_pw) {
-              userService.login(v.user_id, v.user_pw).then((data) => {
-                
-                if (data) {
-                  this.$store.state.loggin = true 
-                  this.$router.push("/")
+            if (this.user_id && this.user_pw) {
+              userService.login(this.user_id, this.user_pw).then((result) => {
 
+                if (!helper.isNull(result)) {
+
+                  this.$store.state.user = helper.parseJwt(result)
+                  this.$store.state.loggin = true 
+                  this.loadCategory();
+                  this.$router.push("/home-page")
+                  
                 } else {
-                  this.$router.push("auth")
+                  this.$router.push("/auth")
                 }
               });
-            }
-            
-            //console.log('Received values of form: ', values);
+            } 
+      },
+     async loadCategory() {
+        try {
+          const param = {
+            user_id : this.$store.state.user.userid
           }
-        });
-
-        
+          /// 바로 데이터를 받아와서 하려면 async, await를 사용해야함
+          const data = fw.getCategory(param)
+         
+          const $this = this
+    
+          data.then(function(result){
+          
+            $this.$store.state.category = result;
+         
+            localStorage.setItem("categoryData", JSON.stringify(result))
+          })
+        } catch (err) {
+          window.alert(err)
+        }
+      },
+      clear () {
+        this.$v.$reset()
+        this.user_id = ''
+        this.user_pw = ''
       }
-    }
-  }
+     }   
+    }   
 </script>
+<style>
+.form{padding-top: 180px;}
+.v-text-field__slot{
+  padding :  15px  0px 0px 15px;
+
+}
+</style>

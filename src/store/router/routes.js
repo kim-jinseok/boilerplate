@@ -1,4 +1,4 @@
-import CounterExample from '../../components/counter-example'
+
 import FetchData from '../../components/fetch-data'
 import HomePage from '../../components/home-page'
 import About from '../../components/about'
@@ -8,8 +8,10 @@ import Home from '../../components/study/Home'
 import Login from '../../components/study/Login'
 import NotFound from '../../components/study/NotFound'
 import Card from '../../components/study/Card'
-import ApprovalState from '../../components/ApprovalState'
-
+import approvalState from '../../components/approvalState'
+import approvalStateDetail from '../../components/approvalStateDetail'
+import getRecBoard from '../../components/getRecBoard'
+import releasedState from '../../components/releasedState'
 
 
 // const requireAuth = (to, from, next) => {
@@ -23,9 +25,8 @@ import ApprovalState from '../../components/ApprovalState'
 
 
 export const routes = [
-    { name: 'homepage', path: '/', component: HomePage, display: 'HomePage', icon: 'home', meta: { requiresLogin: true } },
+    { name: 'home-page', path: '/home-page', component: HomePage, display: 'HomePage', icon: 'home', meta: { requiresLogin: true } },
     { name: 'about', path: '/about', component: About, display: 'About Template', icon: 'info' },
-    { name: 'counter', path: '/counter', component: CounterExample, display: 'Counter', icon: 'graduation-cap', meta: { requiresLogin: true } },
     { name: 'fetch-data', path: '/fetch-data', component: FetchData, display: 'Data', icon: 'list' },
     {
         name: 'trello',
@@ -41,6 +42,8 @@ export const routes = [
     { name: 'home', path: '/home', component: Home, display: 'Home', icon: 'graduation-cap' },
     { name: 'error', path: '/error', component: NotFound },
     { name: 'auth', path: '/auth', component: Auth, display: 'Auth', icon: 'graduation-cap' },
-    { name: 'approval-state', path: '/approvalState', component: ApprovalState, display: 'ApprovalState', icon: 'graduation-cap' }
-
+    { name: 'approvalState', path: '/approvalState', component: approvalState, display: 'approvalState' },
+    { name: 'approvalStateDetail', path: '/approvalStateDetail/:aid', component: approvalStateDetail, display: 'approvalStateDetail' },
+    { name: 'getRecBoard', path: '/getRecBoard/:bid', component: getRecBoard, display: 'getRecBoard' },
+    { name: 'releasedState', path: '/releasedState', component: releasedState, display: 'releasedState' }
 ]

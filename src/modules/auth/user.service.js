@@ -8,7 +8,6 @@ export const userService = {
 
 function login(user_id, user_pw) {
  
-
   return axios.post(`/api/auth/login`, { user_id, user_pw })
     .then(handleResponse);
 }
@@ -20,15 +19,16 @@ function logout() {
 }
 
 function handleResponse(result) {
-  
+
+
   if (result.data === "") {
       // auto logout if 401 response returned from api
-      return false;
+      return null;
   }
-    
-
+ 
   localStorage.accessToken = result.data;
+
   axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.accessToken}`;
-  return true;
+  return result.data;
  
 }

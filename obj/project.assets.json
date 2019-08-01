@@ -12173,11 +12173,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\shhan\\Desktop\\jlsCoreProject\\boilerplate-master (1)\\boilerplate-master\\jlsCore.csproj",
+      "projectUniqueName": "C:\\Users\\shhan\\Desktop\\jlsCoreProject\\vutify_project\\boilerplate\\jlsCore.csproj",
       "projectName": "jlsCore",
-      "projectPath": "C:\\Users\\shhan\\Desktop\\jlsCoreProject\\boilerplate-master (1)\\boilerplate-master\\jlsCore.csproj",
+      "projectPath": "C:\\Users\\shhan\\Desktop\\jlsCoreProject\\vutify_project\\boilerplate\\jlsCore.csproj",
       "packagesPath": "C:\\Users\\shhan\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\shhan\\Desktop\\jlsCoreProject\\boilerplate-master (1)\\boilerplate-master\\obj\\",
+      "outputPath": "C:\\Users\\shhan\\Desktop\\jlsCoreProject\\vutify_project\\boilerplate\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -12236,13 +12236,5 @@
         "warn": true
       }
     }
-  },
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "캐시 파일 C:\\Users\\shhan\\Desktop\\jlsCoreProject\\boilerplate-master (1)\\boilerplate-master\\obj\\jlsCore.csproj.nuget.cache을(를) 읽는 동안 문제가 발생했습니다. Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  }
 }

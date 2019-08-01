@@ -3,7 +3,9 @@ import Vuex from 'vuex'
 
 import VueStringFilter from 'vue-string-filter'
 import VueFilterDateFormat from 'vue-filter-date-format'
+import Vuetify from 'vuetify'
 
+Vue.use(Vuetify)
 
 Vue.use(VueFilterDateFormat)
 Vue.use(VueStringFilter)
@@ -15,15 +17,18 @@ Vue.config.productionTip = true
 
 
 // STATE
-let state = {
-    user: null,
-    loggin: false
+const state = {
+    user:[],
+    loggin: false,
+    categoryId : '',
+    board : [],
+    category : []
 }
 
 // MUTATIONS
 const mutations = {
 
-    }
+}
     // ACTIONS
 const actions = ({
 

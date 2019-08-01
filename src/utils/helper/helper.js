@@ -72,16 +72,43 @@ export default {
         }
 
         helper.getSafeDate = function(jsonDate, formatString, def) {
+
             var date = this.isEmpty(jsonDate) ? def : this.getDateFromJsonDate(jsonDate);
+                
+            // var result = this.isEmpty(date) ? '' : moment(date).format((this.getSafeStr(formatString, '') === '' ? 'YYYY-MM-DD' : formatString));
+            
+            // if (result.isIn(['1900-01-01', '1800-01-01'])) {
+            //     result = this.isEmpty(def) ? '' : def
+            // }
 
-            var result = this.isEmpty(date) ? '' : moment(date).format((this.getSafeStr(formatString, '') === '' ? 'YYYY-MM-DD' : formatString));
-
-            if (result.isIn(['1900-01-01', '1800-01-01'])) {
-                result = this.isEmpty(def) ? '' : def
-            }
-
-            return result;
+            return date;
         }
+
+        
+        helper.getDateFromJsonDate = function (jsonDate) {
+            
+            var datepart = '';
+
+            try {
+                if (jsonDate !== null) {
+                    datepart = jsonDate.substring(0,10);
+                 
+       
+                    if (this.isSafeInt(datepart)) {
+                        return new Date(parseInt(datepart, 10));
+                    }
+
+                    
+                }
+               
+            }
+            catch (e) {
+               
+            }
+           
+            return datepart
+        };
+
 
         helper.brText = function() {
             return this.replace(/\n/g, '<br />')
@@ -148,6 +175,69 @@ export default {
             param = JSON.stringify(param)
             return await axios.get('/api/ajax/dbGetResultAsStr?spName=' + sp_name + '&jsonParam=' + param)
         }
+
+          //확장명 찾기
+          helper.getExtension = function (file) {
+                if (helper.isNull(file)) return "";
+
+                var extension = file.substr((file.lastIndexOf('.') + 1)).toLowerCase();
+                return extension;
+         }
+
+         
+        helper.getSafeBoolean = function (val, def) {
+            def = this.isEmpty(def) ? false : def
+            val = this.isEmpty(val) ? def : val;
+
+            if (val === true || val === false) {
+                return val;
+            }
+            else if (val === 1 || val === 0) {
+                return val === 1;
+            }
+            else if (val === "true" || val === "false") {
+                return val === "true";
+            }
+            else if (val === "True" || val === "False") {
+                return val === "True";
+            }
+            else if (val === "TRUE" || val === "FALSE") {
+                return val === "TRUE";
+            }
+            else if (val === "1" || val === "0") {
+                return val === "1";
+            }
+            else {
+                return false
+            }
+     };
+
+     
+        //3d파일 미리보기를 이미지로 확인할 파일
+        helper.chkDrawingImgFile = function (ext) {
+
+            if ($.inArray(ext, base.drawingImgExt) != -1) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        //확장명 변경
+        helper.setChangeFileExtension = function (file, chgExt) {
+            if (helper.isNull(file)) return "";
+
+            var extension = file.substr((file.lastIndexOf('.') + 1)).toLowerCase();
+
+            return file.substring(0, file.lastIndexOf('.') + 1) + chgExt;
+
+        }
+
+        helper.rpc = function (Source, From, To) { if (this.isEmpty(Source)) { return ""; } var Rslt = Source; while (Rslt.indexOf(From) > -1) { Rslt = Rslt.replace(From, To); } return Rslt; }
+
+
+
+
     }
 
 

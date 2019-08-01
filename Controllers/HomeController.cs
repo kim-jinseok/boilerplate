@@ -17,5 +17,7 @@ namespace jlsCore.Controllers
             ViewData["RequestId"] = Activity.Current?.Id ?? HttpContext.TraceIdentifier;
             return View();
         }
+
+       
     }
 }

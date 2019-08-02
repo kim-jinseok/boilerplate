@@ -26,7 +26,7 @@
                       <v-layout v-resize="onResize" column style="padding-top:20px" class="approvalDataTableLayout"  >
                         <v-data-table  class='dvApprovalTable'   :headers="headers" :items="reportData" :search="search" :pagination.sync="pagination" :class="{mobile: isMobile}">
                           <template slot="items" slot-scope="props" >
-                            <tr  @click="getRecApprovalDetail(props.item)">
+                            <tr  @click="getRecApprovalDetail({item :props.item, type:'report'})">
                               <td>
                                 <ul class="flex-content" >
                                   <li class="flex-item one-line">{{ props.item.approvalName }}</li>
@@ -54,7 +54,7 @@
                       <v-layout v-resize="onResize" column style="padding-top:20px" class="approvalDataTableLayout"  >
                         <v-data-table   class='dvApprovalTable'   :headers="headers" :items="approvalData" :search="search" :pagination.sync="pagination" :class="{mobile: isMobile}">
                           <template slot="items" slot-scope="props">
-                            <tr  @click="getRecApprovalDetail(props.item)">
+                            <tr  @click="getRecApprovalDetail({item :props.item, type:'approval'})">
                               <td>
                                 <ul class="flex-content">
                                   <li class="flex-item">{{ props.item.approvalName }}</li>
@@ -122,10 +122,11 @@
     },
     methods:{
        getRecApprovalDetail(params){
-
+          
           if (event.target.classList.contains('datatable table')) return;
-          let aid = params.approvalId;
-          this.$router.push('/approvalStateDetail/'+ aid);
+          let aid = params.item.approvalId
+          let type = params.type
+          this.$router.push('/approvalStateDetail/'+ aid +'/' + type );
         },
        onResize() {
           if (window.innerWidth < 769)
@@ -188,6 +189,7 @@
             }else{
                     $this.reportData  =''
             }
+
             //결재
             if(result[1] !==''){
             result[1].forEach(function (value, key) {

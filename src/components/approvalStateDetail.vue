@@ -44,6 +44,11 @@
                   </td>
                 </tr>
               </template>
+               <template v-slot:no-data>
+                    <td colspan="5" >  
+                      등록된 파일이 없습니다.                           
+                    </td>
+                </template>
             </v-data-table>
         </v-layout>
       </v-card>
@@ -76,19 +81,27 @@
          <v-btn style="font-size:20px; width: 40px; height: 40px;" class="ma-2" outlined fab color="black">
                    {{data.sort}} 
          </v-btn>
-            <v-flex xs4>
+           <v-flex xs4 v-if="!data.isShowState" style="padding-top: 0px;">
               <v-btn class='btState'  outline small :color="`${data.color}`" >{{data.state}}</v-btn>
                   <v-divider></v-divider>
               <span style="font-weight: bolder; padding-left: 15px;">
                 {{data.updateDate}}
               </span>
            </v-flex>
-            <v-flex xs8>
+           <v-flex xs4 v-else  style="padding-top: 0px;">
+            <v-btn class='btState'  @click="dialog1  = true"  outline small :color="`${data.color}`" >{{data.state}}</v-btn>
+             <v-divider></v-divider>
+           </v-flex>
+           <v-flex xs8>
                 <span>
                  {{data.name}} /  {{data.dep}}
                 </span>
                   <v-divider></v-divider>
                 <span v-html="data.contents">
+                </span>
+                 <v-divider></v-divider>
+                 <span>
+                   {{data.readDate}}
                 </span>
             </v-flex>
           </v-layout>
@@ -100,6 +113,44 @@
            <span><b>결재 라인이 없습니다.</b></span>
         </v-flex>
         </v-layout>
+        <!-- 결재확인 팝업창 -->
+         <v-dialog
+              v-model="dialog1"
+              max-width="500px"
+              @submit.prevent="setApprovalState()"
+            >
+              <v-card>
+                <v-card-title>
+                  결재확인
+                </v-card-title>
+                <v-card-text>
+                  <v-select
+                    v-model="setApprovalData.state"
+                    :items="getStateData"
+                    label="선택해주세요"
+                    item-value="text"
+                  ></v-select>
+                </v-card-text>
+                   <v-textarea
+                    class='vtApprovalText'
+                    background-color="grey lighten-2"
+                    height="150px"
+                    label="내용을 입력해주세요"
+                    color="cyan"
+                    v-model="setApprovalData.contents"
+                  ></v-textarea>
+                <v-card-actions>
+                  <v-layout row mb-2>
+                    <v-flex xs5>
+                    </v-flex>
+                    <v-flex xs7 right>
+                    <v-btn color="blue darken-1" small  text  @click="submit">Save</v-btn>
+                    <v-btn color="blue darken-1" small  text @click="dialog1 = false">Close</v-btn>
+                    </v-flex>
+                  </v-layout>
+                </v-card-actions>
+              </v-card>
+            </v-dialog>
       </v-container>
       </v-card>
      <v-card>
@@ -157,7 +208,7 @@
                               </div>
                             </v-flex>
                             <v-flex xs9 red v-show="!showEmployer">
-                              <span><b>내부 배포처가 없습니다.</b></span>
+                              <span style="color:white;">내부 배포처가 없습니다.</span>
                             </v-flex>
                           </v-layout>
                         </v-card-actions>
@@ -167,7 +218,7 @@
                                     외부 배포처 : 
                                 </v-flex>
                                  <v-spacer></v-spacer>
-                                <v-flex xs9 v-show="showPartner">
+                                <v-flex xs9   v-show="showPartner">
                                    <v-btn class='btn-partner' color="deep-purple lighten-1">협력사</v-btn>
                                       <v-flex xs12>
                                           <div class='dvpartnerLine'  v-for="item in releasePartnerLine"  :key="item.sort">
@@ -183,7 +234,7 @@
                                       </v-flex>
                                 </v-flex>
                                 <v-flex xs9 red v-show="!showPartner">
-                                  <span><b>외부 배포처가 없습니다.</b></span>
+                                  <span style="color:white;">외부 배포처가 없습니다.</span>
                                 </v-flex>
                               </v-layout>
                             </v-card-actions>
@@ -203,7 +254,6 @@
   
    created(){
       this.getApprovalGetData()
-
    },
     data () {
       return {
@@ -211,7 +261,12 @@
             pdfFilePath: '',
             loaded: false
         },
+         setApprovalData: {
+            state: '',
+            contents: '',
+        },
        loading: false,
+       dialog1 : false,
        approvalName :'',
        createUsername : '',
        createDate : '',
@@ -220,6 +275,7 @@
        releaseEndDate : '',
        releaseEmployerLine : [],
        releasePartnerLine : [],
+       getStateData : ['승인','반려','보류','전결'],
        showApprovalLine : false,
        showPartner : false,
        showEmployer : false,
@@ -289,7 +345,7 @@
               approval_id : this.$route.params.aid,
               user_id : this.$store.state.user.userid
           }
-
+         
           const data = helper.getJSON("approval_rec_get", param)
      
           const $this = this
@@ -394,7 +450,7 @@
             $this.approvalRecFileData = arr;
 
           }else{
-             $this.approvalRecFileData  = ''
+             $this.approvalRecFileData  = []
           }
             
   
@@ -420,24 +476,42 @@
               obj_approvalLine.updateDate = helper.getSafeDate(value.split('||')[4])
               obj_approvalLine.userId = value.split('||')[5]    
               obj_approvalLine.contents = unescape(value.split('||')[6])
-              obj_approvalLine.readDate = helper.getSafeDate(value.split('||')[7])
-               
+              obj_approvalLine.readDate = value.split('||')[7]
+              obj_approvalLine.isShowState = false
+      
 
-
-         
          if(obj_approvalLine.state === '승인'){
+
               obj_approvalLine.color = 'indigo'
+
          }else if(obj_approvalLine.state === '결재대기'){
+              obj_approvalLine.readDate = ''
+
+           if($this.$route.params.type === 'approval'){
+                obj_approvalLine.isShowState = true
+           }
+        
               obj_approvalLine.color = 'teal'
+         }else if(obj_approvalLine.state === '보류'){
+         
+          if($this.$route.params.type === 'approval'){
+                obj_approvalLine.isShowState = true
+           }
+        
+              obj_approvalLine.color = 'orange darken-4'
          }else if(obj_approvalLine.state === '반려'){
+                
               obj_approvalLine.color = 'red darken-4'
+         }else if(obj_approvalLine.state === '전결'){
+              
+              obj_approvalLine.color = 'green darken-4'
          }
 
               arr_approvalLine.push(obj_approvalLine);
               
 
           });
-
+       
             $this.showApprovalLine  = true
             $this.approvalLineData  = arr_approvalLine
 
@@ -446,9 +520,10 @@
            $this.showApprovalLine  = false
            $this.approvalLineData  =''
          }
+      
             }else{
 
-                  $this.approvalRecFileData  =''
+                  $this.approvalRecFileData  = []
                   $this.approvalName = '';
                   $this.createUsername ='';
                   $this.createDate ='';
@@ -475,6 +550,35 @@
 
                 });
         },
+        submit(){
+         this.setApprovalState();
+        },
+        setApprovalState(){
+         
+          try {
+
+          var param = {
+              approval_id : this.$route.params.aid,
+              state : this.setApprovalData.state,
+              contents : this.setApprovalData.contents,
+              user_id : this.$store.state.user.userid,
+              logging : ""
+          }
+       
+          let $this = this;
+
+          const data = helper.getINT(param,"approval_set" )
+           
+              data.then(function(result){
+              
+                $this.dialog1 = false;
+            
+              }).then(_=> $this.getApprovalGetData());
+              
+          } catch (error) {
+            
+          }
+        }
     }
   }
 </script>
@@ -583,6 +687,13 @@
  .container.grid-list-lg .layout .flex{
    text-align : center;
  }
-
+.theme--dark.v-input:not(.v-input--is-disabled) input, .theme--dark.v-input:not(.v-input--is-disabled) textarea{
+  color: black;
+  padding: 10px;
+}
+.vtApprovalText .v-input__slot{
+    width: 350px;
+    margin: 10px;
+}
 </style>
                     

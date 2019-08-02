@@ -43,7 +43,7 @@ export const routes = [
     { name: 'error', path: '/error', component: NotFound },
     { name: 'auth', path: '/auth', component: Auth, display: 'Auth', icon: 'graduation-cap' },
     { name: 'approvalState', path: '/approvalState', component: approvalState, display: 'approvalState' },
-    { name: 'approvalStateDetail', path: '/approvalStateDetail/:aid', component: approvalStateDetail, display: 'approvalStateDetail' },
+    { name: 'approvalStateDetail', path: '/approvalStateDetail/:aid/:type', component: approvalStateDetail, display: 'approvalStateDetail' },
     { name: 'getRecBoard', path: '/getRecBoard/:bid', component: getRecBoard, display: 'getRecBoard' },
     { name: 'releasedState', path: '/releasedState', component: releasedState, display: 'releasedState' }
 ]

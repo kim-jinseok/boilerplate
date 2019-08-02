@@ -64,7 +64,7 @@ namespace jlsCore.Models
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 Helper.DB.SetLog(login.user_id, "member_signin", "로그인 실패(web)", param);
             }

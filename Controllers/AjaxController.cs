@@ -82,16 +82,13 @@ namespace jlsCore.Controllers
 
 
         public JsonResult dbGetResultAsInt(string spName, string jsonParam, string working = null)
-        {
+        { 
             try
             {
-                string logging = "";
+                
                 Dictionary<string, object> param = JsonConvert.DeserializeObject<Dictionary<string, object>>(jsonParam.Replace("\\\\", "\\"));
 
-
-                param.Add("user_id", "admin");
-
-                return new JsonResult(Helper.DB.GetResultAsInt(spName, param, logging, true));
+                return new JsonResult(Helper.DB.GetResultAsInt(spName, param, null, true));
 
             }
             catch (Exception ex)

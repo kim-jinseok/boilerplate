@@ -154,7 +154,7 @@ export default {
                 const param = { spName: sp, jsonParam: JSON.stringify(params), logging: '' }
 
                 const result = await axios.post('/api/ajax/dbGetResultAsJson', param).then(callback).catch(function(data) {
-                    console.log(data)
+                
                 })
 
                 return result.data
@@ -168,6 +168,7 @@ export default {
 
         helper.getINT = async function(param, sp_name) {
             param = JSON.stringify(param)
+
             return await axios.get('/api/ajax/dbGetResultAsInt?spName=' + sp_name + '&jsonParam=' + param)
         }
 

@@ -53,7 +53,7 @@
         </v-layout>
       </v-card>
 
-     <v-card  class="approvalLineLayout" style="background-color: #ffc107; color:black; margin-bottom:10px;">
+     <v-card  v-show="this.$route.params.type !== 'release'" class="approvalLineLayout" style="background-color: #ffc107; color:black; margin-bottom:10px;">
         <v-card-title primary-title>
           <div>
             <div class="headline">결재라인</div>
@@ -98,10 +98,6 @@
                 </span>
                   <v-divider></v-divider>
                 <span v-html="data.contents">
-                </span>
-                 <v-divider></v-divider>
-                 <span>
-                   {{data.readDate}}
                 </span>
             </v-flex>
           </v-layout>
@@ -177,7 +173,7 @@
         <v-layout row wrap>
            <v-flex xs12>
                 <v-card color="white" class="white--text">
-                  <v-card-actions class="pa-3">
+                  <v-card-actions class="pa-3"  v-show="this.$route.params.type !== 'release'">
                     <v-layout row>
                        <v-flex xs5>
                             배포 다운로드 기간 : 
@@ -188,6 +184,18 @@
                         </v-flex>
                       </v-layout>
                   </v-card-actions>
+                  <v-card-actions class="pa-3"  v-show="this.$route.params.type === 'release'">
+                    <v-layout row>
+                       <v-flex xs3>
+                            배포 내용 : 
+                        </v-flex>
+                          <v-spacer></v-spacer>
+                        <v-flex xs9>
+                          <div v-html="this.releaseContents"></div>
+                        </v-flex>
+                      </v-layout>
+                  </v-card-actions>
+                  
                        <v-divider light></v-divider>
                         <v-card-actions class="pa-3">
                           <v-layout row>
@@ -197,14 +205,20 @@
                           <v-spacer></v-spacer>
                            <v-flex xs9 v-show="showEmployer">
                               <div v-for="item in releaseEmployerLine"  :key="item.sort">
-                                <v-layout row>
+                                <v-layout row v-if="item.type ==='release'">
+                                  <v-flex xs12>
+                                    <span>{{ item.name }}</span><br/>
+                                  </v-flex>
+                                </v-layout>
+                                <v-layout row  v-else>
                                   <v-flex xs9>
                                     <span>{{ item.name }}</span><br/>
                                   </v-flex>
-                                  <v-flex xs4>
+                                  <v-flex xs4 >
                                     <span>{{ item.readDate }}</span>
                                   </v-flex>
                                 </v-layout>
+                                
                               </div>
                             </v-flex>
                             <v-flex xs9 red v-show="!showEmployer">
@@ -222,6 +236,11 @@
                                    <v-btn class='btn-partner' color="deep-purple lighten-1">협력사</v-btn>
                                       <v-flex xs12>
                                           <div class='dvpartnerLine'  v-for="item in releasePartnerLine"  :key="item.sort">
+                                            <v-layout row v-if="item.type ==='release'">
+                                              <v-flex xs12>
+                                                <span>{{ item.name }}</span><br/>
+                                              </v-flex>
+                                            </v-layout>
                                             <v-layout row>
                                               <v-flex xs8>
                                                   <span>{{ item.name }}</span><br/>
@@ -250,6 +269,7 @@
 </template>
 
 <script>
+
  export default {
   
    created(){
@@ -273,6 +293,7 @@
        fhid:'',
        releaseStartDate : '',
        releaseEndDate : '',
+       releaseContents : '',
        releaseEmployerLine : [],
        releasePartnerLine : [],
        getStateData : ['승인','반려','보류','전결'],
@@ -354,7 +375,7 @@
           let tmp = [];
 
           data.then(function(result){
-       
+            
          if(result[0] !==''){
          
          //상세 기본 정보
@@ -366,16 +387,16 @@
          //배포 정보
           $this.releaseStartDate  = helper.getSafeDate( result[0].start_date)
           $this.releaseEndDate   = helper.getSafeDate( result[0].end_date)
-
+          $this.releaseContents = unescape(result[0].release_contents)
 
           //내부 배포자
             let tempLine =''
             let obj_employerLine = {}
             let employerLine = [];
-            let message = '미확인';
+
               if(!helper.isNull(result[0].release_employer_line)){
 
-                 tempLine   =  result[0].release_employer_line.split(']*[')
+               tempLine   =  result[0].release_employer_line.split(']*[')
 
                tempLine.forEach(function (value, key) {
 
@@ -383,10 +404,13 @@
 
                   obj_employerLine.name = (!helper.isNull(value.split('||')) ? value.split('||')[0] : "")
                   obj_employerLine.readDate = (!helper.isNull(value.split('||')) ? value.split('||')[1] : '')
+                  obj_employerLine.type = $this.$route.params.type
+
               
                  employerLine.push(obj_employerLine)
 
               });
+
                  $this.showEmployer = true
                  $this.releaseEmployerLine = employerLine
 
@@ -403,7 +427,7 @@
                  
               if(!helper.isNull(result[0].release_partner_line)){
 
-                 tempReleaseLine   =  result[0].release_partner_line.split(']*[')
+               tempReleaseLine   =  result[0].release_partner_line.split(']*[')
 
                tempReleaseLine.forEach(function (value, key) {
 
@@ -413,6 +437,7 @@
                   obj_ReleaseLine.readDate = (!helper.isNull(value.split('||')) ? value.split('||')[1] : "")
                   obj_ReleaseLine.state = (!helper.isNull(value.split('||')) ? value.split('||')[2] : "")
                   obj_ReleaseLine.to_mail = (!helper.isNull(value.split('||')) ? value.split('||')[3] : "")
+                  obj_ReleaseLine.type = $this.$route.params.type
 
                  ReleaseLine.push(obj_ReleaseLine)
 
@@ -430,7 +455,6 @@
 
           //파일
           if(!helper.isNull(result[0].file_list)){
-
            tmp = result[0].file_list.split('||')
 
       
@@ -463,9 +487,9 @@
 
          if(!helper.isNull(result[0].approval_line)){
 
-               tmp_approvalLine = result[0].approval_line.split(']*[')
+            tmp_approvalLine = result[0].approval_line.split(']*[')
 
-          tmp_approvalLine.forEach(function (value, key) {
+            tmp_approvalLine.forEach(function (value, key) {
 
               obj_approvalLine= {};
 
@@ -473,13 +497,13 @@
               obj_approvalLine.name = value.split('||')[1]
               obj_approvalLine.dep = value.split('||')[2]
               obj_approvalLine.state = value.split('||')[3]
-              obj_approvalLine.updateDate = helper.getSafeDate(value.split('||')[4])
+              obj_approvalLine.updateDate = value.split('||')[4]
               obj_approvalLine.userId = value.split('||')[5]    
-              obj_approvalLine.contents = unescape(value.split('||')[6])
+              obj_approvalLine.contents =unescape(value.split('||')[6])
               obj_approvalLine.readDate = value.split('||')[7]
               obj_approvalLine.isShowState = false
       
-
+          
          if(obj_approvalLine.state === '승인'){
 
               obj_approvalLine.color = 'indigo'
@@ -514,11 +538,12 @@
        
             $this.showApprovalLine  = true
             $this.approvalLineData  = arr_approvalLine
-
+          console.log(  $this.approvalLineData )
          }else{
            
            $this.showApprovalLine  = false
            $this.approvalLineData  =''
+         
          }
       
             }else{
@@ -529,7 +554,7 @@
                   $this.createDate ='';
                   $this.releaseStartDate ='';
                   $this.$this.releaseEndDate  ='';
-
+                  $this.releaseContents ='';
             }
 
           })

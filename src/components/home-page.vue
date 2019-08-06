@@ -11,6 +11,7 @@
             :items="items"
             label="유형선택"
             outline
+            v-model="selectedType"
             ></v-select>
           </v-flex>
           <v-flex xs8 sm2 d-flex>
@@ -23,7 +24,7 @@
       </v-layout>
         <v-layout row wrap style="padding-top:20px;">
           <v-flex  xs6 sm2 text-xs-right>
-        <v-btn color="primary" dark>검색
+        <v-btn color="primary"  @click="btSearchFiles()" dark>검색
           <v-icon dark right>check_circle</v-icon>
         </v-btn>
          </v-flex>
@@ -38,53 +39,59 @@
 
           <v-layout row wrap>
             <v-flex xs6 class="reportLine" >
-              <v-card color="blue-grey darken-2" class="white--text" @click="getApprovalState">
+              <v-card color="blue-grey darken-2" class="cdApprovalBox white--text" @click="getApprovalState">
               <v-card-title primary-title >
-                  <div class="headline">결재함</div>
+                  <div class="cdApprovalBoxTitle  headline">결재함</div>
               </v-card-title>
-              <v-card-actions>
+              <!-- <v-card-actions>
                 <v-btn flat dark>0건</v-btn>
-              </v-card-actions>
+              </v-card-actions> -->
              </v-card>
           </v-flex>
            <v-flex xs6 class="approvalLine">
-            <v-card color="blue-grey darken-2" class="white--text"  @click="getreleasedState" >
+            <v-card color="blue-grey darken-2" class="cdApprovalBox white--text" @click="getreleasedState" >
               <v-card-title primary-title>
-                  <div class="headline" >배포함</div>
+                  <div class="cdApprovalBoxTitle headline" >배포함</div>
               </v-card-title>
-              <v-card-actions>
+              <!-- <v-card-actions>
                 <v-btn flat dark>0건</v-btn>
-              </v-card-actions>
+              </v-card-actions> -->
             </v-card>
           </v-flex>
         </v-layout>
-<!--            
+<!--
         </v-flex>
       </v-layout>
     </v-container> -->
+    <SearchResult :data="this.resultData"></SearchResult>
   </v-jumbotron>
 </template>
 
 <script>
 import ApprovalState from './approvalState'
 import ReleasedState from './releasedState'
+import SearchResult from './searchResult'
 import { routes } from '../store/router/routes.js'
 
   export default {
     components :{
       ApprovalState,
-      ReleasedState
+      ReleasedState,
+      SearchResult
     },
     data: () => ({
       size: 'sm',
       items: [
         { text: '파일명', value: 'fileName' },
-        { text: '확장명', value: 'extension' },
+        { text: '확장명', value: 'fileType' },
         { text: '작성자', value: 'createUser' }
       ],
       searchValue: '',
       reportCount : '0',
       approvalCount : '0',
+      selectedType : '',
+      resultData :[]
+      
     }),
     methods:{
       getApprovalState(){
@@ -92,8 +99,16 @@ import { routes } from '../store/router/routes.js'
       },
       getreleasedState(){
          this.$router.push("/releasedState")
+      },
+      btSearchFiles(){
+
+           const searchType = this.selectedType
+           const searchValue = this.searchValue
+
+           this.$router.push("/searchResult/"+ searchType +'/'+ searchValue)
+        
       }
-      
+
     }
   }
 </script>
@@ -119,5 +134,17 @@ import { routes } from '../store/router/routes.js'
   padding-left : 5px;
   padding-right : 10px;
 }
+.cdApprovalBox{
+  height: 250px;
+}
+.cdApprovalBoxTitle{
+  padding-left: 25px;
+  padding-top: 75px;
+}
+ .headline{
+  font-size : 35px !important;
+ }
+ .theme--dark.v-input:not(.v-input--is-disabled) input, .theme--dark.v-input:not(.v-input--is-disabled) textarea{
+   color: white;
+ }
 </style>
- 

@@ -10,12 +10,22 @@
                     centered
                     :href="`#tab-1`"
                     >
-                  상신
+                     <v-badge>
+                      <template v-slot:badge>
+                        <span>{{dataReportLength}}</span>
+                      </template>
+                      <span>상신</span>
+                    </v-badge>
                 </v-tab>
                   <v-tab  
                 centered
                 :href="`#tab-2`">
-                  결재
+                   <v-badge>
+                      <template v-slot:badge>
+                        <span>{{dataApprovalLength}}</span>
+                      </template>
+                      <span>결재</span>
+                    </v-badge>
                 </v-tab>
             </v-tabs>
       </v-tabs>
@@ -116,7 +126,10 @@
           }
         ],
         reportData: [],
-        approvalData: []
+        approvalData: [],
+        dataReportLength : 0,
+        dataApprovalLength : 0
+        
       
       }
     },
@@ -166,19 +179,19 @@
             let arr_approval = [];
             let obj_deploy = {};
             let arr_deploy = [];
+          
 
           data.then(function(result){
 
           //상신
           if(result[0] !==''){
             result[0].forEach(function (value, key) {
-                
+                        $this.dataReportLength++;
                         obj_report = {};
                         obj_report.approvalId = value.approval_id;
                         obj_report.approvalName = value.approval_name
                         obj_report.createUsername = value.name
                         obj_report.createDate = helper.getSafeDate(value.create_date)
-
 
                         arr_report.push(obj_report);
             
@@ -192,19 +205,19 @@
 
             //결재
             if(result[1] !==''){
+
             result[1].forEach(function (value, key) {
-      
+              $this.dataApprovalLength++;
               obj_approval = {};
               obj_approval.approvalId = value.approval_id;
               obj_approval.approvalName = value.approval_name
               obj_approval.createUsername = value.name
               obj_approval.createDate = helper.getSafeDate(value.create_date)
 
-
               arr_approval.push(obj_approval);
         
             });
-          
+
                $this.approvalData = arr_approval;
 
               }else{

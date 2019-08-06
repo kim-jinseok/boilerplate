@@ -12,7 +12,7 @@ import approvalState from '../../components/approvalState'
 import approvalStateDetail from '../../components/approvalStateDetail'
 import getRecBoard from '../../components/getRecBoard'
 import releasedState from '../../components/releasedState'
-
+import searchResult from '../../components/searchResult'
 
 // const requireAuth = (to, from, next) => {
 //  const isAuth = localStorage.getItem('token')
@@ -45,5 +45,7 @@ export const routes = [
     { name: 'approvalState', path: '/approvalState', component: approvalState, display: 'approvalState' },
     { name: 'approvalStateDetail', path: '/approvalStateDetail/:aid/:type', component: approvalStateDetail, display: 'approvalStateDetail' },
     { name: 'getRecBoard', path: '/getRecBoard/:bid', component: getRecBoard, display: 'getRecBoard' },
-    { name: 'releasedState', path: '/releasedState', component: releasedState, display: 'releasedState' }
+    { name: 'releasedState', path: '/releasedState', component: releasedState, display: 'releasedState' },
+    { name: 'searchResult', path: '/searchResult/:searchType/:searchValue', component: searchResult, display: 'searchResult' }
+    
 ]

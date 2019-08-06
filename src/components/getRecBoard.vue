@@ -263,4 +263,7 @@ export default {
    .dvBoardDataTable .v-text-field{
          padding-top: 0px;
  }
+ .table.v-table tbody td:first-child, table.v-table tbody td:not(:first-child), table.v-table tbody th:first-child, table.v-table tbody th:not(:first-child), table.v-table thead td:first-child, table.v-table thead td:not(:first-child), table.v-table thead th:first-child, table.v-table thead th:not(:first-child){
+      padding :0px 24px 0px 20px;
+ }
 </style>

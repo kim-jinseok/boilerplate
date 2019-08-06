@@ -10,17 +10,32 @@
                     centered
                     :href="`#tab-1`"
                     >
-                  상신
+                   <v-badge>
+                      <template v-slot:badge>
+                        <span>{{dataReportLength}}</span>
+                      </template>
+                      <span>상신</span>
+                    </v-badge>
                 </v-tab>
                   <v-tab  
                 centered
                 :href="`#tab-2`">
-                  결재
+                  <v-badge>
+                      <template v-slot:badge>
+                        <span>{{dataApprovalLength}}</span>
+                      </template>
+                      <span>결재</span>
+                    </v-badge>
                 </v-tab>
                <v-tab
                 centered
                 :href="`#tab-3`">
-                  배포
+                   <v-badge>
+                      <template v-slot:badge>
+                        <span>{{dataReleaseLength}}</span>
+                      </template>
+                      <span>배포</span>
+                    </v-badge>
                 </v-tab>
             </v-tabs>
       </v-tabs>
@@ -31,7 +46,7 @@
                       <v-layout v-resize="onResize" column style="padding-top:20px" class="approvalDataTableLayout"  >
                         <v-data-table  class='dvApprovalTable'   :headers="headers" :items="reportData" :search="search" :pagination.sync="pagination" :class="{mobile: isMobile}">
                           <template slot="items" slot-scope="props" >
-                            <tr  @click="showAlert(props.item)">
+                            <tr  @click="getRecReleaseDetail({item :props.item, type:'report'})">
                               <td>
                                 <ul class="flex-content" >
                                   <li class="flex-item one-line">{{ props.item.approvalName }}</li>
@@ -59,7 +74,7 @@
                       <v-layout v-resize="onResize" column style="padding-top:20px" class="approvalDataTableLayout"  >
                         <v-data-table   class='dvApprovalTable'   :headers="headers" :items="approvalData" :search="search" :pagination.sync="pagination" :class="{mobile: isMobile}">
                           <template slot="items" slot-scope="props">
-                            <tr  @click="showAlert(props.item)">
+                            <tr   @click="getRecReleaseDetail({item :props.item, type:'approval'})">
                               <td>
                                 <ul class="flex-content">
                                   <li class="flex-item">{{ props.item.approvalName }}</li>
@@ -88,7 +103,7 @@
                       <v-layout v-resize="onResize" column style="padding-top:20px" class="approvalDataTableLayout"  >
                         <v-data-table   class='dvApprovalTable'   :headers="headers" :items="releasedData" :search="search" :pagination.sync="pagination" :class="{mobile: isMobile}">
                           <template slot="items" slot-scope="props">
-                            <tr  @click="showAlert(props.item)">
+                            <tr   @click="getRecReleaseDetail({item :props.item, type:'release'})">
                               <td>
                                 <ul class="flex-content">
                                   <li class="flex-item" >{{ props.item.approvalName }}</li>
@@ -150,8 +165,10 @@
         ],
         reportData: [],
         approvalData: [],
-        releasedData: []
-      
+        releasedData: [],
+        dataReportLength : 0,
+        dataApprovalLength : 0,
+        dataReleaseLength : 0
       }
     },
     methods:{
@@ -202,7 +219,7 @@
           //상신
           if(result[0] !==''){
             result[0].forEach(function (value, key) {
-                
+                        $this.dataReportLength++;
                         obj_report = {};
                         obj_report.approvalId = value.approval_id;
                         obj_report.approvalName = value.approval_name
@@ -222,7 +239,7 @@
             //결재
             if(result[1] !==''){
             result[1].forEach(function (value, key) {
-      
+              $this.dataApprovalLength++;
               obj_approval = {};
               obj_approval.approvalId = value.approval_id;
               obj_approval.approvalName = value.approval_name
@@ -244,7 +261,7 @@
           //배포받은 문서
             if(result[2] !==''){
             result[2].forEach(function (value, key) {
-      
+              $this.dataReleaseLength++;
               obj_release = {};
               obj_release.approvalId = value.approval_id;
               obj_release.approvalName = value.approval_name
@@ -268,6 +285,12 @@
         } catch (err) { 
         }
     },
+    getRecReleaseDetail(params){
+        if (event.target.classList.contains('datatable table')) return;
+        let aid = params.item.approvalId
+        let type = params.type
+        this.$router.push('/approvalStateDetail/'+ aid +'/' + type );
+      },
     }
   }
 </script>

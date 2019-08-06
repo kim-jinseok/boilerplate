@@ -22,6 +22,7 @@
     "eslint-plugin-standard": "^4.0.0",
     "gulp": "^4.0.2",
     "pdfjs-dist": "^2.1.266",
+    "v-tooltip": "^2.0.2",
     "vue": "^2.6.10",
     "vue-esc": "^3.0.1",
     "vue-filter-date-format": "^1.2.5",

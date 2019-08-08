@@ -164,7 +164,7 @@
        
         try {
           var param = {
-              user_id : this.$store.state.user.userid,
+              user_id : this.$store.state.l.user.userid,
               render_type :  'approval'
           }
 

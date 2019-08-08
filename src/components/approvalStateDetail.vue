@@ -364,7 +364,7 @@
         try {
           var param = {
               approval_id : this.$route.params.aid,
-              user_id : this.$store.state.user.userid
+              user_id : this.$store.state.l.user.userid
           }
          
           const data = helper.getJSON("approval_rec_get", param)
@@ -586,7 +586,7 @@
               approval_id : this.$route.params.aid,
               state : this.setApprovalData.state,
               contents : this.setApprovalData.contents,
-              user_id : this.$store.state.user.userid,
+              user_id : this.$store.state.l.user.userid,
               logging : ""
           }
        

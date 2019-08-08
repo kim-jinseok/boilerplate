@@ -200,7 +200,7 @@ export default {
          let param = {
                 file_id :   this.fileId,
                 file_history_id : this.fileHistoryId,
-                user_id : this.$store.state.user.userid
+                user_id : this.$store.state.l.user.userid
                 }
 
        this.getRevisionTable(param)

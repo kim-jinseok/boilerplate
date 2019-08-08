@@ -27,13 +27,13 @@ export default {
             const current_time = Date.now() / 1000;
 
             if (user.exp < current_time) {
-                store.state.loggin = false
+                store.state.l.loggin = false
                 router.push("/auth")
 
             } else {
-                store.state.loggin = true
-                store.state.user = user
-                store.state.category = JSON.parse(category)
+                store.state.l.loggin = true
+                store.state.l.user = user
+                store.state.c.category = JSON.parse(category)
                 axios.defaults.headers.post['Content-Type'] = 'application/json';
                 axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.accessToken}`;
 
@@ -42,7 +42,7 @@ export default {
         } else {
             console.log('localStorage false')
             console.log(localStorage.accessToken)
-            store.state.loggin = false;
+            store.state.l.loggin = false;
             router.push("/auth")
         }
     }

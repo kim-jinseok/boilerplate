@@ -91,7 +91,7 @@ export default {
               end_date : '',
               search_type  :  this.$route.params.searchType,
               search_value  : this.$route.params.searchValue,
-              user_id : this.$store.state.user.userid
+              user_id : this.$store.state.l.user.userid
 
           }
 

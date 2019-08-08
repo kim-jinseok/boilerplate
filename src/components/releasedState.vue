@@ -200,7 +200,7 @@
        
         try {
           var param = {
-              user_id : this.$store.state.user.userid,
+              user_id : this.$store.state.l.user.userid,
               render_type :  'release'
           }
           const data = helper.getJSON("approval_get", param)

@@ -50,21 +50,36 @@
 <script>
 import { routes } from '../store/router'
 import boardDetailInfo from './boardDetailInfo'
+import { mapActions, mapState, mapGetters }  from "vuex";
+
+
 
 export default {
-    created() {
-     
-    this.loadBoard()
-        
-    },
-    watch: {
-        '$route': 'loadBoard'
-    },
+ 
+    created(){    
+
+     },
+     computed(){
+          // this.$store.dispatch("loadBoard")
+          // setTimeout(() => {
+          //   console.log(this.$store.getters.doArrData)
+          //   this.desserts = this.$store.getters.doArrData;
+          // }, 1000);
+     },
+     watch :{
+        '$route' (to, from) {
+            this.$store.dispatch("loadBoard")
+          setTimeout(() => {
+            console.log(this.$store.getters.doArrData)
+            this.desserts = this.$store.getters.doArrData;
+          }, 1000);
+        }
+     },
    components :{
        boardDetailInfo
    },
     data() {
-
+      
       return {
         pagination: {
           sortBy: 'No',
@@ -88,82 +103,83 @@ export default {
           { text: 'Rev', align: 'left', value: 'Rev', width:'5%' }
         ],
         desserts: [],
-        boardId : 0,
+        boardId : '',
         obj_detail :{}
       }
     },
     methods:{
-
-    async loadBoard() {
+    // async loadBoard() {
             
-        try {
-          var param = {
-              category_id : this.$route.params.bid,
-              user_id : this.$store.state.user.userid
-          }
+    //     try {
+    //       var param = {
+    //           category_id : this.$route.params.bid,
+    //           user_id : this.$store.state.l.user.userid
+    //       }
 
 
      
-          /// 바로 데이터를 받아와서 하려면 async, await를 사용해야함
-          const data = helper.getJSON("board_get", param)
+    //       /// 바로 데이터를 받아와서 하려면 async, await를 사용해야함
+    //       const data = helper.getJSON("board_get", param)
           
        
-          const $this = this
+    //       const $this = this
 
-          if(data === null){ return }
+    //       if(data === null){ return }
           
-          data.then(function(result){
+    //       data.then(function(result){
 
-           $this.$store.state.board = result;  
+    //        $this.$store.state.b.board = result;  
        
-           $this.boardId = $this.$store.state.board[0].board_id
+    //        $this.boardId = $this.$store.state.b.board[0].board_id
 
-          }).then(()=> this.getFiles($this.boardId))
+    //       }).then(()=> this.getFiles($this.boardId))
           
-        } catch (err) { 
-        }
-    },
-     getFiles(boardId){
+    //     } catch (err) { 
+    //     }
+    // },
+
+
+    //  getFiles(boardId){
    
-        try {
-          var param = {
-              board_id : boardId
-          }
-          /// 바로 데이터를 받아와서 하려면 async, await를 사용해야함
-          const data = helper.getJSON("files_get", param)
+    //     try {
+    //       var param = {
+    //           board_id : boardId
+    //       }
+    //       /// 바로 데이터를 받아와서 하려면 async, await를 사용해야함
+    //       const data = helper.getJSON("files_get", param)
           
-          const $this = this
+    //       const $this = this
           
-          data.then(function(result){
+    //       data.then(function(result){
          
-              let obj = {};
-              let arr = [];
+    //           let obj = {};
+    //           let arr = [];
 
-           result.forEach(function (value, key) {
+    //        result.forEach(function (value, key) {
 
-                    obj = {};
+    //                 obj = {};
 
-                    obj.No = value.rn;
-                    obj.fileName = value.file_name;
-                    obj.Rev = value.revision;
+    //                 obj.No = value.rn;
+    //                 obj.fileName = value.file_name;
+    //                 obj.Rev = value.revision;
 
-                    obj.fileId = value.file_id
-                    obj.fileHistoryId = value.file_history_id
-                    obj.fileSize = value.file_size
-                    obj.fileType = value.file_type
-                    obj.createUsername = value.create_username
-                    obj.createDate = value.create_date
+    //                 obj.fileId = value.file_id
+    //                 obj.fileHistoryId = value.file_history_id
+    //                 obj.fileSize = value.file_size
+    //                 obj.fileType = value.file_type
+    //                 obj.createUsername = value.create_username
+    //                 obj.createDate = value.create_date
 
-                    arr.push(obj);
+    //                 arr.push(obj);
                   
-             });
+    //          });
           
-            $this.desserts = arr;
+    //         $this.desserts = arr;
          
-        })
-        } catch (err) { 
-        }
-    },
+    //     })
+    //     } catch (err) { 
+    //     }
+    // },
     customSort(items, index, isDesc) {
         items.sort((a, b) => {
             if (index === "date") {

@@ -1,7 +1,7 @@
 
 
 <template>
-    <div v-if="this.$store.state.loggin">
+    <div v-if="this.$store.state.l.loggin">
       <v-navigation-drawer
         v-model="drawer"
         clipped
@@ -21,7 +21,7 @@
     </v-sheet>
     
      <v-treeview 
-       :items="this.$store.state.category"
+       :items="this.$store.state.c.category"
         activatable
         :search="search"
         >
@@ -75,7 +75,7 @@
       homePage
     },
     created () {
-        this.isShow = this.$store.state.loggin
+        this.isShow = this.$store.state.l.loggin
     },
     data() {
 
@@ -98,13 +98,13 @@
 
           userService.logout();
 
-          this.$store.state.loggin = false
+          this.$store.state.l.loggin = false
           this.$router.push('/auth')
   
         },
       getRecBoard(id){
         console.log(id);
-        console.log(this.$store.state.user.userid)
+        console.log(this.$store.state.l.user.userid)
         this.$router.push('/getRecBoard/' + id);
         
       }

@@ -37,7 +37,7 @@ import { setTimeout } from 'timers';
     },
     computed: {
       loggingIn() {
-        return this.$store.state.loggin;
+        return this.$store.state.l.loggin;
       }
     },
     methods: {
@@ -52,8 +52,8 @@ import { setTimeout } from 'timers';
 
                 if (!helper.isNull(result)) {
 
-                  this.$store.state.user = helper.parseJwt(result)
-                  this.$store.state.loggin = true 
+                  this.$store.state.l.user = helper.parseJwt(result)
+                  this.$store.state.l.loggin = true 
                   this.loadCategory();
                   this.$router.push("/home-page")
                   
@@ -66,7 +66,7 @@ import { setTimeout } from 'timers';
      async loadCategory() {
         try {
           const param = {
-            user_id : this.$store.state.user.userid
+            user_id : this.$store.state.l.user.userid
           }
           /// 바로 데이터를 받아와서 하려면 async, await를 사용해야함
           const data = fw.getCategory(param)
@@ -75,7 +75,7 @@ import { setTimeout } from 'timers';
     
           data.then(function(result){
           
-            $this.$store.state.category = result;
+            $this.$store.state.c.category = result;
          
             localStorage.setItem("categoryData", JSON.stringify(result))
           })

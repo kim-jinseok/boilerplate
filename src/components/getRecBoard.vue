@@ -13,7 +13,7 @@
         </v-toolbar>
         <v-data-table  class="dvBoardDataTable"   
             :headers="headers"
-            :items="desserts"
+            :items="boardFilesData"
             :expand="expand"
             :search="search"
             :custom-sort="customSort"
@@ -56,23 +56,19 @@ import { mapActions, mapState, mapGetters }  from "vuex";
 
 export default {
  
-    created(){    
+    created(){   
 
-     },
-     computed(){
-          // this.$store.dispatch("loadBoard")
-          // setTimeout(() => {
-          //   console.log(this.$store.getters.doArrData)
-          //   this.desserts = this.$store.getters.doArrData;
-          // }, 1000);
+         this.$store.dispatch("loadBoard")
+          setTimeout(() => {
+            this.boardFilesData = this.$store.getters.doArrData;
+          }, 500);
      },
      watch :{
         '$route' (to, from) {
             this.$store.dispatch("loadBoard")
           setTimeout(() => {
-            console.log(this.$store.getters.doArrData)
-            this.desserts = this.$store.getters.doArrData;
-          }, 1000);
+            this.boardFilesData = this.$store.getters.doArrData;
+          }, 500);
         }
      },
    components :{
@@ -102,7 +98,7 @@ export default {
           { text: '파일명', align: 'left', value: 'fileName', width:'80%' },
           { text: 'Rev', align: 'left', value: 'Rev', width:'5%' }
         ],
-        desserts: [],
+        boardFilesData: [],
         boardId : '',
         obj_detail :{}
       }
@@ -174,7 +170,7 @@ export default {
                   
     //          });
           
-    //         $this.desserts = arr;
+    //         $this.boardFilesData = arr;
          
     //     })
     //     } catch (err) { 

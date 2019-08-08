@@ -65,6 +65,10 @@ const boardState = {
      },
      getters : {
         doArrData :(state, getters) => {
+         
+            console.log('getters')
+            console.log(state.arrData )
+            
             return state.arrData
         }
      },
@@ -120,9 +124,12 @@ const boardState = {
                                             arr.push(obj);
                                         
                                     });
-                                
-                                    console.log(state)
+
+                                    
                                     state.arrData = arr
+
+                                    console.log('loadBoard')
+                                    console.log( state.arrData )
                                 
                                 })
                             } catch (err) { 

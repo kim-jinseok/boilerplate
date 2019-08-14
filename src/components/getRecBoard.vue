@@ -124,4 +124,10 @@ table.v-table thead th:not(:first-child) {
   float: left;
   margin-left: 0px;
 }
+.boardDataTable .theme--dark.v-subheader {
+  color: black;
+  font-weight: 600;
+}
+
+
 </style>

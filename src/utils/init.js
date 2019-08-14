@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '../utils/plugin/icons'
 const user = (localStorage.accessToken !== undefined ? helper.parseJwt(localStorage.accessToken) : "")
 const category = (localStorage.categoryData !== undefined ? localStorage.categoryData : "")
 
-const vueGlobalSettings = function() {
+const vueGlobalSettings = function () {
     Vue.prototype.$user = user
     Vue.prototype.$http = axios
 
@@ -18,11 +18,11 @@ const vueGlobalSettings = function() {
 
 export default {
 
-    created() {   
+    created() {
 
- 
+
         if (!helper.isNull(localStorage.accessToken)) {
-         
+
 
             const current_time = Date.now() / 1000;
 
@@ -40,8 +40,6 @@ export default {
                 vueGlobalSettings()
             }
         } else {
-            console.log('localStorage false')
-            console.log(localStorage.accessToken)
             store.state.l.loggin = false;
             router.push("/auth")
         }

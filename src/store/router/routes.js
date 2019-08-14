@@ -1,13 +1,6 @@
 
-import FetchData from '../../components/fetch-data'
 import HomePage from '../../components/home-page'
-import About from '../../components/about'
 import Auth from '../../components/auth.vue'
-import Trello from '../../components/study/trello'
-import Home from '../../components/study/Home'
-import Login from '../../components/study/Login'
-import NotFound from '../../components/study/NotFound'
-import Card from '../../components/study/Card'
 import approvalState from '../../components/approvalState'
 import approvalStateDetail from '../../components/approvalStateDetail'
 import getRecBoard from '../../components/getRecBoard'
@@ -26,26 +19,11 @@ import searchResult from '../../components/searchResult'
 
 export const routes = [
     { name: 'home-page', path: '/home-page', component: HomePage, display: 'HomePage', icon: 'home', meta: { requiresLogin: true } },
-    { name: 'about', path: '/about', component: About, display: 'About Template', icon: 'info' },
-    { name: 'fetch-data', path: '/fetch-data', component: FetchData, display: 'Data', icon: 'list' },
-    {
-        name: 'trello',
-        path: '/study/trello/:bid',
-        component: Trello,
-        display: 'Trello',
-        icon: 'list',
-        children: [
-            { name: 'card', path: 'c/:cid', component: Card }
-        ]
-    },
-    { name: 'login', path: '/login', component: Login, display: 'login', icon: 'list' },
-    { name: 'home', path: '/home', component: Home, display: 'Home', icon: 'graduation-cap' },
-    { name: 'error', path: '/error', component: NotFound },
     { name: 'auth', path: '/auth', component: Auth, display: 'Auth', icon: 'graduation-cap' },
     { name: 'approvalState', path: '/approvalState', component: approvalState, display: 'approvalState' },
     { name: 'approvalStateDetail', path: '/approvalStateDetail/:aid/:type', component: approvalStateDetail, display: 'approvalStateDetail' },
     { name: 'getRecBoard', path: '/getRecBoard/:bid', component: getRecBoard, display: 'getRecBoard' },
     { name: 'releasedState', path: '/releasedState', component: releasedState, display: 'releasedState' },
     { name: 'searchResult', path: '/searchResult/:searchType/:searchValue', component: searchResult, display: 'searchResult' }
-    
+
 ]

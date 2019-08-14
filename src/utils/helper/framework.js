@@ -3,12 +3,12 @@ import axios from 'axios'
 export default {
     install(Vue) {
 
-        window.fw = function() {
+        window.fw = function () {
 
         }
 
 
-        fw.getCategory = async function(param) {
+        fw.getCategory = async function (param) {
 
             try {
                 const result = await axios.post('/api/ajax/CategoryData', param);
@@ -21,12 +21,11 @@ export default {
             }
         }
 
-        fw.getBoard = async function(param) {
-                
+        fw.getBoard = async function (param) {
+
             try {
                 const result = await axios.post('/api/ajax/BoardData', param);
-                // console.log(result)
-                console.log('framework')
+
                 return result.data
 
             } catch (err) {
@@ -35,13 +34,13 @@ export default {
             }
         }
 
-        fw._previewRender = async function($container, m, isPopupType) {
+        fw._previewRender = async function ($container, m, isPopupType) {
 
             console.log('_previewRender')
             console.log(m)
-            
+
             if (helper.isNull(m)) { $container.html('<div style="margin:30px;"><h3>미리보기를 불러오는 중입니다.</h3></div>'); return false; }
-            
+
             if (!helper.isNull(m[1])) {
 
                 var v = m[1][0];
@@ -65,7 +64,7 @@ export default {
                         //case 3. hoops 변환을 사용하지만 변환 대상이 아닐 경우 preview_path에는 jpg 파일로 생성된다.
                         //따라서 아래와 같이 1번 case 때문에 실제 파일경로에서 replace를 했다.
 
-                        $container.html("<img src='" + helper.setChangeFileExtension(helper.rpc(v.file_path, "/" + fileExt+"/", "/jpg/"), "jpg") + "' style='width:100%; ' />");
+                        $container.html("<img src='" + helper.setChangeFileExtension(helper.rpc(v.file_path, "/" + fileExt + "/", "/jpg/"), "jpg") + "' style='width:100%; ' />");
                         $("#dvPdfContainer").show();
                         return;
                     }

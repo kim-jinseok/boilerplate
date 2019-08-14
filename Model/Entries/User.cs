@@ -33,7 +33,7 @@ namespace jlsCore.Models
         public string Role { get; set; }
         public string token { get; set; }
 
-     
+
 
         public Ticket signIn(Login login)
         {

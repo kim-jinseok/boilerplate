@@ -15,6 +15,7 @@ namespace jlsCore
         public static void Main(string[] args)
         {
             CreateWebHostBuilder(args).Build().Run();
+<<<<<<< HEAD
 
         }
 
@@ -29,3 +30,12 @@ namespace jlsCore
     }
 }
 
+=======
+        }
+
+        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+            WebHost.CreateDefaultBuilder(args)
+                .UseStartup<Startup>();
+    }
+}
+>>>>>>> 55ff1b54785141dc5248587f157210a718a9133a

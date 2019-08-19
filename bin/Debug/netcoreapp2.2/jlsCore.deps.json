@@ -26,7 +26,10 @@
         "dependencies": {
           "Microsoft.AspNetCore.App": "2.2.0",
           "Microsoft.AspNetCore.Razor.Design": "2.2.0",
+<<<<<<< HEAD
           "Microsoft.AspNetCore.Server.Kestrel": "2.2.0",
+=======
+>>>>>>> 55ff1b54785141dc5248587f157210a718a9133a
           "Microsoft.NETCore.App": "2.2.0",
           "System.Configuration.ConfigurationManager": "4.5.0",
           "ToolBox": "1.0.0.0"

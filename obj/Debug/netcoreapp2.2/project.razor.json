@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
   "FilePath": "c:\\Users\\shhan\\Downloads\\boilerplate-shhan\\boilerplate-shhan\\jlsCore.csproj",
+=======
+  "FilePath": "c:\\Users\\shhan\\Desktop\\jlsCoreProject\\vutify_project\\boilerplate\\jlsCore.csproj",
+>>>>>>> 55ff1b54785141dc5248587f157210a718a9133a
   "Configuration": {
     "ConfigurationName": "MVC-2.1",
     "LanguageVersion": "2.1",

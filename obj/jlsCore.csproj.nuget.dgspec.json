@@ -1,6 +1,7 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
     "C:\\Users\\shhan\\Downloads\\boilerplate-shhan\\boilerplate-shhan\\jlsCore.csproj": {}
   },
   "projects": {
@@ -12,6 +13,19 @@
         "projectPath": "C:\\Users\\shhan\\Downloads\\boilerplate-shhan\\boilerplate-shhan\\jlsCore.csproj",
         "packagesPath": "C:\\Users\\shhan\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\shhan\\Downloads\\boilerplate-shhan\\boilerplate-shhan\\obj\\",
+=======
+    "C:\\Users\\shhan\\Desktop\\jlsCoreProject\\vutify_project\\boilerplate\\jlsCore.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\shhan\\Desktop\\jlsCoreProject\\vutify_project\\boilerplate\\jlsCore.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\shhan\\Desktop\\jlsCoreProject\\vutify_project\\boilerplate\\jlsCore.csproj",
+        "projectName": "jlsCore",
+        "projectPath": "C:\\Users\\shhan\\Desktop\\jlsCoreProject\\vutify_project\\boilerplate\\jlsCore.csproj",
+        "packagesPath": "C:\\Users\\shhan\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\shhan\\Desktop\\jlsCoreProject\\vutify_project\\boilerplate\\obj\\",
+>>>>>>> 55ff1b54785141dc5248587f157210a718a9133a
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -52,10 +66,13 @@
               "target": "Package",
               "version": "[2.2.0, )"
             },
+<<<<<<< HEAD
             "Microsoft.AspNetCore.Server.Kestrel": {
               "target": "Package",
               "version": "[2.2.0, )"
             },
+=======
+>>>>>>> 55ff1b54785141dc5248587f157210a718a9133a
             "Microsoft.NETCore.App": {
               "suppressParent": "All",
               "target": "Package",

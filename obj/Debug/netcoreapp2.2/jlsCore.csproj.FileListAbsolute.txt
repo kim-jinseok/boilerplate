@@ -65,6 +65,7 @@ c:\Users\shhan\Desktop\jlsCoreProject\vutify_project\boilerplate\obj\Debug\netco
 C:\Users\shhan\Desktop\jlsCoreProject\vutify_project\boilerplate\obj\Debug\netcoreapp2.2\jlsCore.csproj.CopyComplete
 c:\Users\shhan\Desktop\jlsCoreProject\vutify_project\boilerplate\obj\Debug\netcoreapp2.2\jlsCore.dll
 c:\Users\shhan\Desktop\jlsCoreProject\vutify_project\boilerplate\obj\Debug\netcoreapp2.2\jlsCore.pdb
+<<<<<<< HEAD
 C:\Users\shhan\Downloads\boilerplate-shhan\boilerplate-shhan\bin\Debug\netcoreapp2.2\jlsCore.deps.json
 C:\Users\shhan\Downloads\boilerplate-shhan\boilerplate-shhan\bin\Debug\netcoreapp2.2\jlsCore.runtimeconfig.json
 C:\Users\shhan\Downloads\boilerplate-shhan\boilerplate-shhan\bin\Debug\netcoreapp2.2\jlsCore.runtimeconfig.dev.json
@@ -81,3 +82,5 @@ C:\Users\shhan\Downloads\boilerplate-shhan\boilerplate-shhan\obj\Debug\netcoreap
 C:\Users\shhan\Downloads\boilerplate-shhan\boilerplate-shhan\obj\Debug\netcoreapp2.2\jlsCore.csproj.CopyComplete
 C:\Users\shhan\Downloads\boilerplate-shhan\boilerplate-shhan\obj\Debug\netcoreapp2.2\jlsCore.dll
 C:\Users\shhan\Downloads\boilerplate-shhan\boilerplate-shhan\obj\Debug\netcoreapp2.2\jlsCore.pdb
+=======
+>>>>>>> 55ff1b54785141dc5248587f157210a718a9133a

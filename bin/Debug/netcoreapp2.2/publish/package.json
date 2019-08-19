@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "name": "jlscore",
   "version": "0.1.0",
   "private": true,
@@ -58,4 +59,52 @@
     "> 1%",
     "last 2 versions"
   ]
+=======
+    "name": "jlscore",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "serve": "vue-cli-service serve",
+        "build": "vue-cli-service build",
+        "lint": "vue-cli-service lint"
+    },
+    "dependencies": {
+        "@fortawesome/fontawesome-svg-core": "^1.2.18",
+        "@fortawesome/vue-fontawesome": "^0.1.6",
+        "ant-design-vue": "^1.3.9",
+        "axios": "^0.18.0",
+        "babel-plugin-import": "^1.11.2",
+        "core-js": "^2.6.5",
+        "eslint-config-standard": "^12.0.0",
+        "eslint-plugin-html": "^5.0.5",
+        "eslint-plugin-import": "^2.17.2",
+        "eslint-plugin-node": "^9.0.1",
+        "eslint-plugin-promise": "^4.1.1",
+        "eslint-plugin-standard": "^4.0.0",
+        "vue": "^2.6.10",
+        "vue-filter-date-format": "^1.2.5",
+        "vue-router": "^3.0.6",
+        "vue-string-filter": "^1.3.0",
+        "vuex": "^3.1.1",
+        "vuex-router-sync": "^5.0.0"
+    },
+    "devDependencies": {
+        "@vue/cli-plugin-babel": "^3.7.0",
+        "@vue/cli-service": "^3.7.0",
+        "aspnet-webpack": "^3.0.0",
+        "babel-eslint": "^10.0.1",
+        "eslint-plugin-vue": "^5.2.2",
+        "vue-template-compiler": "^2.5.21",
+        "webpack-hot-middleware": "^2.25.0"
+    },
+    "postcss": {
+        "plugins": {
+            "autoprefixer": {}
+        }
+    },
+    "browserslist": [
+        "> 1%",
+        "last 2 versions"
+    ]
+>>>>>>> 55ff1b54785141dc5248587f157210a718a9133a
 }

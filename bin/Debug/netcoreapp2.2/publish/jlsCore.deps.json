@@ -25,6 +25,7 @@
       "jlsCore/1.0.0": {
         "dependencies": {
           "Microsoft.AspNetCore.App": "2.2.0",
+          "Microsoft.AspNetCore.Server.Kestrel": "2.2.0",
           "Microsoft.NETCore.App": "2.2.0",
           "System.Configuration.ConfigurationManager": "4.5.0",
           "ToolBox": "1.0.0.0"

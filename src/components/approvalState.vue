@@ -24,7 +24,7 @@
     </v-tabs>
     <v-tabs-items v-model="model">
       <v-tab-item :value="`tab-1`">
-        <v-card flat>
+        <v-card flat>  
           <v-layout v-resize="onResize" column class="lydataTable">
             <v-data-table
               class="approvalDataTable"

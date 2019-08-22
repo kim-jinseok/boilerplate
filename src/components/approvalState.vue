@@ -24,7 +24,7 @@
     </v-tabs>
     <v-tabs-items v-model="model">
       <v-tab-item :value="`tab-1`">
-        <v-card flat>  
+        <v-card flat>
           <v-layout v-resize="onResize" column class="lydataTable">
             <v-data-table
               class="approvalDataTable"
@@ -136,6 +136,7 @@ export default {
       if (event.target.classList.contains("datatable table")) return;
       let aid = params.item.approvalId;
       let type = params.type;
+
       this.$router.push("/approvalStateDetail/" + aid + "/" + type);
     },
 

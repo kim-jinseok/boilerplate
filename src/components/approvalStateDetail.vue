@@ -93,7 +93,7 @@
                 <v-flex xs4 v-else pt-1>
                   <v-btn
                     class="btState"
-                    @click="editPPapprovalState  = true"
+                    @click="editState()"
                     outline
                     small
                     :color="`${item.color}`"
@@ -114,45 +114,7 @@
             </v-flex>
           </v-layout>
           <!-- 결재확인 팝업창 -->
-          <v-dialog
-            v-model="editPPapprovalState"
-            max-width="500px"
-            @submit.prevent="setApprovalState()"
-          >
-            <v-card>
-              <v-card-title>결재확인</v-card-title>
-              <v-card-text>
-                <v-select
-                  v-model="setApprovalData.state"
-                  :items="getStateData"
-                  label="선택해주세요"
-                  item-value="text"
-                ></v-select>
-              </v-card-text>
-              <v-textarea
-                class="textareaApprovalText"
-                background-color="grey lighten-2"
-                height="150px"
-                label="내용을 입력해주세요"
-                color="cyan"
-                v-model="setApprovalData.contents"
-              ></v-textarea>
-              <v-card-actions>
-                <v-layout row mb-2>
-                  <v-flex xs5></v-flex>
-                  <v-flex xs7 right>
-                    <v-btn color="blue darken-1" small text @click="submit">Save</v-btn>
-                    <v-btn
-                      color="blue darken-1"
-                      small
-                      text
-                      @click="editPPapprovalState = false"
-                    >Close</v-btn>
-                  </v-flex>
-                </v-layout>
-              </v-card-actions>
-            </v-card>
-          </v-dialog>
+          <Modal v-if="isChange" @close="isChange = false" />
         </v-container>
       </v-card>
       <v-card></v-card>
@@ -269,22 +231,30 @@
 </template>
 
 <script>
+import Modal from "./Modal";
 export default {
   created() {
     this.getApprovalGetData();
   },
+  components: {
+    Modal
+  },
+  //computed: {
+  //   isState: function() {
+  //     this.isChange = this.$store.state.a.editPPapprovalState;
+  //     console.log("isState");
+  //     console.log(this.isChange);
+  //     return this.isChange;
+  //   }
+  // },
   data() {
     return {
       iframe: {
         pdfFilePath: "",
         loaded: false
       },
-      setApprovalData: {
-        state: "",
-        contents: ""
-      },
+      isChange: false,
       loading: false,
-      editPPapprovalState: false,
       approvalName: "",
       createUsername: "",
       createDate: "",
@@ -294,7 +264,6 @@ export default {
       releaseContents: "",
       releaseEmployerLineData: [],
       releasePartnerLineData: [],
-      getStateData: ["승인", "반려", "보류", "전결"],
       isShowApprovalLine: false,
       isShowPartner: false,
       isShowEmployer: false,
@@ -338,6 +307,13 @@ export default {
   },
 
   methods: {
+    editState() {
+      this.$store.state.a.editPPapprovalState = true;
+      this.isChange = this.$store.state.a.editPPapprovalState;
+      console.log("this.isChange ");
+      console.log(this.isChange);
+      console.log(this.$store.state.a.editPPapprovalState);
+    },
     onResize() {
       if (window.innerWidth < 769) this.isMobile = true;
       else this.isMobile = false;
@@ -564,30 +540,6 @@ export default {
           }
         }
       });
-    },
-    submit() {
-      this.setApprovalState();
-    },
-    setApprovalState() {
-      try {
-        var param = {
-          approval_id: this.$route.params.aid,
-          state: this.setApprovalData.state,
-          contents: this.setApprovalData.contents,
-          user_id: this.$store.state.l.user.userid,
-          logging: ""
-        };
-
-        let $this = this;
-
-        const data = helper.getINT(param, "approval_set");
-
-        data
-          .then(function(result) {
-            $this.editPPapprovalState = false;
-          })
-          .then(_ => $this.getApprovalGetData());
-      } catch (error) {}
     }
   }
 };

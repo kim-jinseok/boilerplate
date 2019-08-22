@@ -123,6 +123,14 @@ const categoryState = {
 }
 
 
+const approvalState = {
+
+    state: {
+        editPPapprovalState: false,
+    },
+}
+
+
 
 const store = new Vuex.Store({
     namespaced: true,
@@ -130,7 +138,8 @@ const store = new Vuex.Store({
 
         l: loginState,
         b: boardState,
-        c: categoryState
+        c: categoryState,
+        a: approvalState
 
     }
 })

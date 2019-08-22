@@ -38,12 +38,12 @@ const boardState = {
         board: [],
         arrData: [],
     },
-    // getters: {
-    //     doArrData: (state, getters) => {
+    getters: {
+        doArrData: (state, getters) => {
 
-    //         return state.arrData
-    //     }
-    // },
+            return state.arrData
+        }
+    },
     actions: {
 
         loadBoard({ dispatch, state, rootState }) {
@@ -60,14 +60,13 @@ const boardState = {
                 if (data === null) { return }
 
                 data.then(function (result) {
-
                     state.board = result;
-
 
                     try {
                         var param = {
                             board_id: result[0].board_id
                         }
+
                         /// 바로 데이터를 받아와서 하려면 async, await를 사용해야함
                         const data = helper.getJSON("files_get", param)
 
@@ -75,6 +74,7 @@ const boardState = {
 
                             let obj = {};
                             let arr = [];
+
 
                             result.forEach(function (value, key) {
 
@@ -96,6 +96,7 @@ const boardState = {
                             });
 
                             state.arrData = arr
+
                             localStorage.setItem('boardFilesData', JSON.stringify(state.arrData))
                         })
                     } catch (err) {

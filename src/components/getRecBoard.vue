@@ -49,8 +49,10 @@ export default {
   created() {
     this.$store.dispatch("loadBoard");
     setTimeout(() => {
-      //this.boardFilesData = this.$store.getters.doArrData;
-      this.boardFilesData = JSON.parse(localStorage.getItem("boardFilesData"));
+      this.boardFilesData = this.$store.getters.doArrData;
+      console.log("this.boardFilesData");
+      console.log(this.boardFilesData);
+      // this.boardFilesData = JSON.parse(localStorage.getItem("boardFilesData"));
     }, 200);
   },
   watch: {
@@ -128,6 +130,4 @@ table.v-table thead th:not(:first-child) {
   color: black;
   font-weight: 600;
 }
-
-
 </style>

@@ -21,12 +21,12 @@ namespace jlsCore
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-          // .UseStartup<Startup>();
+          //   .UseStartup<Startup>();
           .UseKestrel()
           .UseContentRoot(Directory.GetCurrentDirectory())
           .UseIISIntegration()
           .UseStartup<Startup>()
-          .UseUrls("http://localhost:5001");
+          .UseUrls("http://localhost:5002");
     }
 }
 

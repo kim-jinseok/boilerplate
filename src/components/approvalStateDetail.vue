@@ -93,10 +93,11 @@
                 <v-flex xs4 v-else pt-1>
                   <v-btn
                     class="btState"
-                    @click="editState()"
+                    @click="editState"
                     outline
                     small
                     :color="`${item.color}`"
+                    :data_userId="item.userId"
                   >{{item.state}}</v-btn>
                   <v-divider></v-divider>
                 </v-flex>
@@ -115,6 +116,7 @@
           </v-layout>
           <!-- 결재확인 팝업창 -->
           <Modal v-if="isChange" @close="isChange = false" />
+          <Alert v-if="alert.dialog" :alert.sync="alert" @close="alert.dialog=false" />
         </v-container>
       </v-card>
       <v-card></v-card>
@@ -232,12 +234,15 @@
 
 <script>
 import Modal from "./Modal";
+import Alert from "./Alert";
+import { constants } from "crypto";
 export default {
   created() {
     this.getApprovalGetData();
   },
   components: {
-    Modal
+    Modal,
+    Alert
   },
   //computed: {
   //   isState: function() {
@@ -302,17 +307,29 @@ export default {
         }
       ],
       approvalRecFileData: [],
-      approvalLineData: []
+      approvalLineData: [],
+      approvalUserId: "",
+      alert: {
+        dialog: false,
+        message: "결재자만 변경할 수 있습니다"
+      }
     };
   },
 
   methods: {
-    editState() {
-      this.$store.state.a.editPPapprovalState = true;
-      this.isChange = this.$store.state.a.editPPapprovalState;
-      console.log("this.isChange ");
-      console.log(this.isChange);
-      console.log(this.$store.state.a.editPPapprovalState);
+    editState(el) {
+      let userId = el.currentTarget.getAttribute("data_userId");
+      var $this = this;
+
+      if ($this.$store.state.l.user.userid !== userId) {
+        $this.$store.state.a.editPPapprovalState = false;
+        $this.alert.dialog = true;
+      } else {
+        $this.alert.dialog = false;
+        $this.$store.state.a.editPPapprovalState = true;
+      }
+
+      $this.isChange = $this.$store.state.a.editPPapprovalState;
     },
     onResize() {
       if (window.innerWidth < 769) this.isMobile = true;
@@ -470,7 +487,6 @@ export default {
 
               tmp_approvalLine.forEach(function(value, key) {
                 obj_approvalLine = {};
-
                 obj_approvalLine.sort = value.split("||")[0];
                 obj_approvalLine.name = value.split("||")[1];
                 obj_approvalLine.dep = value.split("||")[2];
@@ -480,16 +496,15 @@ export default {
                 obj_approvalLine.contents = unescape(value.split("||")[6]);
                 obj_approvalLine.readDate = value.split("||")[7];
                 obj_approvalLine.isShowState = false;
+                obj_approvalLine.errorMessage = "결재자가 아닙니다.";
 
                 if (obj_approvalLine.state === "승인") {
                   obj_approvalLine.color = "indigo";
                 } else if (obj_approvalLine.state === "결재대기") {
                   obj_approvalLine.readDate = "";
-
                   if ($this.$route.params.type === "approval") {
                     obj_approvalLine.isShowState = true;
                   }
-
                   obj_approvalLine.color = "teal";
                 } else if (obj_approvalLine.state === "보류") {
                   if ($this.$route.params.type === "approval") {
@@ -534,9 +549,9 @@ export default {
 
           if (!helper.isNull(value.previewPath)) {
             $this.iframe.pdfFilePath =
-              "http://125.7.231.48" + value.previewPath;
+              "http://125.7.231.47" + value.previewPath;
           } else {
-            $this.iframe.pdfFilePath = "http://125.7.231.48" + value.filePath;
+            $this.iframe.pdfFilePath = "http://125.7.231.47" + value.filePath;
           }
         }
       });

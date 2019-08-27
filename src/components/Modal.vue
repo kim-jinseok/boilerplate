@@ -61,7 +61,6 @@ export default {
           user_id: this.$store.state.l.user.userid,
           logging: ""
         };
-
         let $this = this;
 
         const data = helper.getINT(param, "approval_set");

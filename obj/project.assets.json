@@ -12174,11 +12174,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\shhan\\Downloads\\boilerplate-shhan\\boilerplate-shhan\\jlsCore.csproj",
+      "projectUniqueName": "C:\\Users\\shhan\\Desktop\\업무파일_한승희\\프로젝트\\boilerplate\\jlsCore.csproj",
       "projectName": "jlsCore",
-      "projectPath": "C:\\Users\\shhan\\Downloads\\boilerplate-shhan\\boilerplate-shhan\\jlsCore.csproj",
+      "projectPath": "C:\\Users\\shhan\\Desktop\\업무파일_한승희\\프로젝트\\boilerplate\\jlsCore.csproj",
       "packagesPath": "C:\\Users\\shhan\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\shhan\\Downloads\\boilerplate-shhan\\boilerplate-shhan\\obj\\",
+      "outputPath": "C:\\Users\\shhan\\Desktop\\업무파일_한승희\\프로젝트\\boilerplate\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

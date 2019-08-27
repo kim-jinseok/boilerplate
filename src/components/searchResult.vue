@@ -132,9 +132,9 @@ export default {
 
           if (!helper.isNull(value.previewPath)) {
             $this.iframe.pdfFilePath =
-              "http://125.7.231.48" + value.previewPath;
+              "http://125.7.231.47" + value.previewPath;
           } else {
-            $this.iframe.pdfFilePath = "http://125.7.231.48" + value.filePath;
+            $this.iframe.pdfFilePath = "http://125.7.231.47" + value.filePath;
           }
         }
       });

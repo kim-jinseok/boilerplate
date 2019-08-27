@@ -245,6 +245,16 @@ export default {
       if (event.target.classList.contains("datatable table")) return;
       let aid = params.item.approvalId;
       let type = params.type;
+      if (type === "release") {
+        try {
+          var param = {
+            approval_id: aid,
+            user_id: this.$store.state.l.user.userid
+          };
+          const data = helper.getJSON("approval_release_rec_get", param);
+        } catch (error) {}
+      }
+
       this.$router.push("/approvalStateDetail/" + aid + "/" + type);
     }
   }

@@ -259,13 +259,13 @@ export default {
         descending: true
       },
       paginationRevision: {
-        sortBy: "No",
+        sortBy: "no",
         descending: true
       },
       isMobile: true,
       relationHeaders: [
         {
-          text: "No",
+          text: "no",
           align: "left",
           value: "no"
         },
@@ -374,11 +374,11 @@ export default {
           if (!helper.isNull(result[1][0].preview_path)) {
             $this.iframe.loaded = true;
             $this.iframe.pdfFilePath =
-              "http://125.7.231.48" + result[1][0].preview_path;
+              "http://125.7.231.47" + result[1][0].preview_path;
           } else {
             $this.iframe.loaded = true;
             $this.iframe.pdfFilePath =
-              "http://125.7.231.48" + result[1][0].file_path;
+              "http://125.7.231.47" + result[1][0].file_path;
           }
 
           let obj_relation = {};
@@ -420,9 +420,9 @@ export default {
 
           if (!helper.isNull(value.previewPath)) {
             $this.iframe.relationPdfFilePath =
-              "http://125.7.231.48" + value.previewPath;
+              "http://125.7.231.47" + value.previewPath;
           } else {
-            $this.iframe.pdfFilePath = "http://125.7.231.48" + value.filePath;
+            $this.iframe.pdfFilePath = "http://125.7.231.47" + value.filePath;
           }
         }
       });
@@ -438,9 +438,9 @@ export default {
 
           if (!helper.isNull(value.previewPath)) {
             $this.iframe.revisionPdfFilePath =
-              "http://125.7.231.48" + value.previewPath;
+              "http://125.7.231.47" + value.previewPath;
           } else {
-            $this.iframe.pdfFilePath = "http://125.7.231.48" + value.filePath;
+            $this.iframe.pdfFilePath = "http://125.7.231.47" + value.filePath;
           }
         }
       });

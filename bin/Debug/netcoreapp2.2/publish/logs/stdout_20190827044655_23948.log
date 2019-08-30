@@ -7,3 +7,4 @@ warn: Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager[35]
 Hosting environment: Production
 Content root path: C:\Users\shhan\Desktop\업무파일_한승희\프로젝트\boilerplate\bin\Debug\netcoreapp2.2\publish
 Application started. Press Ctrl+C to shut down.
+Application is shutting down...

@@ -30,7 +30,9 @@
           <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
         </v-flex>
         <v-flex xs6>
-          <v-toolbar-title class="toolbarCompanyTitle" @click.prevent="home()">Jikyung</v-toolbar-title>
+          <v-toolbar-title class="toolbarCompanyTitle" @click.prevent="home()">
+            <v-img :src="require('@/assets/jikyungLogo.png')" min-width="150px" min-height="15px"></v-img>
+          </v-toolbar-title>
         </v-flex>
         <v-flex xs4>
           <v-btn flat color="red" style="margin-left:50px;" @click.prevent="logout()">logout</v-btn>
@@ -45,7 +47,7 @@
 
   <div v-else>
     <v-toolbar app fixed clipped-left>
-      <v-toolbar-title>Jikyung</v-toolbar-title>
+      <v-toolbar-title></v-toolbar-title>
     </v-toolbar>
     <router-view></router-view>
     <v-footer app fixed>

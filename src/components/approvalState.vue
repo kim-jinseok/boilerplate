@@ -128,8 +128,11 @@ export default {
   },
   methods: {
     onResize() {
-      if (window.innerWidth < 769) this.isMobile = true;
-      else this.isMobile = false;
+      if (window.innerWidth < 769) {
+        this.isMobile = true;
+      } else {
+        this.isMobile = false;
+      }
     },
 
     getRecApprovalDetail(params) {

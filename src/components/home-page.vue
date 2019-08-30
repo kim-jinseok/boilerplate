@@ -1,5 +1,5 @@
 <template>
-  <v-responsive height="2000px">
+  <v-responsive>
     <h5 class="display-1">문서검색</h5>
     <v-divider class="my-3"></v-divider>
     <v-layout row wrap>
@@ -27,7 +27,18 @@
     <h5 class="display-1">결재현황</h5>
     <v-divider class="my-3"></v-divider>
     <v-layout row wrap>
-      <v-flex xs6 class="reportLine">
+      <v-flex xs4 class="reportLine">
+        <v-card
+          color="blue-grey darken-2"
+          class="cdApprovalBox white--text"
+          @click="getApprovalState"
+        >
+          <v-card-title primary-title>
+            <div class="cdApprovalBoxTitle headline">상신함</div>
+          </v-card-title>
+        </v-card>
+      </v-flex>
+      <v-flex xs4 class="approvalLine">
         <v-card
           color="blue-grey darken-2"
           class="cdApprovalBox white--text"
@@ -38,7 +49,7 @@
           </v-card-title>
         </v-card>
       </v-flex>
-      <v-flex xs6 class="approvalLine">
+      <v-flex xs4 class="releaseLine">
         <v-card
           color="blue-grey darken-2"
           class="cdApprovalBox white--text"
@@ -147,7 +158,9 @@ export default {
 }
 .v-responsive__content {
   margin-left: 10px;
+  margin-right: 10px;
 }
+
 .display-1 {
   font-size: 26px !important;
   color: white;
@@ -163,21 +176,17 @@ export default {
   padding-top: 8px;
   padding-left: 50px;
 }
-.reportLine {
-  padding-right: 5px;
-}
-.approvalLine {
-  padding-left: 5px;
-  padding-right: 10px;
-}
-.cdApprovalBoxTitle {
-  padding-left: 25px;
-  padding-top: 75px;
-}
+
 .cdApprovalBox {
-  height: 250px;
+  height: 150px;
+  width: 130px;
 }
-.headline {
-  font-size: 35px !important;
+.v-card__title .v-card__title--primary {
+  padding: 0px;
+}
+.cdApprovalBoxTitle .headline {
+  padding-left: 30px;
+  padding-top: 40px;
+  font-size: 22px !important;
 }
 </style>

@@ -1,30 +1,28 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\shhan\\Desktop\\업무파일_한승희\\프로젝트\\boilerplate\\jlsCore.csproj": {}
+    "D:\\Mobile\\boilerplate\\jlsCore.csproj": {}
   },
   "projects": {
-    "C:\\Users\\shhan\\Desktop\\업무파일_한승희\\프로젝트\\boilerplate\\jlsCore.csproj": {
+    "D:\\Mobile\\boilerplate\\jlsCore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\shhan\\Desktop\\업무파일_한승희\\프로젝트\\boilerplate\\jlsCore.csproj",
+        "projectUniqueName": "D:\\Mobile\\boilerplate\\jlsCore.csproj",
         "projectName": "jlsCore",
-        "projectPath": "C:\\Users\\shhan\\Desktop\\업무파일_한승희\\프로젝트\\boilerplate\\jlsCore.csproj",
-        "packagesPath": "C:\\Users\\shhan\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\shhan\\Desktop\\업무파일_한승희\\프로젝트\\boilerplate\\obj\\",
+        "projectPath": "D:\\Mobile\\boilerplate\\jlsCore.csproj",
+        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+        "outputPath": "D:\\Mobile\\boilerplate\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\shhan\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp2.2"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {

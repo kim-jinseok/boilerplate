@@ -1,11 +1,11 @@
 <template>
-  <v-container>
+  <!-- <v-container>
     <v-toolbar class="toolbarApprovalStateTitle" fixed>
       <v-toolbar-title class="white--text">결재현황</v-toolbar-title>
       <v-spacer></v-spacer>
     </v-toolbar>
     <v-tabs class="tabApprovalState" fixed-tabs v-model="model">
-      <v-tab centered :href="`#tab-1`">
+      <v-tab centered :href="`#tab-1` ">
         <v-badge>
           <template v-slot:badge>
             <span>{{reportDataLength}}</span>
@@ -80,19 +80,42 @@
         </v-card>
       </v-tab-item>
     </v-tabs-items>
-  </v-container>
+  </v-container>-->
+
+  <v-layout v-resize="onResize" column class="lyDataTable">
+    <v-data-table
+      class="approvalDataTable"
+      :headers="commoneHeaders"
+      :items="data"
+      :pagination.sync="pagination"
+      :class="{mobile: isMobile}"
+    >
+      <template slot="items" slot-scope="props">
+        <tr @click="getRecApprovalDetail({item :props.item, type:'approval'})">
+          <td>
+            <ul class="flex-content">
+              <li class="flex-item">{{ props.item.approvalName }}</li>
+              <li class="flex-item">{{ props.item.createUsername }}</li>
+              <li class="flex-item">{{ props.item.createDate }}</li>
+            </ul>
+          </td>
+        </tr>
+      </template>
+      <template v-slot:no-data>
+        <td colspan="5">결재할 문서가 없습니다.</td>
+      </template>
+    </v-data-table>
+  </v-layout>
 </template>
 
 <script>
 import approvalStateDetail from "./approvalStateDetail";
 
 export default {
-  created() {
-    this.loadApprovalState();
-  },
   components: {
     approvalStateDetail
   },
+  props: ["data"],
   data() {
     return {
       model: "tab-1",
@@ -102,6 +125,7 @@ export default {
       },
       search: "",
       isMobile: false,
+      isState: false,
       date: new Date(),
       commoneHeaders: [
         {
@@ -119,11 +143,7 @@ export default {
           align: "left",
           value: "createDate"
         }
-      ],
-      reportData: [],
-      approvalData: [],
-      reportDataLength: 0,
-      approvalDataLength: 0
+      ]
     };
   },
   methods: {
@@ -141,64 +161,6 @@ export default {
       let type = params.type;
 
       this.$router.push("/approvalStateDetail/" + aid + "/" + type);
-    },
-
-    async loadApprovalState() {
-      try {
-        var param = {
-          user_id: this.$store.state.l.user.userid,
-          render_type: "approval"
-        };
-
-        const data = helper.getJSON("approval_get", param);
-
-        const $this = this;
-
-        let obj_report = {};
-        let arr_report = [];
-        let obj_approval = {};
-        let arr_approval = [];
-        let obj_deploy = {};
-        let arr_deploy = [];
-
-        data.then(function(result) {
-          //상신
-          if (!helper.isNull(result[0])) {
-            result[0].forEach(function(value, key) {
-              $this.reportDataLength++;
-              obj_report = {};
-              obj_report.approvalId = value.approval_id;
-              obj_report.approvalName = value.approval_name;
-              obj_report.createUsername = value.name;
-              obj_report.createDate = helper.getSafeDate(value.create_date);
-
-              arr_report.push(obj_report);
-            });
-
-            $this.reportData = arr_report;
-          } else {
-            $this.reportData = [];
-          }
-
-          //결재
-          if (!helper.isNull(result[1])) {
-            result[1].forEach(function(value, key) {
-              $this.approvalDataLength++;
-              obj_approval = {};
-              obj_approval.approvalId = value.approval_id;
-              obj_approval.approvalName = value.approval_name;
-              obj_approval.createUsername = value.name;
-              obj_approval.createDate = helper.getSafeDate(value.create_date);
-
-              arr_approval.push(obj_approval);
-            });
-
-            $this.approvalData = arr_approval;
-          } else {
-            $this.approvalData = [];
-          }
-        });
-      } catch (err) {}
     }
   }
 };

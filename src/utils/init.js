@@ -23,7 +23,6 @@ export default {
 
         if (!helper.isNull(localStorage.accessToken)) {
 
-
             const current_time = Date.now() / 1000;
 
             if (user.exp < current_time) {

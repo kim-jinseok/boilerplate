@@ -1,8 +1,9 @@
-
 import HomePage from '../../components/home-page'
 import Auth from '../../components/auth.vue'
+import reportState from '../../components/reportState'
 import approvalState from '../../components/approvalState'
 import approvalStateDetail from '../../components/approvalStateDetail'
+import releaseStateDetail from '../../components/releaseStateDetail'
 import getRecBoard from '../../components/getRecBoard'
 import releasedState from '../../components/releasedState'
 import searchResult from '../../components/searchResult'
@@ -16,14 +17,36 @@ import searchResult from '../../components/searchResult'
 //  isAuth ? next() : next(loginPath)
 //}
 
-
 export const routes = [
-    { name: 'home-page', path: '/home-page', component: HomePage, display: 'HomePage', icon: 'home', meta: { requiresLogin: true } },
-    { name: 'auth', path: '/auth', component: Auth, display: 'Auth', icon: 'graduation-cap' },
-    { name: 'approvalState', path: '/approvalState', component: approvalState, display: 'approvalState' },
-    { name: 'approvalStateDetail', path: '/approvalStateDetail/:aid/:type', component: approvalStateDetail, display: 'approvalStateDetail' },
-    { name: 'getRecBoard', path: '/getRecBoard/:bid', component: getRecBoard, display: 'getRecBoard' },
-    { name: 'releasedState', path: '/releasedState', component: releasedState, display: 'releasedState' },
-    { name: 'searchResult', path: '/searchResult/:searchType/:searchValue', component: searchResult, display: 'searchResult' }
-
+	{
+		name      : 'home-page',
+		path      : '/home-page',
+		component : HomePage,
+		display   : 'HomePage',
+		icon      : 'home',
+		meta      : { requiresLogin: true }
+	},
+	{ name: 'auth', path: '/auth', component: Auth, display: 'Auth', icon: 'graduation-cap' },
+	{ name: 'reportState', path: '/reportState', component: reportState, display: 'reportState' },
+	{ name: 'approvalState', path: '/approvalState', component: approvalState, display: 'approvalState' },
+	{
+		name      : 'approvalStateDetail',
+		path      : '/approvalStateDetail/:aid/:type',
+		component : approvalStateDetail,
+		display   : 'approvalStateDetail'
+	},
+	{
+		name      : 'releaseStateDetail',
+		path      : '/releaseStateDetail/:aid/:type',
+		component : releaseStateDetail,
+		display   : 'releaseStateDetail'
+	},
+	{ name: 'getRecBoard', path: '/getRecBoard/:bid', component: getRecBoard, display: 'getRecBoard' },
+	{ name: 'releasedState', path: '/releasedState', component: releasedState, display: 'releasedState' },
+	{
+		name      : 'searchResult',
+		path      : '/searchResult/:searchType/:searchValue',
+		component : searchResult,
+		display   : 'searchResult'
+	}
 ]

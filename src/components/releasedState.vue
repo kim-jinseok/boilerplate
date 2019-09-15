@@ -1,132 +1,34 @@
 <template>
-  <v-container>
-    <v-toolbar class="toolbarApprovalStateTitle" fixed>
-      <v-toolbar-title class="white--text">배포현황</v-toolbar-title>
-      <v-spacer></v-spacer>
-    </v-toolbar>
-    <v-tabs fixed-tabs>
-      <v-tabs fixed-tabs class="tabRelease" v-model="model">
-        <v-tab centered :href="`#tab-1`">
-          <v-badge>
-            <template v-slot:badge>
-              <span>{{reportDataLength}}</span>
-            </template>
-            <span>상신</span>
-          </v-badge>
-        </v-tab>
-        <v-tab centered :href="`#tab-2`">
-          <v-badge>
-            <template v-slot:badge>
-              <span>{{approvalDataLength}}</span>
-            </template>
-            <span>결재</span>
-          </v-badge>
-        </v-tab>
-        <v-tab centered :href="`#tab-3`">
-          <v-badge>
-            <template v-slot:badge>
-              <span>{{releaseDataLength}}</span>
-            </template>
-            <span>배포</span>
-          </v-badge>
-        </v-tab>
-      </v-tabs>
-    </v-tabs>
-    <v-tabs-items v-model="model">
-      <v-tab-item :value="`tab-1`">
-        <v-card flat>
-          <v-layout v-resize="onResize" column class="lyDataTable">
-            <v-data-table
-              class="dvApprovalTable"
-              :headers="headers"
-              :items="reportData"
-              :pagination.sync="pagination"
-              :class="{mobile: isMobile}"
-            >
-              <template slot="items" slot-scope="props">
-                <tr @click="getRecReleaseDetail({item :props.item, type:'report'})">
-                  <td>
-                    <ul class="flex-content">
-                      <li class="flex-item one-line">{{ props.item.approvalName }}</li>
-                      <li class="flex-item">{{ props.item.createUsername }}</li>
-                      <li class="flex-item">{{ props.item.createDate }}</li>
-                    </ul>
-                  </td>
-                </tr>
-              </template>
-              <template v-slot:no-data>
-                <td colspan="5">상신한 문서가 없습니다.</td>
-              </template>
-            </v-data-table>
-          </v-layout>
-        </v-card>
-      </v-tab-item>
-      <v-tab-item :value="`tab-2`">
-        <v-card flat>
-          <v-layout v-resize="onResize" column class="lyDataTable">
-            <v-data-table
-              class="dvApprovalTable"
-              :headers="headers"
-              :items="approvalData"
-              :pagination.sync="pagination"
-              :class="{mobile: isMobile}"
-            >
-              <template slot="items" slot-scope="props">
-                <tr @click="getRecReleaseDetail({item :props.item, type:'approval'})">
-                  <td>
-                    <ul class="flex-content">
-                      <li class="flex-item">{{ props.item.approvalName }}</li>
-                      <li class="flex-item">{{ props.item.createUsername }}</li>
-                      <li class="flex-item">{{ props.item.createDate }}</li>
-                    </ul>
-                  </td>
-                </tr>
-              </template>
-              <template v-slot:no-data>
-                <td colspan="5">결재할 문서가 없습니다.</td>
-              </template>
-            </v-data-table>
-          </v-layout>
-        </v-card>
-      </v-tab-item>
-      <v-tab-item :value="`tab-3`">
-        <v-card flat>
-          <v-layout v-resize="onResize" column class="lyDataTable">
-            <v-data-table
-              class="dvApprovalTable"
-              :headers="headers"
-              :items="releasedData"
-              :pagination.sync="pagination"
-              :class="{mobile: isMobile}"
-            >
-              <template slot="items" slot-scope="props">
-                <tr @click="getRecReleaseDetail({item :props.item, type:'release'})">
-                  <td>
-                    <ul class="flex-content">
-                      <li class="flex-item">{{ props.item.approvalName }}</li>
-                      <li class="flex-item">{{ props.item.createUsername }}</li>
-                      <li class="flex-item">{{ props.item.createDate }}</li>
-                    </ul>
-                  </td>
-                </tr>
-              </template>
-              <template v-slot:no-data>
-                <td colspan="5">배포 받은 문서가 없습니다.</td>
-              </template>
-            </v-data-table>
-          </v-layout>
-        </v-card>
-      </v-tab-item>
-    </v-tabs-items>
-  </v-container>
+  <v-layout v-resize="onResize" column class="lyDataTable">
+    <v-data-table
+      class="dvApprovalTable"
+      :headers="headers"
+      :items="data"
+      :pagination.sync="pagination"
+      :class="{mobile: isMobile}"
+    >
+      <template slot="items" slot-scope="props">
+        <tr @click="getRecReleaseDetail({item :props.item, type:'release'})">
+          <td>
+            <ul class="flex-content">
+              <li class="flex-item">{{ props.item.approvalName }}</li>
+              <li class="flex-item">{{ props.item.createUsername }}</li>
+              <li class="flex-item">{{ props.item.createDate }}</li>
+            </ul>
+          </td>
+        </tr>
+      </template>
+      <template v-slot:no-data>
+        <td colspan="5">배포 받은 문서가 없습니다.</td>
+      </template>
+    </v-data-table>
+  </v-layout>
 </template>
 <script>
 import approvalStateDetail from "./approvalStateDetail";
 
 export default {
-  created() {
-    this.loadApprovalState();
-  },
+  props: ["data"],
   components: {
     approvalStateDetail
   },
@@ -155,12 +57,7 @@ export default {
           value: "createDate"
         }
       ],
-      reportData: [],
-      approvalData: [],
-      releasedData: [],
-      reportDataLength: 0,
-      approvalDataLength: 0,
-      releaseDataLength: 0
+      releasedData: []
     };
   },
   methods: {
@@ -168,94 +65,11 @@ export default {
       if (window.innerWidth < 769) this.isMobile = true;
       else this.isMobile = false;
     },
-    async loadApprovalState() {
-      try {
-        var param = {
-          user_id: this.$store.state.l.user.userid,
-          render_type: "release"
-        };
-        const data = helper.getJSON("approval_get", param);
-
-        const $this = this;
-
-        let obj_report = {};
-        let arr_report = [];
-        let obj_approval = {};
-        let arr_approval = [];
-        let obj_release = {};
-        let arr_release = [];
-
-        data.then(function(result) {
-          //상신
-          if (!helper.isNull(result[0])) {
-            result[0].forEach(function(value, key) {
-              $this.reportDataLength++;
-              obj_report = {};
-              obj_report.approvalId = value.approval_id;
-              obj_report.approvalName = value.approval_name;
-              obj_report.createUsername = value.name;
-              obj_report.createDate = helper.getSafeDate(value.create_date);
-
-              arr_report.push(obj_report);
-            });
-
-            $this.reportData = arr_report;
-          } else {
-            $this.reportData = [];
-          }
-          //결재
-          if (!helper.isNull(result[1])) {
-            result[1].forEach(function(value, key) {
-              $this.approvalDataLength++;
-              obj_approval = {};
-              obj_approval.approvalId = value.approval_id;
-              obj_approval.approvalName = value.approval_name;
-              obj_approval.createUsername = value.name;
-              obj_approval.createDate = helper.getSafeDate(value.create_date);
-
-              arr_approval.push(obj_approval);
-            });
-
-            $this.approvalData = arr_approval;
-          } else {
-            $this.approvalData = [];
-          }
-
-          //배포받은 문서
-          if (!helper.isNull(result[2])) {
-            result[2].forEach(function(value, key) {
-              $this.releaseDataLength++;
-              obj_release = {};
-              obj_release.approvalId = value.approval_id;
-              obj_release.approvalName = value.approval_name;
-              obj_release.createUsername = value.name;
-              obj_release.createDate = helper.getSafeDate(value.create_date);
-
-              arr_release.push(obj_release);
-            });
-
-            $this.releasedData = arr_release;
-          } else {
-            $this.releasedData = [];
-          }
-        });
-      } catch (err) {}
-    },
     getRecReleaseDetail(params) {
       if (event.target.classList.contains("datatable table")) return;
       let aid = params.item.approvalId;
       let type = params.type;
-      if (type === "release") {
-        try {
-          var param = {
-            approval_id: aid,
-            user_id: this.$store.state.l.user.userid
-          };
-          const data = helper.getJSON("approval_release_rec_get", param);
-        } catch (error) {}
-      }
-
-      this.$router.push("/approvalStateDetail/" + aid + "/" + type);
+      this.$router.push("/releaseStateDetail/" + aid + "/" + type);
     }
   }
 };

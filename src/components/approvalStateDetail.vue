@@ -57,10 +57,7 @@
         </v-layout>
       </v-card>
 
-      <v-card
-        v-show="this.$route.params.type !== 'release'"
-        style="background-color: #ffc107; color:black; margin-bottom:10px;"
-      >
+      <v-card style="background-color: #ffc107; color:black; margin-bottom:10px;">
         <v-card-title primary-title>
           <div>
             <div class="headline">결재라인</div>
@@ -139,7 +136,7 @@
           <v-layout row wrap>
             <v-flex xs12>
               <v-card color="white" class="white--text">
-                <v-card-actions class="pa-3" v-show="this.$route.params.type !== 'release'">
+                <v-card-actions class="pa-3">
                   <v-layout row>
                     <v-flex xs5>배포 다운로드 기간 :</v-flex>
                     <v-spacer></v-spacer>
@@ -164,13 +161,7 @@
                     <v-spacer></v-spacer>
                     <v-flex xs9 v-show="isShowEmployer">
                       <div v-for="item in releaseEmployerLineData" :key="item.sort">
-                        <v-layout row v-if="item.type ==='release'">
-                          <v-flex xs12>
-                            <span>{{ item.name }}</span>
-                            <br />
-                          </v-flex>
-                        </v-layout>
-                        <v-layout row v-else>
+                        <v-layout row>
                           <v-flex xs9>
                             <span>{{ item.name }}</span>
                             <br />
@@ -198,13 +189,7 @@
                           v-for="item in releasePartnerLineData"
                           :key="item.sort"
                         >
-                          <v-layout row v-if="item.type ==='release'">
-                            <v-flex xs12>
-                              <span>{{ item.name }}</span>
-                              <br />
-                            </v-flex>
-                          </v-layout>
-                          <v-layout v-else row>
+                          <v-layout row>
                             <v-flex xs8>
                               <span>{{ item.name }}</span>
                               <br />
@@ -378,8 +363,6 @@ export default {
                 obj_employerLine.readDate = !helper.isNull(value.split("||"))
                   ? value.split("||")[1]
                   : "";
-                obj_employerLine.type = $this.$route.params.type;
-
                 arrEmployerLine.push(obj_employerLine);
               });
 
@@ -413,7 +396,6 @@ export default {
                 obj_ReleaseLine.to_mail = !helper.isNull(value.split("||"))
                   ? value.split("||")[3]
                   : "";
-                obj_ReleaseLine.type = $this.$route.params.type;
 
                 arrReleaseLine.push(obj_ReleaseLine);
               });

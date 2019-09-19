@@ -1,14 +1,14 @@
 <template>
   <v-layout v-resize="onResize" column class="lyDataTable">
     <v-data-table
-      class="dvApprovalTable"
+      class="approvalDataTable"
       :headers="commoneHeaders"
       :items="data"
       :pagination.sync="pagination"
       :class="{mobile: isMobile}"
     >
       <template slot="items" slot-scope="props">
-        <tr @click="getRecReleaseDetail({item :props.item, type:'report'})">
+        <tr @click="getRecApprovalDetail({item :props.item, type:'report'})">
           <td>
             <ul class="flex-content">
               <li class="flex-item one-line">{{ props.item.approvalName }}</li>

@@ -1,87 +1,4 @@
 <template>
-  <!-- <v-container>
-    <v-toolbar class="toolbarApprovalStateTitle" fixed>
-      <v-toolbar-title class="white--text">결재현황</v-toolbar-title>
-      <v-spacer></v-spacer>
-    </v-toolbar>
-    <v-tabs class="tabApprovalState" fixed-tabs v-model="model">
-      <v-tab centered :href="`#tab-1` ">
-        <v-badge>
-          <template v-slot:badge>
-            <span>{{reportDataLength}}</span>
-          </template>
-          <span>상신</span>
-        </v-badge>
-      </v-tab>
-      <v-tab centered :href="`#tab-2`">
-        <v-badge>
-          <template v-slot:badge>
-            <span>{{approvalDataLength}}</span>
-          </template>
-          <span>결재</span>
-        </v-badge>
-      </v-tab>
-    </v-tabs>
-    <v-tabs-items v-model="model">
-      <v-tab-item :value="`tab-1`">
-        <v-card flat>
-          <v-layout v-resize="onResize" column class="lydataTable">
-            <v-data-table
-              class="approvalDataTable"
-              :headers="commoneHeaders"
-              :items="reportData"
-              :pagination.sync="pagination"
-              :class="{mobile: isMobile}"
-            >
-              <template slot="items" slot-scope="props">
-                <tr @click="getRecApprovalDetail({item :props.item, type:'report'})">
-                  <td>
-                    <ul class="flex-content">
-                      <li class="flex-item one-line">{{ props.item.approvalName }}</li>
-                      <li class="flex-item">{{ props.item.createUsername }}</li>
-                      <li class="flex-item">{{ props.item.createDate }}</li>
-                    </ul>
-                  </td>
-                </tr>
-              </template>
-              <template v-slot:no-data>
-                <td colspan="5">상신한 문서가 없습니다.</td>
-              </template>
-            </v-data-table>
-          </v-layout>
-        </v-card>
-      </v-tab-item>
-      <v-tab-item :value="`tab-2`">
-        <v-card flat>
-          <v-layout v-resize="onResize" column class="lydataTable">
-            <v-data-table
-              class="approvalDataTable"
-              :headers="commoneHeaders"
-              :items="approvalData"
-              :pagination.sync="pagination"
-              :class="{mobile: isMobile}"
-            >
-              <template slot="items" slot-scope="props">
-                <tr @click="getRecApprovalDetail({item :props.item, type:'approval'})">
-                  <td>
-                    <ul class="flex-content">
-                      <li class="flex-item">{{ props.item.approvalName }}</li>
-                      <li class="flex-item">{{ props.item.createUsername }}</li>
-                      <li class="flex-item">{{ props.item.createDate }}</li>
-                    </ul>
-                  </td>
-                </tr>
-              </template>
-              <template v-slot:no-data>
-                <td colspan="5">결재할 문서가 없습니다.</td>
-              </template>
-            </v-data-table>
-          </v-layout>
-        </v-card>
-      </v-tab-item>
-    </v-tabs-items>
-  </v-container>-->
-
   <v-layout v-resize="onResize" column class="lyDataTable">
     <v-data-table
       class="approvalDataTable"
@@ -94,7 +11,9 @@
         <tr @click="getRecApprovalDetail({item :props.item, type:'approval'})">
           <td>
             <ul class="flex-content">
-              <li class="flex-item">{{ props.item.approvalName }}</li>
+              <li
+                class="flex-item one-line"
+              >[{{props.item.renderType }}] {{ props.item.approvalName }}</li>
               <li class="flex-item">{{ props.item.createUsername }}</li>
               <li class="flex-item">{{ props.item.createDate }}</li>
             </ul>

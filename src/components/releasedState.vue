@@ -1,7 +1,7 @@
 <template>
   <v-layout v-resize="onResize" column class="lyDataTable">
     <v-data-table
-      class="dvApprovalTable"
+      class="releaseDataTable"
       :headers="headers"
       :items="data"
       :pagination.sync="pagination"
@@ -11,7 +11,7 @@
         <tr @click="getRecReleaseDetail({item :props.item, type:'release'})">
           <td>
             <ul class="flex-content">
-              <li class="flex-item">{{ props.item.approvalName }}</li>
+              <li class="flex-item one-line">{{ props.item.approvalName }}</li>
               <li class="flex-item">{{ props.item.createUsername }}</li>
               <li class="flex-item">{{ props.item.createDate }}</li>
             </ul>
@@ -25,13 +25,8 @@
   </v-layout>
 </template>
 <script>
-import approvalStateDetail from "./approvalStateDetail";
-
 export default {
   props: ["data"],
-  components: {
-    approvalStateDetail
-  },
   data() {
     return {
       model: "tab-1",
@@ -120,25 +115,34 @@ export default {
     background: transparent;
   }
 } 
+*/
 
-.dvApprovalTable .theme--dark.v-table thead tr:first-child {
+.releaseDataTable .theme--dark.v-table thead tr:first-child {
   height: auto;
   padding-top: 19px;
   padding-bottom: 10px;
   border-left: none;
 }
 
-.dvApprovalTable .theme--dark.v-table thead tr th:first-child {
+.releaseDataTable .theme--dark.v-table thead tr th:first-child {
   width: 45%;
   padding-right: 0px;
 }
-.dvApprovalTable .theme--dark.v-table thead tr th:nth-child(2) {
+.releaseDataTable .theme--dark.v-table thead tr th:nth-child(2) {
   width: 20%;
   padding: 0px;
 }
-.dvApprovalTable .theme--dark.v-table thead tr th:last-child {
+.releaseDataTable .theme--dark.v-table thead tr th:last-child {
   width: 20%;
   padding-left: 0px;
+}
+
+.lydataTable {
+  padding-top: 20px;
+}
+.tabRelease .v-tabs__container--fixed-tabs .v-tabs__div,
+.v-tabs__container--icons-and-text .v-tabs__div {
+  min-width: 135px;
 }
 
 .one-line {
@@ -166,16 +170,10 @@ export default {
 .flex-content li:nth-child(3) {
   width: 25%;
 }
-
 .flex-item {
   padding: 5px;
   width: 50%;
   height: 40px;
   font-weight: bold;
-}
-*/
-.tabRelease .v-tabs__container--fixed-tabs .v-tabs__div,
-.v-tabs__container--icons-and-text .v-tabs__div {
-  min-width: 135px;
 }
 </style>

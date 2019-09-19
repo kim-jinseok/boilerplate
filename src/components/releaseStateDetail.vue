@@ -75,21 +75,30 @@
           <v-layout row wrap>
             <v-flex xs12>
               <v-card color="white" class="white--text">
-                <v-card-actions class="pa-3" v-show="this.$route.params.type !== 'release'">
+                <v-card-actions class="pa-3">
                   <v-layout row>
-                    <v-flex xs5>배포 다운로드 기간 :</v-flex>
+                    <v-flex xs4>배포 내용 :</v-flex>
                     <v-spacer></v-spacer>
-                    <v-flex xs7>
-                      <div>{{this.releaseStartDate}} ~ {{this.releaseEndDate}}</div>
+                    <v-flex xs8>
+                      <div v-html="this.releaseContents"></div>
                     </v-flex>
                   </v-layout>
                 </v-card-actions>
-                <v-card-actions class="pa-3" v-show="this.$route.params.type === 'release'">
+                <v-card-actions class="pa-3" v-show="releasePartnerMethod === '배포커뮤니티'">
                   <v-layout row>
-                    <v-flex xs3>배포 내용 :</v-flex>
+                    <v-flex xs4>외부배포 방법 :</v-flex>
                     <v-spacer></v-spacer>
-                    <v-flex xs9>
-                      <div v-html="this.releaseContents"></div>
+                    <v-flex xs8>
+                      <div>{{releasePartnerMethod}}</div>
+                    </v-flex>
+                  </v-layout>
+                </v-card-actions>
+                <v-card-actions class="pa-3" v-show="releasePartnerMethod === '배포커뮤니티'">
+                  <v-layout row>
+                    <v-flex xs4>다운로드 횟수 :</v-flex>
+                    <v-spacer></v-spacer>
+                    <v-flex xs8>
+                      <div>{{releaseDownloadCount}}</div>
                     </v-flex>
                   </v-layout>
                 </v-card-actions>
@@ -134,19 +143,9 @@
                           v-for="item in releasePartnerLineData"
                           :key="item.sort"
                         >
-                          <v-layout row v-if="item.type ==='release'">
+                          <v-layout row>
                             <v-flex xs12>
                               <span>{{ item.name }}</span>
-                              <br />
-                            </v-flex>
-                          </v-layout>
-                          <v-layout v-else row>
-                            <v-flex xs8>
-                              <span>{{ item.name }}</span>
-                              <br />
-                            </v-flex>
-                            <v-flex xs4>
-                              <span>{{ item.readDate }}</span>
                               <br />
                             </v-flex>
                           </v-layout>
@@ -189,6 +188,8 @@ export default {
       releaseStartDate: "",
       releaseEndDate: "",
       releaseContents: "",
+      releasePartnerMethod: "",
+      releaseDownloadCount: 0,
       releaseEmployerLineData: [],
       releasePartnerLineData: [],
       isShowApprovalLine: false,
@@ -270,6 +271,12 @@ export default {
             );
             $this.releaseEndDate = helper.getSafeDate(result[0][0].end_date);
             $this.releaseContents = unescape(result[0][0].release_contents);
+            $this.releasePartnerMethod =
+              result[0][0].release_transport === "community"
+                ? "배포커뮤니티"
+                : "메일";
+
+            $this.releaseDownloadCount = result[0][0].download_limit_count;
 
             //내부 배포자
             let tempLine = "";
@@ -278,9 +285,9 @@ export default {
 
             if (!helper.isNull(result[0][0].release_employer_line)) {
               tempLine = !helper.isNull(
-                result[0][0].release_employer_line.split("]*[")
+                result[0][0].release_employer_line.split("]+[")
               )
-                ? result[0][0].release_employer_line.split("]*[")
+                ? result[0][0].release_employer_line.split("]+[")
                 : "";
 
               tempLine.forEach(function(value, key) {
@@ -311,9 +318,9 @@ export default {
 
             if (!helper.isNull(result[0][0].release_partner_line)) {
               tempReleaseLine = !helper.isNull(
-                result[0][0].release_partner_line.split("]*[")
+                result[0][0].release_partner_line.split("]+[")
               )
-                ? result[0][0].release_partner_line.split("]*[")
+                ? result[0][0].release_partner_line.split("]+[")
                 : "";
 
               tempReleaseLine.forEach(function(value, key) {
@@ -364,6 +371,9 @@ export default {
               obj_file.fileName = value.file_name;
               obj_file.createUsername = value.name;
               obj_file.rev = value.revision;
+              obj_file.previewPath = value.preview_path;
+              obj_file.filePath = value.file_path;
+
               arr_file.push(obj_file);
             });
             $this.approvalRecFileData = arr_file;
@@ -433,6 +443,9 @@ export default {
     background: transparent;
   }
 } */
+.pa-3 {
+  padding: 3px !important;
+}
 .lystateBaseInfo {
   margin-bottom: 30px;
   padding-top: 20px;

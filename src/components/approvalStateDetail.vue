@@ -132,7 +132,7 @@
           </v-btn>
         </v-card-actions>
 
-        <v-container fluid grid-list-lg v-show="releaseshow">
+        <v-container class="approvalStateDetail" fluid grid-list-lg v-show="releaseshow">
           <v-layout row wrap>
             <v-flex xs12>
               <v-card color="white" class="white--text">
@@ -142,15 +142,6 @@
                     <v-spacer></v-spacer>
                     <v-flex xs7>
                       <div>{{this.releaseStartDate}} ~ {{this.releaseEndDate}}</div>
-                    </v-flex>
-                  </v-layout>
-                </v-card-actions>
-                <v-card-actions class="pa-3" v-show="this.$route.params.type === 'release'">
-                  <v-layout row>
-                    <v-flex xs3>배포 내용 :</v-flex>
-                    <v-spacer></v-spacer>
-                    <v-flex xs9>
-                      <div v-html="this.releaseContents"></div>
                     </v-flex>
                   </v-layout>
                 </v-card-actions>
@@ -260,7 +251,7 @@ export default {
       approvalshow: false,
       releaseshow: false,
       pagination: {
-        sortBy: "createDate",
+        sortBy: "no",
         descending: true
       },
       isMobile: false,
@@ -352,7 +343,13 @@ export default {
             let arrEmployerLine = [];
 
             if (!helper.isNull(result[0].release_employer_line)) {
-              tempLine = result[0].release_employer_line.split("]*[");
+              tempLine = !helper.isNull(
+                result[0].release_employer_line.split("]*[")
+              )
+                ? result[0].release_employer_line.split("]*[")
+                : "";
+              console.log("tempLine");
+              console.log(tempLine);
 
               tempLine.forEach(function(value, key) {
                 obj_employerLine = {};
@@ -379,7 +376,11 @@ export default {
             let arrReleaseLine = [];
 
             if (!helper.isNull(result[0].release_partner_line)) {
-              tempReleaseLine = result[0].release_partner_line.split("]*[");
+              tempReleaseLine = !helper.isNull(
+                result[0].release_partner_line.split("]*[")
+              )
+                ? result[0].release_partner_line.split("]*[")
+                : "";
 
               tempReleaseLine.forEach(function(value, key) {
                 obj_ReleaseLine = {};
@@ -413,7 +414,11 @@ export default {
             let arrFileListLine = [];
 
             if (!helper.isNull(result[0].file_list)) {
-              tempFileListLine = result[0].file_list.split("]*[");
+              tempFileListLine = !helper.isNull(
+                result[0].file_list.split("]*[")
+              )
+                ? result[0].file_list.split("]*[")
+                : "";
 
               tempFileListLine.forEach(function(value, key) {
                 obj_FileListLine = {};
@@ -465,7 +470,11 @@ export default {
             let tmp_approvalLine = [];
 
             if (!helper.isNull(result[0].approval_line)) {
-              tmp_approvalLine = result[0].approval_line.split("]*[");
+              tmp_approvalLine = !helper.isNull(
+                result[0].approval_line.split("]*[")
+              )
+                ? result[0].approval_line.split("]*[")
+                : "";
 
               tmp_approvalLine.forEach(function(value, key) {
                 obj_approvalLine = {};
@@ -581,6 +590,9 @@ export default {
     background: transparent;
   }
 } */
+.approvalStateDetail .pa-3 {
+  padding: 10px !important;
+}
 .lystateBaseInfo {
   margin-bottom: 30px;
   padding-top: 20px;

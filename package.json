@@ -10,6 +10,7 @@
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.18",
     "@fortawesome/vue-fontawesome": "^0.1.6",
+    "@riophae/vue-treeselect": "^0.3.0",
     "axios": "^0.18.1",
     "babel-plugin-import": "^1.11.2",
     "babel-polyfill": "^6.26.0",
@@ -22,7 +23,9 @@
     "eslint-plugin-standard": "^4.0.0",
     "gulp": "^4.0.2",
     "pdfjs-dist": "^2.1.266",
+    "react-dropdown-tree-select": "^2.1.0",
     "v-tooltip": "^2.0.2",
+    "v-treeview": "^0.2.1",
     "vue": "^2.6.10",
     "vue-esc": "^3.0.1",
     "vue-filter-date-format": "^1.2.5",

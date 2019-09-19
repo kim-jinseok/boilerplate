@@ -31,9 +31,6 @@
         <v-tabs fixed-tabs class="tabRelease" v-model="model">
           <v-tab centered :href="`#tab-1`">
             <v-badge>
-              <template v-slot:badge>
-                <span>{{reportDataLength}}</span>
-              </template>
               <span>상신</span>
             </v-badge>
           </v-tab>
@@ -142,13 +139,11 @@ export default {
           //상신
           if (!helper.isNull(result[0])) {
             result[0].forEach(function(value, key) {
-              $this.reportDataLength++;
               obj_report = {};
               obj_report.approvalId = value.approval_id;
               obj_report.approvalName = value.approval_name;
               obj_report.createUsername = value.name;
               obj_report.createDate = helper.getSafeDate(value.create_date);
-
               arr_report.push(obj_report);
             });
             $this.reportData = arr_report;
@@ -159,13 +154,23 @@ export default {
           //결재
           if (!helper.isNull(result[1])) {
             result[1].forEach(function(value, key) {
-              $this.approvalDataLength++;
+              if (
+                value.read_date === null ||
+                helper.getSafeDate(value.read_date) === ""
+              ) {
+                $this.approvalDataLength++;
+              }
               obj_approval = {};
               obj_approval.approvalId = value.approval_id;
               obj_approval.approvalName = value.approval_name;
               obj_approval.createUsername = value.name;
               obj_approval.createDate = helper.getSafeDate(value.create_date);
-
+              obj_approval.renderType =
+                value.render_type === "approval"
+                  ? "결재"
+                  : value.render_type === "release"
+                  ? "배포"
+                  : "";
               arr_approval.push(obj_approval);
             });
 
@@ -177,7 +182,13 @@ export default {
           //배포받은 문서
           if (!helper.isNull(result[2])) {
             result[2].forEach(function(value, key) {
-              $this.releaseDataLength++;
+              if (
+                value.read_date === null ||
+                helper.getSafeDate(value.read_date) === ""
+              ) {
+                $this.releaseDataLength++;
+              }
+
               obj_release = {};
               obj_release.approvalId = value.approval_id;
               obj_release.approvalName = value.approval_name;

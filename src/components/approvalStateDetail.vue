@@ -66,19 +66,19 @@
 
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn icon @click="approvalshow = !approvalshow">
+          <v-btn icon @click="handleScroll('approval')">
             <v-icon>{{ approvalshow ? 'keyboard_arrow_down' : 'keyboard_arrow_up' }}</v-icon>
           </v-btn>
         </v-card-actions>
 
-        <v-container fluid grid-list-lg v-show="approvalshow">
+        <v-container class="containerApproval" fluid grid-list-lg v-show="approvalshow">
           <v-layout row wrap style="background-color:white;">
             <v-flex
               xs12
               v-show="isShowApprovalLine"
               style="padding: 15px;"
               v-for="item in approvalLineData"
-              :key="item.sort"
+              :key="item.userId"
             >
               <v-layout row>
                 <v-btn class="ma-2" outlined fab color="black">{{item.sort}}</v-btn>
@@ -127,12 +127,17 @@
 
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn icon @click="releaseshow = !releaseshow">
+          <v-btn icon @click="handleScroll('release')">
             <v-icon>{{ releaseshow ? 'keyboard_arrow_down' : 'keyboard_arrow_up' }}</v-icon>
           </v-btn>
         </v-card-actions>
 
-        <v-container class="approvalStateDetail" fluid grid-list-lg v-show="releaseshow">
+        <v-container
+          class="containerRelease approvalStateDetail"
+          fluid
+          grid-list-lg
+          v-show="releaseshow"
+        >
           <v-layout row wrap>
             <v-flex xs12>
               <v-card color="white" class="white--text">
@@ -151,7 +156,7 @@
                     <v-flex xs3>내부 배포처 :</v-flex>
                     <v-spacer></v-spacer>
                     <v-flex xs9 v-show="isShowEmployer">
-                      <div v-for="item in releaseEmployerLineData" :key="item.sort">
+                      <div v-for="item in releaseEmployerLineData" :key="item.name">
                         <v-layout row>
                           <v-flex xs9>
                             <span>{{ item.name }}</span>
@@ -178,7 +183,7 @@
                         <div
                           class="dvpartnerLine"
                           v-for="item in releasePartnerLineData"
-                          :key="item.sort"
+                          :key="item.name"
                         >
                           <v-layout row>
                             <v-flex xs8>
@@ -255,6 +260,7 @@ export default {
         descending: true
       },
       isMobile: false,
+      scrollPosition: 0,
       headers: [
         {
           text: "No",
@@ -291,7 +297,6 @@ export default {
       }
     };
   },
-
   methods: {
     editState(el) {
       let userId = el.currentTarget.getAttribute("data_userId");
@@ -348,8 +353,6 @@ export default {
               )
                 ? result[0].release_employer_line.split("]*[")
                 : "";
-              console.log("tempLine");
-              console.log(tempLine);
 
               tempLine.forEach(function(value, key) {
                 obj_employerLine = {};
@@ -529,7 +532,22 @@ export default {
         });
       } catch (err) {}
     },
+    handleScroll: function(value) {
+      var container = "";
+      if (value === "approval") {
+        this.approvalshow = !this.approvalshow;
+        container = this.$el.querySelector(".containerApproval");
+      }
 
+      if (value === "release") {
+        this.releaseshow = !this.releaseshow;
+        container = this.$el.querySelector(".containerRelease");
+      }
+
+      setTimeout(function() {
+        container.scrollIntoView();
+      }, 100);
+    },
     getFilePreview(id) {
       this.fhid = id;
       let $this = this;

@@ -20,7 +20,7 @@ namespace jlsCore.Controllers
     [ApiController]
     public class AjaxController : ControllerBase
     {
-        
+
         [HttpPost]
         public async Task<IActionResult> dbGetResultAsJson(JToken param)
         {
@@ -49,7 +49,8 @@ namespace jlsCore.Controllers
                 {
                     return Ok(result[0]);
                 }
-                else{
+                else
+                {
                     return Ok(result);
                 }
             }
@@ -82,10 +83,10 @@ namespace jlsCore.Controllers
 
 
         public JsonResult dbGetResultAsInt(string spName, string jsonParam, string working = null)
-        { 
+        {
             try
             {
-                
+
                 Dictionary<string, object> param = JsonConvert.DeserializeObject<Dictionary<string, object>>(jsonParam.Replace("\\\\", "\\"));
 
                 return new JsonResult(Helper.DB.GetResultAsInt(spName, param, null, true));
@@ -106,33 +107,37 @@ namespace jlsCore.Controllers
             public string hierarchy_id;
             public int id;
             public string name;
+
+            public string category_area;
             public List<Category> children = new List<Category>();
         }
-         [HttpPost]
+        [HttpPost]
         public async Task<JsonResult> CategoryData(JToken data)
         {
             dynamic param = new
             {
                 user_id = data["user_id"].ToString()
             };
-            
+
             List<Category> items = JsonConvert.DeserializeObject<List<Category>>(Helper.DB.GetResultAsJson("category_get", param));
 
 
-           var lookup = items.ToLookup(x => x.parent_id);
-           Func<int, List<Category>> build = null;
+            var lookup = items.ToLookup(x => x.parent_id);
+            Func<int, List<Category>> build = null;
 
-           build = pid =>
-                lookup[pid]
-                    .Select(x => new Category()
-                    {
-                        id = x.category_id,
-                        name = x.category_name,
-                        children = build(x.category_id),
-                    })
-                    .ToList(); 
+            build = pid =>
+                 lookup[pid]
+                     .Select(x => new Category()
+                     {
+                         id = x.category_id,
+                         name = x.category_name,
+                         category_area = x.category_area,
+                         children = build(x.category_id)
 
-             return new JsonResult(build(0));
+                     })
+                     .ToList();
+
+            return new JsonResult(build(0));
         }
 
 
@@ -152,17 +157,17 @@ namespace jlsCore.Controllers
                 category_id = data["category_id"].ToString(),
                 user_id = data["user_id"].ToString()
             };
-            
+
             List<Board> board = JsonConvert.DeserializeObject<List<Board>>(Helper.DB.GetResultAsJson("board_get", param));
 
             board.Select(x => new Board()
-                    {
-                        board_id = x.board_id,
-                        board_type = x.board_type
-                    })
-                    .ToList(); 
+            {
+                board_id = x.board_id,
+                board_type = x.board_type
+            })
+                    .ToList();
 
-             return new JsonResult(board);
+            return new JsonResult(board);
         }
 
 

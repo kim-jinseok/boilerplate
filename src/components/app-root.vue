@@ -16,7 +16,7 @@
           box
         ></v-text-field>
       </v-sheet>
-     <v-treeview :items=" this.$store.state.c.category" activatable :search="search">
+      <v-treeview :items="this.$store.state.c.category" activatable :search="search">
         <template slot="label" slot-scope="{ item }">
           <p style="margin-bottom : 0px; font-size:15px;" @click.prevent="getRecBoard(item.id)">
             <v-icon small dark>folder_open</v-icon>
@@ -39,16 +39,10 @@
           v-on:keyup.enter="searchChildValue(search)"
         ></v-text-field>
       </v-sheet>
-      <v-treeview
-        :items=" this.$store.state.c.category"
-        activatable
-        :search="search"
-        :open="open"
-        item-key="name"
-      >
-        <template slot="label" slot-scope="{ item ,open, selected}">
+      <v-treeview :items=" this.$store.state.c.category" :search="search" item-key="name">
+        <template slot="label" slot-scope="{ item }" ref="category">
           <p style="margin-bottom : 0px; font-size:15px;" @click.prevent="getRecBoard(item.id)">
-            <v-icon small dark>{{ open ? 'mdi-folder-open' : 'mdi-folder' }}</v-icon>
+            <v-icon small dark>folder_open</v-icon>
             {{ item.name }}
           </p>
         </template>
@@ -112,7 +106,8 @@ export default {
       date: new Date(),
       search: null,
       categoryData: [],
-      categoryChildData: []
+      categoryChildData: [],
+      categoryArea: ""
     };
   },
   //computed: {
@@ -153,8 +148,8 @@ export default {
               let child = value.name;
               if (child.indexOf(val) > 0) {
                 selectedParents = parents;
-                console.log("2");
-                console.log(child);
+                // console.log("2");
+                // console.log(child);
               }
             });
           }

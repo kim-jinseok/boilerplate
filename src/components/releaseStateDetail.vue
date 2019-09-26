@@ -108,7 +108,7 @@
                     <v-flex xs3>내부 배포처 :</v-flex>
                     <v-spacer></v-spacer>
                     <v-flex xs9 v-show="isShowEmployer">
-                      <div v-for="item in releaseEmployerLineData" :key="item.sort">
+                      <div v-for="item in releaseEmployerLineData" :key="item.name">
                         <v-layout row v-if="item.type ==='release'">
                           <v-flex xs12>
                             <span>{{ item.name }}</span>
@@ -141,7 +141,7 @@
                         <div
                           class="dvpartnerLine"
                           v-for="item in releasePartnerLineData"
-                          :key="item.sort"
+                          :key="item.name"
                         >
                           <v-layout row>
                             <v-flex xs12>

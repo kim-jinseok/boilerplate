@@ -24,12 +24,6 @@ export default {
       user_pw: ""
     };
   },
-  created() {},
-  computed: {
-    loggingIn() {
-      return this.$store.state.l.loggin;
-    }
-  },
   methods: {
     submit() {
       this.handleSubmit();
@@ -61,11 +55,17 @@ export default {
         const data = fw.getCategory(param);
 
         const $this = this;
+        let arr = [];
 
         data.then(function(result) {
-          $this.$store.state.c.category = result;
+          result.forEach(function(value, key) {
+            if (value.category_area === "doc") {
+              arr.push(value);
+            }
+          });
 
-          localStorage.setItem("categoryData", JSON.stringify(result));
+          $this.$store.state.c.category = arr;
+          localStorage.setItem("categoryData", JSON.stringify(arr));
         });
       } catch (err) {
         window.alert(err);

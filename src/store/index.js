@@ -117,7 +117,7 @@ const categoryState = {
 
     state: {
         categoryId: '',
-        category: []
+        category: [],
     },
     actions: {}
 }

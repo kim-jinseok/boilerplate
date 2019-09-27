@@ -1,0 +1,118 @@
+
+.headline {
+    font-size: 26px !important;
+  }
+  .one-line {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-width: 100px;
+    max-width: 180px;
+  }
+  .tabBoardDetail .v-tabs__container--fixed-tabs .v-tabs__div,
+  .tabBoardDetail .v-tabs__container--icons-and-text .v-tabs__div {
+    min-width: 100px;
+  }
+
+  .ctFileDetailInfo {
+    background-color: #bdbdbd;
+    color: black;
+  }
+
+  .btFileDetailInfo {
+    display: inline-block;
+    font-size: 15px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 15px #999;
+  }
+  .dvPdfContainer {
+    margin: 5px;
+    padding: 0px;
+    overflow: "hidden";
+  }
+
+
+  
+/* revisionHistoryDataTable */
+  .revisionHistoryDataTable .theme--dark.v-table thead tr:first-child {
+    height: auto;
+    padding-top: 19px;
+    padding-bottom: 10px;
+    border-left: none;
+  }
+  .revisionHistoryDataTable .flex-content {
+    padding: 0px;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    width: 95%;
+  }
+  .revisionHistoryDataTable .flex-item {
+    height: 20px;
+    font-weight: bold;
+  }
+  .revisionHistoryDataTable .flex-content li:nth-child(1) {
+    width: 5%;
+    text-align: left;
+  }
+  .revisionHistoryDataTable .flex-content li:nth-child(2) {
+    width: 55%;
+    text-align: left;
+  }
+  .revisionHistoryDataTable .flex-content li:nth-child(3) {
+    width: 25%;
+    text-align: left;
+  }
+  .revisionHistoryDataTable .flex-content li:nth-child(4) {
+    width: 15%;
+    text-align: left;
+  }
+
+  /* relationFilesDataTable */
+  .relationFilesDataTable .theme--dark.v-table thead tr:first-child {
+    height: auto;
+    padding-top: 19px;
+    padding-bottom: 10px;
+    border-left: none;
+  }
+  .relationFilesDataTable .flex-content {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    width: 68%;
+  }
+  .relationFilesDataTable .flex-item {
+    height: 25px;
+    font-weight: bold;
+  }
+  .relationFilesDataTable .flex-content li:nth-child(1) {
+    width: 10%;
+    text-align: left;
+  }
+  .relationFilesDataTable .flex-content li:nth-child(2) {
+    width: 40%;
+    text-align: left;
+  }
+  .relationFilesDataTable .flex-content li:nth-child(3) {
+    width: 10%;
+    text-align: left;
+  }
+  .relationFilesDataTable .flex-content li:nth-child(4) {
+    width: 15%;
+    text-align: left;
+  }
+  .relationFilesDataTable .flex-content li:nth-child(5) {
+    width: 25%;
+    text-align: left;
+  }
+
+  

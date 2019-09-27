@@ -83,7 +83,13 @@
               <v-layout row>
                 <v-btn class="ma-2" outlined fab color="black">{{item.sort}}</v-btn>
                 <v-flex xs4 v-if="!item.isShowState" pt-1>
-                  <v-btn class="btState" outline small :color="`${item.color}`">{{item.state}}</v-btn>
+                  <v-btn
+                    class="btState"
+                    outline
+                    small
+                    :color="`${item.color}`"
+                    @click="editState"
+                  >{{item.state}}</v-btn>
                   <v-divider></v-divider>
                   <span style="font-weight: bolder; padding-left: 15px;">{{item.updateDate}}</span>
                 </v-flex>
@@ -112,7 +118,7 @@
             </v-flex>
           </v-layout>
           <!-- 결재확인 팝업창 -->
-          <Modal v-if="isChange" @close="isChange = false" />
+          <approvalStateModal v-if="isChange" @close="isChange = false" />
           <Alert v-if="alert.dialog" :alert.sync="alert" @close="alert.dialog=false" />
         </v-container>
       </v-card>
@@ -132,12 +138,7 @@
           </v-btn>
         </v-card-actions>
 
-        <v-container
-          class="containerRelease approvalStateDetail"
-          fluid
-          grid-list-lg
-          v-show="releaseshow"
-        >
+        <v-container class="containerRelease" fluid grid-list-lg v-show="releaseshow">
           <v-layout row wrap>
             <v-flex xs12>
               <v-card color="white" class="white--text">
@@ -214,7 +215,7 @@
 </template>
 
 <script>
-import Modal from "./Modal";
+import approvalStateModal from "./approvalStateModal";
 import Alert from "./Alert";
 import { constants } from "crypto";
 export default {
@@ -222,7 +223,7 @@ export default {
     this.getApprovalGetData();
   },
   components: {
-    Modal,
+    approvalStateModal,
     Alert
   },
   //computed: {
@@ -568,132 +569,6 @@ export default {
   }
 };
 </script>
-
-<style scope>
-/* .mobile {
-  color: #333;
-}
-
-@media screen and (max-width: 768px) {
-  .mobile .approvalDetailDataTable table.v-table tr {
-    max-width: 100%;
-    position: relative;
-    display: block;
-  }
-
-  .mobile .approvalDetailDataTable table.v-table tr td {
-    display: flex;
-    width: 100%;
-    border-bottom: 1px solid #f5f5f5;
-    height: auto;
-    padding: 8px;
-  }
-
-  .mobile .approvalDetailDataTable table.v-table tr td ul li:before {
-    content: attr(data-label);
-    padding-bottom: 0.5em;
-    display: block;
-    color: #999;
-  }
-  .approvalDetailDataTable .v-datatable__actions__select {
-    width: 50%;
-    margin: 0px;
-    justify-content: flex-start;
-  }
-  .mobile
-    .approvalDetailDataTable
-    .theme--light.v-table
-    tbody
-    tr:hover:not(.v-datatable__expand-row) {
-    background: transparent;
-  }
-} */
-.approvalStateDetail .pa-3 {
-  padding: 10px !important;
-}
-.lystateBaseInfo {
-  margin-bottom: 30px;
-  padding-top: 20px;
-}
-.cdstateBaseInfoFiles {
-  margin-bottom: 30px;
-}
-.ma-2 {
-  font-size: 20px;
-  width: 40px;
-  height: 40px;
-}
-.v-input__slot {
-  height: 28px;
-  padding: 0px 0px 10px 0px;
-}
-.approvalDetailDataTable .flex-content {
-  padding: 0;
-  margin: 0;
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
-}
-.approvalDetailDataTable .flex-item {
-  padding: 5px;
-  height: 100%;
-  font-weight: bold;
-}
-.approvalDetailDataTable .flex-content li:nth-child(1) {
-  width: 8%;
-}
-.approvalDetailDataTable .flex-content li:nth-child(2) {
-  width: 43%;
-}
-.approvalDetailDataTable .flex-content li:nth-child(3) {
-  width: 8%;
-}
-.approvalDetailDataTable .flex-content li:nth-child(4) {
-  width: 15%;
-}
-.approvalDetailDataTable .flex-content li:nth-child(5) {
-  width: 25%;
-}
-.pa-3 {
-  color: black;
-}
-.primary-title {
-  color: black;
-}
-.one-line {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  min-width: 100px;
-  max-width: 180px;
-}
-.btn-partner {
-  width: 100%;
-  height: 30px;
-  border-radius: 20px;
-}
-.dvpartnerLine {
-  margin-left: 11px;
-}
-.cdapprovalLine {
-  width: 335px;
-}
-.btState {
-  opacity: 1;
-}
-.container.grid-list-lg .layout .flex {
-  text-align: center;
-}
-
-.textareaApprovalText .v-input__slot {
-  width: 350px;
-  margin: 10px;
-}
-.textareaApprovalText .theme--dark.v-input:not(.v-input--is-disabled) input,
-.theme--dark.v-input:not(.v-input--is-disabled) textarea {
-  padding: 10px;
-  color: black;
-}
+<style scoped >
+@import "../../src/css/approvalDetail.css";
 </style>
-                    

@@ -78,7 +78,6 @@
 import ReportState from "./reportState";
 import ApprovalState from "./approvalState";
 import ReleasedState from "./releasedState";
-import SearchResult from "./searchResult";
 
 export default {
   components: {
@@ -208,86 +207,5 @@ export default {
 };
 </script>
 <style scope>
-.container {
-  padding: 0px;
-}
-
-.mobile {
-  color: #333;
-}
-
-@media screen and (max-width: 768px) {
-  .mobile table.v-table tr {
-    max-width: 100%;
-    position: relative;
-    display: block;
-  }
-
-  .mobile table.v-table tr:nth-child(odd) {
-    border-left: 6px solid deeppink;
-  }
-
-  .mobile table.v-table tr:nth-child(even) {
-    border-left: 6px solid cyan;
-  }
-
-  .mobile table.v-table tr td {
-    display: flex;
-    width: 100%;
-    border-bottom: 1px solid #f5f5f5;
-    height: auto;
-    padding: 8px;
-  }
-
-  .mobile table.v-table tr td ul li:before {
-    content: attr(data-label);
-    padding-bottom: 0.5em;
-    display: block;
-    color: #999;
-  }
-  .v-datatable__actions__select {
-    width: 50%;
-    margin: 0px;
-    justify-content: flex-start;
-  }
-  .mobile .theme--light.v-table tbody tr:hover:not(.v-datatable__expand-row) {
-    background: transparent;
-  }
-}
-.theme--dark.v-jumbotron .v-jumbotron__content {
-  padding-left: 10px;
-}
-.v-responsive__content {
-  margin-left: 10px;
-  margin-right: 10px;
-}
-
-.display-1 {
-  font-size: 26px !important;
-  color: white;
-  padding-top: 45px;
-}
-.v-input .theme--dark {
-  padding-left: 15px;
-}
-.vtTotalSearch {
-  padding: 22px 0px 0px 10px;
-}
-.v-messages__message {
-  padding-top: 8px;
-  padding-left: 50px;
-}
-
-.cdApprovalBox {
-  height: 150px;
-  width: 130px;
-}
-.v-card__title .v-card__title--primary {
-  padding: 0px;
-}
-.cdApprovalBoxTitle .headline {
-  padding-left: 30px;
-  padding-top: 40px;
-  font-size: 22px !important;
-}
+@import "../../src/css/homePage.css";
 </style>

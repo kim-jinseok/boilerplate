@@ -84,17 +84,9 @@
 </template>
 
 <script>
-import auth from "./auth";
 import { routes } from "../store/router";
 import { userService } from "../modules/auth";
-import board from "./getRecBoard";
-import homePage from "./home-page";
 export default {
-  components: {
-    auth,
-    board,
-    homePage
-  },
   created() {
     this.isShow = this.$store.state.l.loggin;
   },

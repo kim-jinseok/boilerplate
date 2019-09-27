@@ -3,7 +3,7 @@
 <template>
   <div v-if="this.$store.state.l.loggin">
     <v-navigation-drawer v-model="drawer" clipped fixed app>
-      <!-- <v-sheet class="pa-3 primary lighten-2">
+      <v-sheet class="pa-3 primary lighten-2">
         <v-text-field
           v-model="search"
           label="Search Category"
@@ -23,9 +23,9 @@
             {{ item.name }}
           </p>
         </template>
-      </v-treeview>-->
+      </v-treeview>
 
-      <v-sheet class="pa-3 primary lighten-2">
+      <!-- <v-sheet class="pa-3 primary lighten-2">
         <v-text-field
           v-model="search"
           label="Search Category"
@@ -46,7 +46,7 @@
             {{ item.name }}
           </p>
         </template>
-      </v-treeview>
+      </v-treeview>-->
     </v-navigation-drawer>
     <v-toolbar app fixed clipped-left>
       <v-layout row wrap>
@@ -86,6 +86,7 @@
 <script>
 import { routes } from "../store/router";
 import { userService } from "../modules/auth";
+
 export default {
   created() {
     this.isShow = this.$store.state.l.loggin;
@@ -147,9 +148,6 @@ export default {
           }
         }
       });
-
-      console.log("1");
-      console.log(selectedParents);
     }
   }
 };

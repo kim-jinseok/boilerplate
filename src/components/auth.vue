@@ -35,7 +35,6 @@ export default {
             this.$store.state.l.user = helper.parseJwt(result);
             this.$store.state.l.loggin = true;
             this.loadCategory();
-            this.$router.push("/home-page");
           } else {
             alert("아이디 또는 비밀번호를 다시 입력해주세요");
             this.$router.push("/auth");
@@ -46,7 +45,7 @@ export default {
         return false;
       }
     },
-    async loadCategory() {
+    loadCategory() {
       try {
         const param = {
           user_id: this.$store.state.l.user.userid
@@ -57,16 +56,24 @@ export default {
         const $this = this;
         let arr = [];
 
+        console.log(data);
+
         data.then(function(result) {
+          console.log(result);
           result.forEach(function(value, key) {
             if (value.category_area === "doc") {
               arr.push(value);
             }
           });
-
           $this.$store.state.c.category = arr;
           localStorage.setItem("categoryData", JSON.stringify(arr));
         });
+
+        var self = this;
+        setTimeout(() => {
+          alert(1);
+          self.$router.push("/home-page");
+        }, 300);
       } catch (err) {
         window.alert(err);
       }

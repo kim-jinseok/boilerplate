@@ -56,22 +56,26 @@ export default {
         const $this = this;
         let arr = [];
 
-        console.log(data);
-
         data.then(function(result) {
-          console.log(result);
           result.forEach(function(value, key) {
             if (value.category_area === "doc") {
               arr.push(value);
+              console.log("doc");
+              console.log(arr);
             }
+            console.log("item");
+            console.log(arr);
+            console.log(value);
           });
+
           $this.$store.state.c.category = arr;
           localStorage.setItem("categoryData", JSON.stringify(arr));
+
+          console.log(localStorage.getItem("categoryData"));
         });
 
         var self = this;
         setTimeout(() => {
-          alert(1);
           self.$router.push("/home-page");
         }, 300);
       } catch (err) {

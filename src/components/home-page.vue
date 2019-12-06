@@ -1,34 +1,27 @@
+
 <template>
   <v-responsive>
     <h5 class="display-1">문서검색</h5>
     <v-divider class="my-3"></v-divider>
-    <v-layout row wrap>
-      <v-flex xs4 sm2 d-flex>
-        <v-select :items="type" label="유형선택" outline v-model="selectedType"></v-select>
-      </v-flex>
-      <v-flex xs8 sm2 d-flex>
-        <v-text-field class="vtTotalSearch" v-model="searchValue" label="검색어를 입력하세요"></v-text-field>
-      </v-flex>
-    </v-layout>
-    <v-layout row wrap style="padding-top:20px;">
-      <v-flex xs6 sm2 text-xs-right>
-        <v-btn color="primary" dark @click="btSearchFiles()">
-          검색
-          <v-icon dark right>check_circle</v-icon>
-        </v-btn>
-      </v-flex>
-      <v-flex xs6 sm2 text-xs-letf>
-        <v-btn color="red" dark @click="reload()">
-          초기화
-          <v-icon dark right>block</v-icon>
-        </v-btn>
-      </v-flex>
-    </v-layout>
+    <v-container fluid>
+      <v-layout row wrap>
+        <v-select xs1 sm2 :items="type" label="유형선택" outline v-model="selectedType"></v-select>
+        <v-text-field xs1 sm2 class="vtTotalSearch" v-model="searchValue" label="검색어를 입력하세요"></v-text-field>
+      </v-layout>
+    </v-container>
+    <v-container fluid>
+      <v-layout row wrap justify-center>
+        <div xs1 sm2 text-xs-right justify-center>
+          <v-btn color="primary" dark @click="btSearchFiles()">검색</v-btn>
+          <v-btn color="red" dark @click="reload()">초기화</v-btn>
+        </div>
+      </v-layout>
+    </v-container>
     <h5 class="display-1">결재현황</h5>
     <v-divider class="my-3"></v-divider>
     <v-layout row wrap>
-      <v-tabs fixed-tabs>
-        <v-tabs fixed-tabs class="tabRelease" v-model="model">
+      <v-container>
+        <v-tabs fixed-tabs v-model="model">
           <v-tab centered :href="`#tab-1`">
             <v-badge>
               <span>상신</span>
@@ -51,24 +44,24 @@
             </v-badge>
           </v-tab>
         </v-tabs>
-      </v-tabs>
-      <v-tabs-items v-model="model">
-        <v-tab-item :value="`tab-1`">
-          <v-card flat>
-            <ReportState :data="reportData" />
-          </v-card>
-        </v-tab-item>
-        <v-tab-item :value="`tab-2`">
-          <v-card flat>
-            <ApprovalState :data="approvalData" />
-          </v-card>
-        </v-tab-item>
-        <v-tab-item :value="`tab-3`">
-          <v-card flat>
-            <ReleasedState :data="releasedData" />
-          </v-card>
-        </v-tab-item>
-      </v-tabs-items>
+        <v-tabs-items v-model="model">
+          <v-tab-item :value="`tab-1`">
+            <v-card>
+              <ReportState :data="reportData" />
+            </v-card>
+          </v-tab-item>
+          <v-tab-item :value="`tab-2`">
+            <v-card>
+              <ApprovalState :data="approvalData" />
+            </v-card>
+          </v-tab-item>
+          <v-tab-item :value="`tab-3`">
+            <v-card>
+              <ReleasedState :data="releasedData" />
+            </v-card>
+          </v-tab-item>
+        </v-tabs-items>
+      </v-container>
     </v-layout>
     <router-view :data="this.resultData"></router-view>
   </v-responsive>

@@ -1,6 +1,6 @@
 <template>
   <v-layout>
-    <v-flex xs12 sm6 offset-sm3>
+    <v-container xs12 sm6 offset-sm3>
       <v-layout row wrap class="lystateBaseInfo">
         <v-flex xs12 pl-2>
           <v-text-field v-model="approvalName" label="제목" disabled></v-text-field>
@@ -9,7 +9,8 @@
         </v-flex>
       </v-layout>
       <v-card class="cdstateBaseInfoFiles">
-        <v-layout v-resize="onResize" column>
+        <v-layout column>
+          <!-- v-resize="onResize" -->
           <v-data-table
             class="approvalDetailDataTable"
             :headers="headers"
@@ -20,34 +21,34 @@
           >
             <template slot="items" slot-scope="props">
               <tr>
-                <td>
-                  <ul class="flex-content">
-                    <li class="flex-item" data-label="No">{{ props.item.no }}</li>
-                    <li class="flex-item one-line" data-label="파일명">
-                      <v-tooltip color="black" bottom right max-width="100%">
-                        <template v-slot:activator="{ on }">
-                          <div
-                            class="one-line"
-                            v-on="on"
-                            dark
-                            @click="getFilePreview(props.item.fileHistoryId);"
-                          >{{ props.item.fileName }}</div>
-                        </template>
-                        <iframe
-                          v-show="iframe.loaded"
-                          :src="iframe.pdfFilePath"
-                          style="width : 400px; height: 300px;"
-                          allowfullscreen="yes"
-                          frameborder="0"
-                          scrolling="no"
-                        ></iframe>
-                      </v-tooltip>
-                    </li>
-                    <li class="flex-item" data-label="rev">{{ props.item.rev }}</li>
-                    <li class="flex-item" data-label="작성자">{{ props.item.createUsername }}</li>
-                    <li class="flex-item" data-label="작성일">{{ props.item.createDate }}</li>
-                  </ul>
+                <!-- <td> -->
+                <!-- <ul class="flex-content"> -->
+                <td class="flex-item" data-label="No">{{ props.item.no }}</td>
+                <td class="flex-item one-line" data-label="파일명">
+                  <v-tooltip color="black" bottom right max-width="100%">
+                    <template v-slot:activator="{ on }">
+                      <div
+                        class="one-line"
+                        v-on="on"
+                        dark
+                        @click="getFilePreview(props.item.fileHistoryId);"
+                      >{{ props.item.fileName }}</div>
+                    </template>
+                    <iframe
+                      v-show="iframe.loaded"
+                      :src="iframe.pdfFilePath"
+                      style="width:80vw; height: 80vh;"
+                      allowfullscreen="yes"
+                      frameborder="0"
+                      scrolling="no"
+                    ></iframe>
+                  </v-tooltip>
                 </td>
+                <td class="flex-item" data-label="rev">{{ props.item.rev }}</td>
+                <td class="flex-item" data-label="작성자">{{ props.item.createUsername }}</td>
+                <td class="flex-item" data-label="작성일">{{ props.item.createDate }}</td>
+                <!-- </ul>
+                </td>-->
               </tr>
             </template>
             <template v-slot:no-data>
@@ -210,7 +211,7 @@
         </v-container>
       </v-card>
       <v-card></v-card>
-    </v-flex>
+    </v-container>
   </v-layout>
 </template>
 
@@ -313,10 +314,10 @@ export default {
 
       $this.isChange = $this.$store.state.a.editPPapprovalState;
     },
-    onResize() {
-      if (window.innerWidth < 769) this.isMobile = true;
-      else this.isMobile = false;
-    },
+    // onResize() {
+    //   if (window.innerWidth < 769) this.isMobile = true;
+    //   else this.isMobile = false;
+    // },
     async getApprovalGetData() {
       try {
         var param = {

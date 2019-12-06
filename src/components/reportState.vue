@@ -1,5 +1,6 @@
 <template>
-  <v-layout v-resize="onResize" column class="lyDataTable">
+  <v-layout column class="lyDataTable">
+    <!-- v-resize="onResize"  -->
     <v-data-table
       class="approvalDataTable"
       :headers="commoneHeaders"
@@ -10,12 +11,15 @@
       <template slot="items" slot-scope="props">
         <tr @click="getRecApprovalDetail({item :props.item, type:'report'})">
           <td>
-            <ul class="flex-content">
+            <!-- <ul class="flex-content">
               <li class="flex-item one-line">{{ props.item.approvalName }}</li>
               <li class="flex-item">{{ props.item.createUsername }}</li>
               <li class="flex-item">{{ props.item.createDate }}</li>
-            </ul>
+            </ul>-->
+            {{ props.item.approvalName }}
           </td>
+          <td>{{ props.item.createUsername }}</td>
+          <td>{{ props.item.createDate }}</td>
         </tr>
       </template>
       <template v-slot:no-data>
@@ -66,13 +70,13 @@ export default {
     };
   },
   methods: {
-    onResize() {
-      if (window.innerWidth < 769) {
-        this.isMobile = true;
-      } else {
-        this.isMobile = false;
-      }
-    },
+    // onResize() {
+    //   if (window.innerWidth < 769) {
+    //     this.isMobile = true;
+    //   } else {
+    //     this.isMobile = false;
+    //   }
+    // },
 
     getRecApprovalDetail(params) {
       if (event.target.classList.contains("datatable table")) return;

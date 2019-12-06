@@ -30,7 +30,7 @@
               <iframe
                 v-show="iframe.loaded"
                 :src="iframe.pdfFilePath"
-                style="width : 400px; height: 300px;"
+                style="width:80vw; height: 80vh;"
                 allowfullscreen="yes"
                 frameborder="0"
                 scrolling="no"

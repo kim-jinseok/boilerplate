@@ -17,34 +17,7 @@
   height: 28px;
   padding: 0px 0px 10px 0px;
 }
-.approvalDetailDataTable .flex-content {
-  padding: 0;
-  margin: 0;
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
-}
-.approvalDetailDataTable .flex-item {
-  padding: 5px;
-  height: 100%;
-  font-weight: bold;
-}
-.approvalDetailDataTable .flex-content li:nth-child(1) {
-  width: 8%;
-}
-.approvalDetailDataTable .flex-content li:nth-child(2) {
-  width: 43%;
-}
-.approvalDetailDataTable .flex-content li:nth-child(3) {
-  width: 8%;
-}
-.approvalDetailDataTable .flex-content li:nth-child(4) {
-  width: 15%;
-}
-.approvalDetailDataTable .flex-content li:nth-child(5) {
-  width: 25%;
-}
+
 .pa-3 {
   color: black;
 }
@@ -85,5 +58,84 @@
   padding: 10px;
   color: black;
 }
+
+
+
+/* .approvalDetailDataTable .theme--dark.v-table thead tr th:nth-child(1) {
+  width: 1%;
+  padding-left: 5px;
+  padding-right: 0px;
+}
+ .approvalDetailDataTable .theme--dark.v-table thead tr th:nth-child(2) {
+  width: 5%;
+  padding: 0px;
+}
+ .approvalDetailDataTable .theme--dark.v-table thead tr th:nth-child(3) {
+  width: 5%;
+  padding: 0px;
+}
+.approvalDetailDataTable .theme--dark.v-table thead tr th:nth-child(4) {
+  width: 5%;
+  padding: 0px;
+}
+
+.approvalDetailDataTable .theme--dark.v-table thead tr th:nth-child(5) {
+  width: 5%;
+  padding: 0px;
+}
+
+.approvalDetailDataTable .theme--dark.v-table  tr td:nth-child(1) {
+  width: 1%;
+  padding-left: 5px;
+  padding-right: 0px;
+}
+ .approvalDetailDataTable .theme--dark.v-table tr td:nth-child(2) {
+  width: 5%;
+  padding: 0px;
+}
+.approvalDetailDataTable .theme--dark.v-table tr td:nth-child(3) {
+  width: 5%;
+  padding: 0px;
+}
+.approvalDetailDataTable .theme--dark.v-table  tr td:nth-child(4) {
+  width: 5%;
+  padding: 0px;
+}
+.approvalDetailDataTable .theme--dark.v-table  tr td:nth-child(5) {
+  width: 10%;
+  padding: 0px;
+} */
+
+
+/* 
+.approvalDetailDataTable .flex-content {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.approvalDetailDataTable .flex-item {
+  padding: 5px;
+  height: 100%;
+  font-weight: bold;
+}
+.approvalDetailDataTable .flex-content li:nth-child(1) {
+  width: 8%;
+}
+.approvalDetailDataTable .flex-content li:nth-child(2) {
+  width: 43%;
+}
+.approvalDetailDataTable .flex-content li:nth-child(3) {
+  width: 8%;
+}
+.approvalDetailDataTable .flex-content li:nth-child(4) {
+  width: 15%;
+}
+.approvalDetailDataTable .flex-content li:nth-child(5) {
+  width: 25%;
+} */
+
 
         

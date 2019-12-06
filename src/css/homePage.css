@@ -1,12 +1,122 @@
 .container {
     padding: 0px;
   }
-  
-  .mobile {
-    color: #333;
+
+  .theme--dark.v-jumbotron .v-jumbotron__content {
+    padding-left: 10px;
+  }
+
+  .v-responsive__content {
+    margin-left: 1px;
+    margin-right: 1px;
   }
   
-  @media screen and (max-width: 768px) {
+  .display-1 {
+    font-size: 26px !important;
+    color: white;
+    padding-top: 45px;
+  }
+  .v-input .theme--dark {
+    padding-left: 15px;
+  }
+  .vtTotalSearch {
+    padding: 22px 0px 0px 10px;
+    width: 100%;
+  }
+  .v-messages__message {
+    padding-top: 8px;
+    padding-left: 50px;
+  }
+  
+  .cdApprovalBox {
+    height: 150px;
+    width: 130px;
+  }
+  .v-card__title .v-card__title--primary {
+    padding: 0px;
+  }
+  .cdApprovalBoxTitle .headline {
+    padding-left: 30px;
+    padding-top: 40px;
+    font-size: 22px !important;
+  }
+
+  .lydataTable {
+    padding-top: 20px;
+  }
+
+
+  /* .tabApprovalState .v-tabs__container--fixed-tabs .v-tabs__div,
+  .tabApprovalState .v-tabs__container--icons-and-text .v-tabs__div {
+    min-width: 200px;
+  } */
+
+  /* .tabRelease .v-tabs__container--fixed-tabs .v-tabs__div, .v-tabs__container--icons-and-text .v-tabs__div{
+    min-width: 100%;
+  } */
+  
+  .one-line {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-width: 100px;
+    max-width: 180px;
+  }
+
+  .toolbarApprovalStateTitle {
+    position: relative;
+  }
+/*   
+   .approvalDataTable .theme--dark.v-table thead tr:first-child {
+    height: auto;
+    padding-top: 19px;
+    padding-bottom: 10px;
+    border-left: none;
+  }
+  
+  .approvalDataTable .theme--dark.v-table thead tr th:first-child {
+    width: 25%;
+    padding-right: 0px;
+  }
+  .approvalDataTable .theme--dark.v-table thead tr th:nth-child(2) {
+    width: 15%;
+    padding: 0px;
+  }
+  .approvalDataTable .theme--dark.v-table thead tr th:last-child {
+    width:20%;
+    padding-left: 0px;
+  } */
+
+
+  /* .flex-content {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  .flex-content > li:first {
+    width: 65%;
+  }
+  .flex-content li:nth-child(2) {
+    width: 20%;
+  }
+  .flex-content li:nth-child(3) {
+    width: 25%;
+  }
+  .flex-item {
+    padding: 5px;
+    width: 50%;
+    height: 40px;
+    font-weight: bold;
+  } */
+  
+    /* .mobile {
+    color: #333;
+  }
+
+ @media screen  and (max-width: 768px) {
     .mobile table.v-table tr {
       max-width: 100%;
       position: relative;
@@ -43,100 +153,4 @@
     .mobile .theme--light.v-table tbody tr:hover:not(.v-datatable__expand-row) {
       background: transparent;
     }
-  }
-  .theme--dark.v-jumbotron .v-jumbotron__content {
-    padding-left: 10px;
-  }
-  .v-responsive__content {
-    margin-left: 10px;
-    margin-right: 10px;
-  }
-  
-  .display-1 {
-    font-size: 26px !important;
-    color: white;
-    padding-top: 45px;
-  }
-  .v-input .theme--dark {
-    padding-left: 15px;
-  }
-  .vtTotalSearch {
-    padding: 22px 0px 0px 10px;
-  }
-  .v-messages__message {
-    padding-top: 8px;
-    padding-left: 50px;
-  }
-  
-  .cdApprovalBox {
-    height: 150px;
-    width: 130px;
-  }
-  .v-card__title .v-card__title--primary {
-    padding: 0px;
-  }
-  .cdApprovalBoxTitle .headline {
-    padding-left: 30px;
-    padding-top: 40px;
-    font-size: 22px !important;
-  }
-  .approvalDataTable .theme--dark.v-table thead tr:first-child {
-    height: auto;
-    padding-top: 19px;
-    padding-bottom: 10px;
-    border-left: none;
-  }
-  
-  .approvalDataTable .theme--dark.v-table thead tr th:first-child {
-    width: 45%;
-    padding-right: 0px;
-  }
-  .approvalDataTable .theme--dark.v-table thead tr th:nth-child(2) {
-    width: 20%;
-    padding: 0px;
-  }
-  .approvalDataTable .theme--dark.v-table thead tr th:last-child {
-    width: 20%;
-    padding-left: 0px;
-  }
-  
-  .lydataTable {
-    padding-top: 20px;
-  }
-  .tabApprovalState .v-tabs__container--fixed-tabs .v-tabs__div,
-  .tabApprovalState .v-tabs__container--icons-and-text .v-tabs__div {
-    min-width: 200px;
-  }
-  .one-line {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    min-width: 100px;
-    max-width: 180px;
-  }
-  .flex-content {
-    padding: 0;
-    margin: 0;
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-  }
-  .flex-content > li:first {
-    width: 65%;
-  }
-  .flex-content li:nth-child(2) {
-    width: 20%;
-  }
-  .flex-content li:nth-child(3) {
-    width: 25%;
-  }
-  .flex-item {
-    padding: 5px;
-    width: 50%;
-    height: 40px;
-    font-weight: bold;
-  }
-  .toolbarApprovalStateTitle {
-    position: relative;
-  }
+ } */

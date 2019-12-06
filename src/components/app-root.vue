@@ -50,19 +50,19 @@
     </v-navigation-drawer>
     <v-toolbar app fixed clipped-left>
       <v-layout row wrap>
-        <v-flex xs2>
+        <v-flex xs2 sm2>
           <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
         </v-flex>
-        <v-flex xs5>
+        <v-flex xs5 sm5>
           <v-toolbar-title class="toolbarCompanyTitle" @click.prevent="home()">
             <v-img :src="require('@/assets/jikyungLogo.png')" min-width="150px" min-height="15px"></v-img>
           </v-toolbar-title>
         </v-flex>
-        <v-flex xs2>
-          <v-icon sm left @click.prevent="back()">arrow_back</v-icon>
+        <v-flex xs2 sm2>
+          <v-icon xs1 sm1 left @click.prevent="back()">arrow_back</v-icon>
         </v-flex>
-        <v-flex xs3>
-          <v-btn flat color="red" style="margin-left:20px;" @click.prevent="logout()">logout</v-btn>
+        <v-flex xs3 sm3>
+          <v-btn xs1 sm1 flat color="red" style="margin-left:20px;" @click.prevent="logout()">logout</v-btn>
         </v-flex>
       </v-layout>
     </v-toolbar>
@@ -71,7 +71,6 @@
       <span>&copy; CopyRight Jikyung 2019</span>
     </v-footer>
   </div>
-
   <div v-else>
     <v-toolbar app fixed clipped-left>
       <v-toolbar-title></v-toolbar-title>
@@ -90,6 +89,7 @@ import { userService } from "../modules/auth";
 export default {
   created() {
     this.isShow = this.$store.state.l.loggin;
+    //  this.handleResize();
   },
   data() {
     return {
@@ -110,6 +110,10 @@ export default {
   //     : undefined;
   // },
   methods: {
+    // handleResize() {
+    //   // this.window.width = window.innerWidth;
+    //   // this.window.height = window.innerHeight;
+    // },
     home() {
       this.$router.push("/home-page");
     },

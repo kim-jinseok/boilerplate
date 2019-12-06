@@ -58,20 +58,25 @@ export default {
 
         data.then(function(result) {
           result.forEach(function(value, key) {
-            if (value.category_area === "doc") {
-              arr.push(value);
-              console.log("doc");
-              console.log(arr);
-            }
-            console.log("item");
+            arr.push(value);
             console.log(arr);
-            console.log(value);
+
+            // if (value.category_area === "doc") {
+            //   console.log("doc");
+            //   console.log(arr);
+            // }
+            //  else {
+            //   arr.push(value);
+            //   console.log("item");
+            //   console.log(arr);
+            //   console.log(value);
+            // }
           });
 
           $this.$store.state.c.category = arr;
           localStorage.setItem("categoryData", JSON.stringify(arr));
 
-          console.log(localStorage.getItem("categoryData"));
+          // console.log(localStorage.getItem("categoryData"));
         });
 
         var self = this;

@@ -12,6 +12,7 @@ import App from './App'
 import init from './utils/init.js'
 import Vuetify from 'vuetify'
 import moment from 'vue-moment'
+import VueResize from 'vue-resize'
 
 Vue.config.productionTip = false
 
@@ -23,6 +24,7 @@ new Vue({
     store,
     router,
     Vuetify,
+    VueResize,
     moment,
     ...init,
     render: h => h(App)

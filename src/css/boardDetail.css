@@ -40,7 +40,7 @@
 
   
 /* revisionHistoryDataTable */
-  .revisionHistoryDataTable .theme--dark.v-table thead tr:first-child {
+  /* .revisionHistoryDataTable .theme--dark.v-table thead tr:first-child {
     height: auto;
     padding-top: 19px;
     padding-bottom: 10px;
@@ -63,7 +63,7 @@
     text-align: left;
   }
   .revisionHistoryDataTable .flex-content li:nth-child(2) {
-    width: 55%;
+    width: 30%;
     text-align: left;
   }
   .revisionHistoryDataTable .flex-content li:nth-child(3) {
@@ -73,10 +73,47 @@
   .revisionHistoryDataTable .flex-content li:nth-child(4) {
     width: 15%;
     text-align: left;
+  } */
+
+  /* .revisionHistoryDataTable .theme--dark.v-table thead tr th:nth-child(1) {
+    width: 1%;
+    padding-left: 5px;
+  }
+   .revisionHistoryDataTable .theme--dark.v-table thead tr th:nth-child(2) {
+    width: 10%;
+    padding: 0px;
+  }
+  .revisionHistoryDataTable .theme--dark.v-table thead tr th:nth-child(3) {
+    width: 10%;
+    padding: 0px;
+  }
+  .revisionHistoryDataTable .theme--dark.v-table thead tr th:nth-child(4) {
+    width: 5%;
+    padding: 0px;
   }
 
+  
+  
+  .revisionHistoryDataTable .theme--dark.v-table  tr td:nth-child(1) {
+    width: 1%;
+    padding-left: 5px;
+  }
+   .revisionHistoryDataTable .theme--dark.v-table tr td:nth-child(2) {
+    width: 10%;
+    padding: 0px;
+  }
+  .revisionHistoryDataTable .theme--dark.v-table tr td:nth-child(3) {
+    width: 10%;
+    padding: 0px;
+  }
+  .revisionHistoryDataTable .theme--dark.v-table  tr td:nth-child(4) {
+    width: 5%;
+    padding: 0px;
+  }
+
+   */
   /* relationFilesDataTable */
-  .relationFilesDataTable .theme--dark.v-table thead tr:first-child {
+  /* .relationFilesDataTable .theme--dark.v-table thead tr:first-child {
     height: auto;
     padding-top: 19px;
     padding-bottom: 10px;
@@ -113,6 +150,43 @@
   .relationFilesDataTable .flex-content li:nth-child(5) {
     width: 25%;
     text-align: left;
+  } */
+
+  /* .relationFilesDataTable .theme--dark.v-table thead tr th:nth-child(1) {
+    width: 1%;
+    padding-left: 5px;
+  }
+   .relationFilesDataTable .theme--dark.v-table thead tr th:nth-child(2) {
+    width: 10%;
+    padding: 0px;
+  }
+   .relationFilesDataTable .theme--dark.v-table thead tr th:nth-child(3) {
+    width: 5%;
+    padding: 0px;
+  }
+  .relationFilesDataTable .theme--dark.v-table thead tr th:nth-child(4) {
+    width: 5%;
+    padding: 0px;
   }
 
   
+  .relationFilesDataTable .theme--dark.v-table  tr td:nth-child(1) {
+    width: 1%;
+    padding-left: 5px;
+  }
+   .relationFilesDataTable .theme--dark.v-table tr td:nth-child(2) {
+    width: 10%;
+    padding: 0px;
+  }
+  .relationFilesDataTable .theme--dark.v-table tr td:nth-child(3) {
+    width: 5%;
+    padding-left: 15px;
+  }
+  .relationFilesDataTable .theme--dark.v-table  tr td:nth-child(4) {
+    width: 10%;
+    padding: 0px;
+  }
+  .relationFilesDataTable .theme--dark.v-table  tr td:nth-child(5) {
+    width: 10%;
+    padding: 0px;
+  } */

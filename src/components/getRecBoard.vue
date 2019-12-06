@@ -49,8 +49,8 @@ export default {
   created() {
     this.$store.dispatch("loadBoard");
     setTimeout(() => {
-      this.boardFilesData = this.$store.getters.doArrData;
-      // this.boardFilesData = JSON.parse(localStorage.getItem("boardFilesData"));
+      // this.boardFilesData = this.$store.getters.doArrData;
+      this.boardFilesData = JSON.parse(localStorage.getItem("boardFilesData"));
     }, 200);
   },
   watch: {

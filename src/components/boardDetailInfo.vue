@@ -83,7 +83,7 @@
                     <iframe
                       v-show="iframe.loaded"
                       :src="iframe.pdfFilePath"
-                      style="width : 400px; height: 300px;"
+                      style="width:80vw; height: 80vh;"
                       allowfullscreen="yes"
                       frameborder="0"
                       scrolling="no"
@@ -93,7 +93,8 @@
               </v-tab-item>
               <v-tab-item :value="`tab-2`">
                 <v-card flat style="margin-bottom :30px;">
-                  <v-layout v-resize="onResize" column>
+                  <v-layout column>
+                    <!-- v-resize="onResize"  -->
                     <v-data-table
                       class="revisionHistoryDataTable"
                       :headers="revisionHeaders"
@@ -103,45 +104,45 @@
                     >
                       <template slot="items" slot-scope="props">
                         <tr>
-                          <td>
-                            <ul class="flex-content">
-                              <li class="flex-item">{{ props.item.rev }}</li>
-                              <li class="flex-item">
-                                <v-tooltip color="black" bottom right max-width="100%">
-                                  <template v-slot:activator="{ on }">
-                                    <div
-                                      class="one-line"
-                                      v-on="on"
-                                      dark
-                                      @click="getRevisionPreview(props.item.fileHistoryId);"
-                                    >{{props.item.fileName}}</div>
-                                  </template>
-                                  <div
-                                    v-if="props.item.firstRevision ==='최초등록'"
-                                  >{{props.item.firstRevision}}</div>
-                                  <div v-else>
-                                    <label>변경유형 :</label>
-                                    <span>{{props.item.updateType}}</span>
-                                    <br />
-                                    <label>변경내용 :</label>
-                                    <span>{{props.item.updateDesc}}</span>
-                                  </div>
+                          <!-- <td>
+                          <ul class="flex-content">-->
+                          <td class="flex-item">{{ props.item.rev }}</td>
+                          <td class="flex-item">
+                            <v-tooltip color="black" bottom right max-width="100%">
+                              <template v-slot:activator="{ on }">
+                                <div
+                                  class="one-line"
+                                  v-on="on"
+                                  dark
+                                  @click="getRevisionPreview(props.item.fileHistoryId);"
+                                >{{props.item.fileName}}</div>
+                              </template>
+                              <div
+                                v-if="props.item.firstRevision ==='최초등록'"
+                              >{{props.item.firstRevision}}</div>
+                              <div v-else>
+                                <label>변경유형 :</label>
+                                <span>{{props.item.updateType}}</span>
+                                <br />
+                                <label>변경내용 :</label>
+                                <span>{{props.item.updateDesc}}</span>
+                              </div>
 
-                                  <br />
-                                  <iframe
-                                    v-show="iframe.loaded"
-                                    :src="iframe.revisionPdfFilePath"
-                                    style="width : 400px; height: 300px;"
-                                    allowfullscreen="yes"
-                                    frameborder="0"
-                                    scrolling="no"
-                                  ></iframe>
-                                </v-tooltip>
-                              </li>
-                              <li class="flex-item">{{ props.item.createDate }}</li>
-                              <li class="flex-item">{{ props.item.createUsername }}</li>
-                            </ul>
+                              <br />
+                              <iframe
+                                v-show="iframe.loaded"
+                                :src="iframe.revisionPdfFilePath"
+                                style="width:80vw; height: 80vh;"
+                                allowfullscreen="yes"
+                                frameborder="0"
+                                scrolling="no"
+                              ></iframe>
+                            </v-tooltip>
                           </td>
+                          <td class="flex-item">{{ props.item.createDate }}</td>
+                          <td class="flex-item">{{ props.item.createUsername }}</td>
+                          <!-- </ul>
+                          </td>-->
                         </tr>
                       </template>
 
@@ -155,7 +156,8 @@
 
               <v-tab-item :value="`tab-3`">
                 <v-card flat style="margin-bottom :30px;">
-                  <v-layout v-resize="onResize" column>
+                  <v-layout column>
+                    <!-- v-resize="onResize" -->
                     <v-data-table
                       class="relationFilesDataTable"
                       :headers="relationHeaders"
@@ -165,34 +167,34 @@
                     >
                       <template slot="items" slot-scope="props">
                         <tr>
-                          <td>
-                            <ul class="flex-content">
-                              <li class="flex-item">{{ props.item.no }}</li>
-                              <li class="flex-item">
-                                <v-tooltip color="black" bottom right max-width="100%">
-                                  <template v-slot:activator="{ on }">
-                                    <div
-                                      class="one-line"
-                                      v-on="on"
-                                      dark
-                                      @click="getRelationPreview(props.item.fileHistoryId);"
-                                    >{{props.item.fileName}}</div>
-                                  </template>
-                                  <iframe
-                                    v-show="iframe.loaded"
-                                    :src="iframe.relationPdfFilePath"
-                                    style="width : 400px; height: 300px;"
-                                    allowfullscreen="yes"
-                                    frameborder="0"
-                                    scrolling="no"
-                                  ></iframe>
-                                </v-tooltip>
-                              </li>
-                              <li class="flex-item">{{ props.item.rev }}</li>
-                              <li class="flex-item">{{ props.item.createUsername }}</li>
-                              <li class="flex-item">{{ props.item.createDate }}</li>
-                            </ul>
+                          <!-- <td>
+                          <ul class="flex-content">-->
+                          <td class="flex-item">{{ props.item.no }}</td>
+                          <td class="flex-item">
+                            <v-tooltip color="black" bottom right max-width="100%">
+                              <template v-slot:activator="{ on }">
+                                <div
+                                  class="one-line"
+                                  v-on="on"
+                                  dark
+                                  @click="getRelationPreview(props.item.fileHistoryId);"
+                                >{{props.item.fileName}}</div>
+                              </template>
+                              <iframe
+                                v-show="iframe.loaded"
+                                :src="iframe.relationPdfFilePath"
+                                style="width:80vw; height: 80vh;"
+                                allowfullscreen="yes"
+                                frameborder="0"
+                                scrolling="no"
+                              ></iframe>
+                            </v-tooltip>
                           </td>
+                          <td class="flex-item">{{ props.item.rev }}</td>
+                          <td class="flex-item">{{ props.item.createUsername }}</td>
+                          <td class="flex-item">{{ props.item.createDate }}</td>
+                          <!-- </ul>
+                          </td>-->
                         </tr>
                       </template>
                       <template v-slot:no-data>
@@ -322,10 +324,10 @@ export default {
     };
   },
   methods: {
-    onResize() {
-      if (window.innerWidth < 769) this.isMobile = true;
-      else this.isMobile = false;
-    },
+    // onResize() {
+    //   if (window.innerWidth < 769) this.isMobile = true;
+    //   else this.isMobile = false;
+    // },
     async getRevisionTable(param) {
       try {
         const data = helper.getJSON("files_rec_get", param);

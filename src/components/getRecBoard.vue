@@ -47,20 +47,19 @@ import boardDetailInfo from "./boardDetailInfo";
 
 export default {
   created() {
-    this.$store.dispatch("loadBoard");
-    setTimeout(() => {
-      // this.boardFilesData = this.$store.getters.doArrData;
-      this.boardFilesData = JSON.parse(localStorage.getItem("boardFilesData"));
-    }, 200);
+    //  getData();
+    //this.$store.dispatch("loadBoard");
+    this.boardFilesData = [];
+    // this.boardFilesData = this.$store.getters.doArrData;
+    // this.boardFilesData = JSON.stringify(this.$store.state.arrData);
   },
   watch: {
     $route(to, from) {
-      this.$store.dispatch("loadBoard");
-      setTimeout(() => {
-        this.boardFilesData = JSON.parse(
-          localStorage.getItem("boardFilesData")
-        );
-      }, 200);
+      this.getData();
+      // this.$store.dispatch("loadBoard");
+      // this.boardFilesData = JSON.parse(
+      //   JSON.stringify(this.$store.state.arrData)
+      // );
     }
   },
   components: {
@@ -90,6 +89,62 @@ export default {
       boardId: "",
       obj_detail: {}
     };
+  },
+  methods: {
+    getData() {
+      try {
+        let obj = {};
+        let arr = [];
+        this.boardFilesData = [];
+
+        var param = {
+          category_id: this.$router.currentRoute.params.bid,
+          user_id: this.$store.state.l.user.userid
+        };
+
+        /// 바로 데이터를 받아와서 하려면 async, await를 사용해야함
+        const data = helper.getJSON("board_get", param);
+        if (data === null) {
+          return;
+        }
+
+        data.then(function(result) {
+          try {
+            var param = {
+              board_id: result[0].board_id
+            };
+
+            /// 바로 데이터를 받아와서 하려면 async, await를 사용해야함
+            const data = helper.getJSON("files_get", param);
+
+            data.then(function(result) {
+              result.forEach(function(value, key) {
+                obj = {};
+
+                obj.No = value.rn;
+                obj.fileName = value.file_name;
+                obj.Rev = value.revision;
+
+                obj.fileId = value.file_id;
+                obj.fileHistoryId = value.file_history_id;
+                obj.fileSize = value.file_size;
+                obj.fileType = value.file_type;
+                obj.createUsername = value.create_username;
+                obj.createDate = value.create_date;
+
+                arr.push(obj);
+              });
+            });
+          } catch (err) {}
+        });
+
+        this.boardFilesData = arr;
+
+        return arr;
+      } catch (err) {
+        console.log(err);
+      }
+    }
   }
 };
 </script>    

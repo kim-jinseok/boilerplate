@@ -88,7 +88,6 @@ C:\Users\shhan\Desktop\업무파일_한승희\프로젝트\boilerplate\bin\Debug
 C:\Users\shhan\Desktop\업무파일_한승희\프로젝트\boilerplate\bin\Debug\netcoreapp2.2\jlsCore.pdb
 C:\Users\shhan\Desktop\업무파일_한승희\프로젝트\boilerplate\bin\Debug\netcoreapp2.2\ToolBox.dll
 C:\Users\shhan\Desktop\업무파일_한승희\프로젝트\boilerplate\obj\Debug\netcoreapp2.2\jlsCore.csprojAssemblyReference.cache
-C:\Users\shhan\Desktop\업무파일_한승희\프로젝트\boilerplate\obj\Debug\netcoreapp2.2\jlsCore.csproj.CoreCompileInputs.cache
 C:\Users\shhan\Desktop\업무파일_한승희\프로젝트\boilerplate\obj\Debug\netcoreapp2.2\jlsCore.RazorAssemblyInfo.cache
 C:\Users\shhan\Desktop\업무파일_한승희\프로젝트\boilerplate\obj\Debug\netcoreapp2.2\jlsCore.RazorAssemblyInfo.cs
 C:\Users\shhan\Desktop\업무파일_한승희\프로젝트\boilerplate\obj\Debug\netcoreapp2.2\jlsCore.AssemblyInfoInputs.cache
@@ -113,3 +112,8 @@ D:\Mobile\boilerplate\obj\Debug\netcoreapp2.2\jlsCore.RazorTargetAssemblyInfo.ca
 D:\Mobile\boilerplate\obj\Debug\netcoreapp2.2\jlsCore.csproj.CopyComplete
 D:\Mobile\boilerplate\obj\Debug\netcoreapp2.2\jlsCore.dll
 D:\Mobile\boilerplate\obj\Debug\netcoreapp2.2\jlsCore.pdb
+C:\Users\shhan\Desktop\업무파일_한승희\프로젝트\boilerplate\bin\Debug\netcoreapp2.2\appsettings.Development.json
+C:\Users\shhan\Desktop\업무파일_한승희\프로젝트\boilerplate\bin\Debug\netcoreapp2.2\appsettings.json
+C:\Users\shhan\Desktop\업무파일_한승희\프로젝트\boilerplate\bin\Debug\netcoreapp2.2\package-lock.json
+C:\Users\shhan\Desktop\업무파일_한승희\프로젝트\boilerplate\bin\Debug\netcoreapp2.2\package.json
+C:\Users\shhan\Desktop\업무파일_한승희\프로젝트\boilerplate\bin\Debug\netcoreapp2.2\Properties\launchSettings.json

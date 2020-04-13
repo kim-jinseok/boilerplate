@@ -58,19 +58,9 @@ export default {
 
         data.then(function(result) {
           result.forEach(function(value, key) {
-            arr.push(value);
-            console.log(arr);
-
-            // if (value.category_area === "doc") {
-            //   console.log("doc");
-            //   console.log(arr);
-            // }
-            //  else {
-            //   arr.push(value);
-            //   console.log("item");
-            //   console.log(arr);
-            //   console.log(value);
-            // }
+            if (value.category_area === "doc") {
+              arr.push(value);
+            }
           });
 
           $this.$store.state.c.category = arr;

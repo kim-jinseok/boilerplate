@@ -123,6 +123,7 @@ export default {
     },
     GetResultPreview(id) {
       this.filehid = id;
+      let host = "http://59.19.86.14";
 
       let $this = this;
 
@@ -131,10 +132,9 @@ export default {
           $this.iframe.loaded = true;
 
           if (!helper.isNull(value.previewPath)) {
-            $this.iframe.pdfFilePath =
-              "http://125.7.231.47" + value.previewPath;
+            $this.iframe.pdfFilePath = host + value.previewPath;
           } else {
-            $this.iframe.pdfFilePath = "http://125.7.231.47" + value.filePath;
+            $this.iframe.pdfFilePath = host + value.filePath;
           }
         }
       });

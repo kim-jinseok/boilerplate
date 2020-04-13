@@ -19,34 +19,34 @@ import searchResult from '../../components/searchResult'
 
 export const routes = [
 	{
-		name      : 'home-page',
-		path      : '/home-page',
-		component : HomePage,
-		display   : 'HomePage',
-		icon      : 'home',
-		meta      : { requiresLogin: true }
+		name: 'home-page',
+		path: '/home-page',
+		component: HomePage,
+		display: 'HomePage',
+		icon: 'home',
+		meta: { requiresLogin: true }
 	},
 	{ name: 'auth', path: '/auth', component: Auth, display: 'Auth', icon: 'graduation-cap' },
 	{ name: 'reportState', path: '/reportState', component: reportState, display: 'reportState' },
 	{ name: 'approvalState', path: '/approvalState', component: approvalState, display: 'approvalState' },
 	{
-		name      : 'approvalStateDetail',
-		path      : '/approvalStateDetail/:aid/:type',
-		component : approvalStateDetail,
-		display   : 'approvalStateDetail'
+		name: 'approvalStateDetail',
+		path: '/approvalStateDetail/:aid/:type',
+		component: approvalStateDetail,
+		display: 'approvalStateDetail'
 	},
 	{
-		name      : 'releaseStateDetail',
-		path      : '/releaseStateDetail/:aid/:type',
-		component : releaseStateDetail,
-		display   : 'releaseStateDetail'
+		name: 'releaseStateDetail',
+		path: '/releaseStateDetail/:aid/:type',
+		component: releaseStateDetail,
+		display: 'releaseStateDetail'
 	},
 	{ name: 'getRecBoard', path: '/getRecBoard/:bid', component: getRecBoard, display: 'getRecBoard' },
 	{ name: 'releasedState', path: '/releasedState', component: releasedState, display: 'releasedState' },
 	{
-		name      : 'searchResult',
-		path      : '/searchResult/:searchType/:searchValue',
-		component : searchResult,
-		display   : 'searchResult'
+		name: 'searchResult',
+		path: '/searchResult/:searchType/:searchValue',
+		component: searchResult,
+		display: 'searchResult'
 	}
 ]

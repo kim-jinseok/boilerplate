@@ -265,6 +265,7 @@ export default {
         descending: true
       },
       isMobile: true,
+
       relationHeaders: [
         {
           text: "no",
@@ -329,6 +330,7 @@ export default {
     //   else this.isMobile = false;
     // },
     async getRevisionTable(param) {
+      let host = "http://59.19.86.14";
       try {
         const data = helper.getJSON("files_rec_get", param);
 
@@ -375,12 +377,10 @@ export default {
 
           if (!helper.isNull(result[1][0].preview_path)) {
             $this.iframe.loaded = true;
-            $this.iframe.pdfFilePath =
-              "http://125.7.231.47" + result[1][0].preview_path;
+            $this.iframe.pdfFilePath = host + result[1][0].preview_path;
           } else {
             $this.iframe.loaded = true;
-            $this.iframe.pdfFilePath =
-              "http://125.7.231.47" + result[1][0].file_path;
+            $this.iframe.pdfFilePath = host + result[1][0].file_path;
           }
 
           let obj_relation = {};
@@ -412,6 +412,7 @@ export default {
       } catch (err) {}
     },
     getRelationPreview(id) {
+      let host = "http://59.19.86.14";
       this.relationFhid = id;
 
       let $this = this;
@@ -421,17 +422,16 @@ export default {
           $this.iframe.loaded = true;
 
           if (!helper.isNull(value.previewPath)) {
-            $this.iframe.relationPdfFilePath =
-              "http://125.7.231.47" + value.previewPath;
+            $this.iframe.relationPdfFilePath = host + value.previewPath;
           } else {
-            $this.iframe.pdfFilePath = "http://125.7.231.47" + value.filePath;
+            $this.iframe.pdfFilePath = host + value.filePath;
           }
         }
       });
     },
     getRevisionPreview(id) {
       this.revisionFhid = id;
-
+      let host = "http://59.19.86.14";
       let $this = this;
 
       this.revisionData.forEach(function(value, key) {
@@ -439,10 +439,9 @@ export default {
           $this.iframe.loaded = true;
 
           if (!helper.isNull(value.previewPath)) {
-            $this.iframe.revisionPdfFilePath =
-              "http://125.7.231.47" + value.previewPath;
+            $this.iframe.revisionPdfFilePath = host + value.previewPath;
           } else {
-            $this.iframe.pdfFilePath = "http://125.7.231.47" + value.filePath;
+            $this.iframe.pdfFilePath = host + value.filePath;
           }
         }
       });

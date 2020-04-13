@@ -341,6 +341,7 @@ export default {
 
             //배포 정보
             $this.releaseStartDate = helper.getSafeDate(result[0].start_date);
+
             $this.releaseEndDate = helper.getSafeDate(result[0].end_date);
             $this.releaseContents = unescape(result[0].release_contents);
 
@@ -554,15 +555,17 @@ export default {
       this.fhid = id;
       let $this = this;
 
+      let host = "http://59.19.86.14";
+
       this.approvalRecFileData.forEach(function(value, key) {
         if ($this.fhid === value.fileHistoryId) {
           $this.iframe.loaded = true;
 
           if (!helper.isNull(value.previewPath)) {
-            $this.iframe.pdfFilePath =
-              "http://125.7.231.47" + value.previewPath;
+            $this.iframe.pdfFilePath = host + value.previewPath;
+            console.log($this.iframe.pdfFilePath);
           } else {
-            $this.iframe.pdfFilePath = "http://125.7.231.47" + value.filePath;
+            $this.iframe.pdfFilePath = host + value.filePath;
           }
         }
       });

@@ -27,14 +27,17 @@
                 >{{props.item.fileName}}</div>
               </template>
               <span>{{props.item.fileName}}</span>
-              <iframe
-                v-show="iframe.loaded"
-                :src="iframe.pdfFilePath"
-                style="width:80vw; height: 80vh;"
-                allowfullscreen="yes"
-                frameborder="0"
-                scrolling="no"
-              ></iframe>
+              <template>
+                <div div style="width:100%; height:100%;">
+                  <pdf
+                    v-show="iframe.loaded"
+                    :src="iframe.pdfFilePath"
+                    v-for="i in numPages"
+                    :key="i"
+                    :page="i"
+                  ></pdf>
+                </div>
+              </template>
             </v-tooltip>
           </td>
           <td class="text-xs-left">{{ props.item.Rev }}</td>
@@ -52,12 +55,18 @@
 </template>
 
 <script>
+import pdf from "vue-pdf";
 export default {
+  components: {
+    pdf
+  },
   created() {
     this.btSearchFiles();
   },
   data() {
     return {
+      host: "http://m.jikyung.com",
+      numPages: undefined,
       iframe: {
         pdfFilePath: "",
         loaded: false
@@ -80,6 +89,13 @@ export default {
       results: []
     };
   },
+  // mounted() {
+  //   setTimeout(() => {
+  //     this.iframe.pdfFilePath.then(pdf => {
+  //       this.numPages = pdf.numPages;
+  //     });
+  //   }, 500);
+  // },
   methods: {
     btSearchFiles() {
       try {
@@ -123,8 +139,8 @@ export default {
     },
     GetResultPreview(id) {
       this.filehid = id;
-      let host = "http://59.19.86.14";
-
+      // let host = "http://m.jikyung.com";
+      // let host = "http://59.19.86.14:81";
       let $this = this;
 
       this.results.forEach(function(value, key) {
@@ -132,9 +148,31 @@ export default {
           $this.iframe.loaded = true;
 
           if (!helper.isNull(value.previewPath)) {
-            $this.iframe.pdfFilePath = host + value.previewPath;
+            // $this.iframe.pdfFilePath = host + value.previewPath;
+            $this.iframe.pdfFilePath = pdf.createLoadingTask(
+              $this.host + value.previewPath
+            );
+
+            console.log($this.host + value.previewPath);
+            setTimeout(() => {
+              pdf
+                .createLoadingTask($this.host + value.previewPath)
+                .then(pdf => {
+                  $this.numPages = pdf.numPages;
+                  console.log($this.numPages);
+                });
+            }, 1000);
           } else {
-            $this.iframe.pdfFilePath = host + value.filePath;
+            //   $this.iframe.pdfFilePath = host + value.filePath;
+            $this.iframe.pdfFilePath = pdf.createLoadingTask(
+              $this.host + value.filePath
+            );
+
+            setTimeout(() => {
+              pdf.createLoadingTask($this.host + value.filePath).then(pdf => {
+                $this.numPages = pdf.numPages;
+              });
+            }, 1000);
           }
         }
       });
@@ -193,6 +231,6 @@ export default {
   text-overflow: ellipsis;
   white-space: nowrap;
   min-width: 80px;
-  max-width: 180px;
+  max-width: 96px;
 }
 </style>

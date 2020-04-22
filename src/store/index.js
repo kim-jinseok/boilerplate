@@ -46,68 +46,68 @@ const loginState = {
 //     },
 //     actions: {
 
-//         // loadBoard({ dispatch, state, rootState }) {
+//         loadBoard({ dispatch, state, rootState }) {
 
-//         //     try {
-//         //         var param = {
-//         //             category_id: router.currentRoute.params.bid,
-//         //             user_id: rootState.l.user.userid
-//         //         }
+//             try {
+//                 var param = {
+//                     category_id: router.currentRoute.params.bid,
+//                     user_id: rootState.l.user.userid
+//                 }
 
-//         //         /// 바로 데이터를 받아와서 하려면 async, await를 사용해야함
-//         //         const data = helper.getJSON("board_get", param)
+//                 /// 바로 데이터를 받아와서 하려면 async, await를 사용해야함
+//                 const data = helper.getJSON("board_get", param)
 
-//         //         if (data === null) { return }
+//                 if (data === null) { return }
 
-//         //         data.then(function (result) {
-//         //             state.board = result;
+//                 data.then(function (result) {
+//                     state.board = result;
 
-//         //             try {
-//         //                 var param = {
-//         //                     board_id: result[0].board_id
-//         //                 }
+//                     try {
+//                         var param = {
+//                             board_id: result[0].board_id
+//                         }
 
-//         //                 /// 바로 데이터를 받아와서 하려면 async, await를 사용해야함
-//         //                 const data = helper.getJSON("files_get", param)
+//                         /// 바로 데이터를 받아와서 하려면 async, await를 사용해야함
+//                         const data = helper.getJSON("files_get", param)
 
-//         //                 data.then(function (result) {
+//                         data.then(function (result) {
 
-//         //                     let obj = {};
-//         //                     let arr = [];
+//                             let obj = {};
+//                             let arr = [];
 
 
-//         //                     result.forEach(function (value, key) {
+//                             result.forEach(function (value, key) {
 
-//         //                         obj = {};
+//                                 obj = {};
 
-//         //                         obj.No = value.rn;
-//         //                         obj.fileName = value.file_name;
-//         //                         obj.Rev = value.revision;
+//                                 obj.No = value.rn;
+//                                 obj.fileName = value.file_name;
+//                                 obj.Rev = value.revision;
 
-//         //                         obj.fileId = value.file_id
-//         //                         obj.fileHistoryId = value.file_history_id
-//         //                         obj.fileSize = value.file_size
-//         //                         obj.fileType = value.file_type
-//         //                         obj.createUsername = value.create_username
-//         //                         obj.createDate = value.create_date
+//                                 obj.fileId = value.file_id
+//                                 obj.fileHistoryId = value.file_history_id
+//                                 obj.fileSize = value.file_size
+//                                 obj.fileType = value.file_type
+//                                 obj.createUsername = value.create_username
+//                                 obj.createDate = value.create_date
 
-//         //                         arr.push(obj);
+//                                 arr.push(obj);
 
-//         //                     });
+//                             });
 
-//         //                     state.arrData = arr
+//                             state.arrData = arr
 
-//         //                     localStorage.setItem('boardFilesData', JSON.stringify(state.arrData))
-//         //                 })
-//         //             } catch (err) {
+//                             localStorage.setItem('boardFilesData', JSON.stringify(state.arrData))
+//                         })
+//                     } catch (err) {
 
-//         //             }
-//         //         })
+//                     }
+//                 })
 
-//         //     } catch (err) {
-//         //         console.log(err)
-//         //     }
-//         // }
+//             } catch (err) {
+//                 console.log(err)
+//             }
+//         }
 //     }
 // }
 

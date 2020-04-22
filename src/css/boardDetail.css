@@ -2,13 +2,7 @@
 .headline {
     font-size: 26px !important;
   }
-  .one-line {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    min-width: 100px;
-    max-width: 180px;
-  }
+ 
   .tabBoardDetail .v-tabs__container--fixed-tabs .v-tabs__div,
   .tabBoardDetail .v-tabs__container--icons-and-text .v-tabs__div {
     min-width: 100px;
@@ -37,7 +31,13 @@
     overflow: "hidden";
   }
 
-
+  .one-line {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-width: 80px;
+    max-width: 96px;
+  }
   
 /* revisionHistoryDataTable */
   /* .revisionHistoryDataTable .theme--dark.v-table thead tr:first-child {
@@ -73,9 +73,9 @@
   .revisionHistoryDataTable .flex-content li:nth-child(4) {
     width: 15%;
     text-align: left;
-  } */
+  }  */
 
-  /* .revisionHistoryDataTable .theme--dark.v-table thead tr th:nth-child(1) {
+ .revisionHistoryDataTable .theme--dark.v-table thead tr th:nth-child(1) {
     width: 1%;
     padding-left: 5px;
   }
@@ -90,6 +90,7 @@
   .revisionHistoryDataTable .theme--dark.v-table thead tr th:nth-child(4) {
     width: 5%;
     padding: 0px;
+    text-align: center;
   }
 
   
@@ -109,10 +110,64 @@
   .revisionHistoryDataTable .theme--dark.v-table  tr td:nth-child(4) {
     width: 5%;
     padding: 0px;
+    text-align: center;
   }
 
-   */
+  
+
+   
   /* relationFilesDataTable */
+  
+ .relationFilesDataTable .theme--dark.v-table thead tr th:nth-child(1) {
+  width: 1%;
+  padding-left: 5px;
+}
+ .relationFilesDataTable .theme--dark.v-table thead tr th:nth-child(2) {
+  width: 5%;
+  padding: 0px;
+}
+.relationFilesDataTable .theme--dark.v-table thead tr th:nth-child(3) {
+  width: 5%;
+  padding: 0px;
+  text-align: center;
+}
+.relationFilesDataTable .theme--dark.v-table thead tr th:nth-child(4) {
+  width: 5%;
+  padding: 0px;
+  text-align: center;
+}
+.relationFilesDataTable .theme--dark.v-table  tr td:nth-child(5) {
+  width: 5%;
+  padding: 0px;
+  text-align: center;
+}
+
+
+.relationFilesDataTable .theme--dark.v-table  tr td:nth-child(1) {
+  width: 1%;
+  padding-left: 5px;
+}
+ .relationFilesDataTable .theme--dark.v-table tr td:nth-child(2) {
+  width: 5%;
+  padding: 0px;
+}
+.relationFilesDataTable .theme--dark.v-table tr td:nth-child(3) {
+  width: 5%;
+  padding: 0px;
+  text-align: center;
+}
+
+.relationFilesDataTable .theme--dark.v-table  tr td:nth-child(4) {
+  width: 5%;
+  padding: 0px;
+  text-align: center;
+}
+.relationFilesDataTable .theme--dark.v-table  tr td:nth-child(5) {
+  width: 5%;
+  padding: 0px;
+  text-align: center;
+}
+
   /* .relationFilesDataTable .theme--dark.v-table thead tr:first-child {
     height: auto;
     padding-top: 19px;

@@ -80,14 +80,17 @@
                         </v-btn>
                       </v-flex>
                     </v-layout>
-                    <iframe
-                      v-show="iframe.loaded"
-                      :src="iframe.pdfFilePath"
-                      style="width:80vw; height: 80vh;"
-                      allowfullscreen="yes"
-                      frameborder="0"
-                      scrolling="no"
-                    ></iframe>
+                    <template>
+                      <div style="width:100%; height:100%;">
+                        <pdf
+                          v-show="iframe.loaded"
+                          v-for="i in numPages"
+                          :key="i"
+                          :page="i"
+                          :src="iframe.pdfFilePath"
+                        ></pdf>
+                      </div>
+                    </template>
                   </div>
                 </v-card>
               </v-tab-item>
@@ -110,12 +113,7 @@
                           <td class="flex-item">
                             <v-tooltip color="black" bottom right max-width="100%">
                               <template v-slot:activator="{ on }">
-                                <div
-                                  class="one-line"
-                                  v-on="on"
-                                  dark
-                                  @click="getRevisionPreview(props.item.fileHistoryId);"
-                                >{{props.item.fileName}}</div>
+                                <div class="one-line" v-on="on" dark>{{props.item.fileName}}</div>
                               </template>
                               <div
                                 v-if="props.item.firstRevision ==='최초등록'"
@@ -129,14 +127,26 @@
                               </div>
 
                               <br />
-                              <iframe
+                              <!-- @click="getRevisionPreview(props.item.fileHistoryId);"  -->
+                              <!-- <iframe
                                 v-show="iframe.loaded"
                                 :src="iframe.revisionPdfFilePath"
                                 style="width:80vw; height: 80vh;"
                                 allowfullscreen="yes"
                                 frameborder="0"
                                 scrolling="no"
-                              ></iframe>
+                              ></iframe>-->
+                              <!-- <template>
+                                <div style="width:100%; height:100%;">
+                                  <pdf
+                                    v-show="iframe.loaded"
+                                    :src="iframe.revisionPdfFilePath"
+                                    v-for="p in numPages_revision"
+                                    :key="p"
+                                    :page="p"
+                                  ></pdf>
+                                </div>
+                              </template>-->
                             </v-tooltip>
                           </td>
                           <td class="flex-item">{{ props.item.createDate }}</td>
@@ -172,22 +182,21 @@
                           <td class="flex-item">{{ props.item.no }}</td>
                           <td class="flex-item">
                             <v-tooltip color="black" bottom right max-width="100%">
-                              <template v-slot:activator="{ on }">
-                                <div
-                                  class="one-line"
-                                  v-on="on"
-                                  dark
-                                  @click="getRelationPreview(props.item.fileHistoryId);"
-                                >{{props.item.fileName}}</div>
+                              <template v-slot:activator="{}">
+                                <div class="one-line" dark>{{props.item.fileName}}</div>
                               </template>
-                              <iframe
-                                v-show="iframe.loaded"
-                                :src="iframe.relationPdfFilePath"
-                                style="width:80vw; height: 80vh;"
-                                allowfullscreen="yes"
-                                frameborder="0"
-                                scrolling="no"
-                              ></iframe>
+                              <!-- @click="getRelationPreview(props.item.fileHistoryId);" -->
+                              <!-- <template>
+                                <div style="width:100%; height:100%;">
+                                  <pdf
+                                    v-for="t in numPages_relation"
+                                    :key="t"
+                                    :page="t"
+                                    v-show="iframe.loaded"
+                                    :src="iframe.relationPdfFilePath"
+                                  ></pdf>
+                                </div>
+                              </template>-->
                             </v-tooltip>
                           </td>
                           <td class="flex-item">{{ props.item.rev }}</td>
@@ -218,7 +227,12 @@
 </template>
 
 <script>
+import pdf from "vue-pdf";
+
 export default {
+  components: {
+    pdf
+  },
   props: ["data"],
   created() {
     this.fileName = this.data.item.fileName;
@@ -239,6 +253,11 @@ export default {
   },
   data() {
     return {
+      // host: "http://192.168.10.115:8087",
+      host: "http://m.jikyung.com",
+      numPages: undefined,
+      numPages_revision: undefined,
+      numPages_relation: undefined,
       iframe: {
         pdfFilePath: "",
         revisionPdfFilePath: "",
@@ -321,16 +340,26 @@ export default {
         }
       ],
       relationData: [],
-      revisionData: []
+      revisionData: [],
+      previewData: []
     };
   },
+  // mounted() {
+  //   setTimeout(() => {
+  //     this.iframe.pdfFilePath.then(pdf => {
+  //       this.numPages = pdf.numPages;
+  //     });
+  //   }, 500);
+  // },
   methods: {
     // onResize() {
     //   if (window.innerWidth < 769) this.isMobile = true;
     //   else this.isMobile = false;
     // },
     async getRevisionTable(param) {
-      let host = "http://59.19.86.14";
+      // let host = "http://m.jikyung.com";
+      // let host = "http://59.19.86.14:81";
+
       try {
         const data = helper.getJSON("files_rec_get", param);
 
@@ -377,10 +406,38 @@ export default {
 
           if (!helper.isNull(result[1][0].preview_path)) {
             $this.iframe.loaded = true;
-            $this.iframe.pdfFilePath = host + result[1][0].preview_path;
+
+            console.log($this.host + result[1][0].preview_path);
+
+            $this.iframe.pdfFilePath = pdf.createLoadingTask(
+              $this.host + result[1][0].preview_path
+            );
+
+            setTimeout(() => {
+              pdf
+                .createLoadingTask($this.host + result[1][0].preview_path)
+                .then(pdf => {
+                  $this.numPages = pdf.numPages;
+                  console.log($this.numPages);
+                });
+            }, 1000);
+
+            //     host +"/Viewer/!Files/100001/rev_0/pdf/7__$$__0477A54B-B0E__$$__학년도 달력(연도 불문)2.pdf"
           } else {
             $this.iframe.loaded = true;
-            $this.iframe.pdfFilePath = host + result[1][0].file_path;
+
+            $this.iframe.pdfFilePath = pdf.createLoadingTask(
+              $this.host + result[1][0].filePath
+            );
+
+            setTimeout(() => {
+              pdf
+                .createLoadingTask($this.host + result[1][0].filePath)
+                .then(pdf => {
+                  $this.numPages = pdf.numPages;
+                  console.log($this.numPages);
+                });
+            }, 500);
           }
 
           let obj_relation = {};
@@ -409,10 +466,12 @@ export default {
 
           $this.relationData = arr_relation;
         });
-      } catch (err) {}
+      } catch (err) {
+        alert(err);
+      }
     },
     getRelationPreview(id) {
-      let host = "http://59.19.86.14";
+      // let host = "http://59.19.86.14:81";
       this.relationFhid = id;
 
       let $this = this;
@@ -422,16 +481,35 @@ export default {
           $this.iframe.loaded = true;
 
           if (!helper.isNull(value.previewPath)) {
-            $this.iframe.relationPdfFilePath = host + value.previewPath;
+            $this.iframe.relationPdfFilePath = pdf.createLoadingTask(
+              $this.host + value.previewPath
+            );
+
+            setTimeout(() => {
+              pdf
+                .createLoadingTask($this.host + value.previewPath)
+                .then(pdf => {
+                  $this.numPages_relation = pdf.numPages;
+                  console.log($this.numPages);
+                });
+            }, 500);
           } else {
-            $this.iframe.pdfFilePath = host + value.filePath;
+            $this.iframe.pdfFilePath = pdf.createLoadingTask(
+              $this.host + value.filePath
+            );
+            setTimeout(() => {
+              pdf.createLoadingTask($this.host + value.filePath).then(pdf => {
+                $this.numPages_relation = pdf.numPages;
+                console.log($this.numPages);
+              });
+            }, 500);
           }
         }
       });
     },
     getRevisionPreview(id) {
       this.revisionFhid = id;
-      let host = "http://59.19.86.14";
+      // let host = "http://59.19.86.14:81";
       let $this = this;
 
       this.revisionData.forEach(function(value, key) {
@@ -439,9 +517,27 @@ export default {
           $this.iframe.loaded = true;
 
           if (!helper.isNull(value.previewPath)) {
-            $this.iframe.revisionPdfFilePath = host + value.previewPath;
+            $this.iframe.revisionPdfFilePath = pdf.createLoadingTask(
+              $this.host + value.previewPath
+            );
+            setTimeout(() => {
+              pdf
+                .createLoadingTask($this.host + value.previewPath)
+                .then(pdf => {
+                  $this.numPages_revision = pdf.numPages;
+                  console.log($this.numPages);
+                });
+            }, 500);
           } else {
-            $this.iframe.pdfFilePath = host + value.filePath;
+            $this.iframe.pdfFilePath = pdf.createLoadingTask(
+              $this.host + value.filePath
+            );
+            setTimeout(() => {
+              pdf.createLoadingTask($this.host + value.filePath).then(pdf => {
+                $this.numPages_revision = pdf.numPages;
+                console.log($this.numPages);
+              });
+            }, 500);
           }
         }
       });

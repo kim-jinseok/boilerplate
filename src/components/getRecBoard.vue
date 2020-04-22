@@ -48,8 +48,9 @@ import boardDetailInfo from "./boardDetailInfo";
 export default {
   created() {
     //  getData();
-    //this.$store.dispatch("loadBoard");
     this.boardFilesData = [];
+    this.getData();
+    //  this.$store.dispatch("loadBoard");
     // this.boardFilesData = this.$store.getters.doArrData;
     // this.boardFilesData = JSON.stringify(this.$store.state.arrData);
   },

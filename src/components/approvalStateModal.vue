@@ -25,8 +25,8 @@
         ></v-textarea>
         <v-card-actions>
           <v-layout row mb-2>
-            <v-flex xs5></v-flex>
-            <v-flex xs7 right>
+            <v-flex xs4></v-flex>
+            <v-flex xs8 right>
               <v-btn color="blue darken-1" small text @click="submit">Save</v-btn>
               <v-btn color="blue darken-1" small text @click="$emit('close', false)">Close</v-btn>
             </v-flex>

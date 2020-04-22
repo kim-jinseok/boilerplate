@@ -23,16 +23,16 @@ namespace jlsCore
     {
         public Startup(IHostingEnvironment env)
         {
-              Configuration = new ConfigurationBuilder()
-                           .SetBasePath(env.ContentRootPath)
-                           .AddJsonFile("appSettings.json")
-                           .Build();
+            Configuration = new ConfigurationBuilder()
+                         .SetBasePath(env.ContentRootPath)
+                         .AddJsonFile("appSettings.json")
+                         .Build();
         }
 
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-         public void ConfigureServices(IServiceCollection services)
+        public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<AccountService>();
 
@@ -54,7 +54,7 @@ namespace jlsCore
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
-        
+
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -78,8 +78,8 @@ namespace jlsCore
             app.UseAuthentication();
             app.UseMvc();
             app.UseStaticFiles();
-            
-          
+
+
             // here you can see we make sure it doesn't start with /api, if it does, it'll 404 within .NET if it can't be found
             app.MapWhen(x => !x.Request.Path.Value.StartsWith("/api"), builder =>
             {

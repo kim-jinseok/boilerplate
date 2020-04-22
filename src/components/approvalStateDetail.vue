@@ -22,7 +22,8 @@
             <template slot="items" slot-scope="props">
               <tr>
                 <!-- <td> -->
-                <!-- <ul class="flex-content"> -->
+                <!-- <ul class="flex-content"> 
+                -->
                 <td class="flex-item" data-label="No">{{ props.item.no }}</td>
                 <td class="flex-item one-line" data-label="파일명">
                   <v-tooltip color="black" bottom right max-width="100%">
@@ -34,14 +35,17 @@
                         @click="getFilePreview(props.item.fileHistoryId);"
                       >{{ props.item.fileName }}</div>
                     </template>
-                    <iframe
-                      v-show="iframe.loaded"
-                      :src="iframe.pdfFilePath"
-                      style="width:80vw; height: 80vh;"
-                      allowfullscreen="yes"
-                      frameborder="0"
-                      scrolling="no"
-                    ></iframe>
+                    <template>
+                      <div style="width:100%; height:100%;">
+                        <pdf
+                          v-for="i in numPages"
+                          :key="i"
+                          :page="i"
+                          v-show="iframe.loaded"
+                          :src="iframe.pdfFilePath"
+                        ></pdf>
+                      </div>
+                    </template>
                   </v-tooltip>
                 </td>
                 <td class="flex-item" data-label="rev">{{ props.item.rev }}</td>
@@ -219,13 +223,16 @@
 import approvalStateModal from "./approvalStateModal";
 import Alert from "./Alert";
 import { constants } from "crypto";
+import pdf from "vue-pdf";
+
 export default {
   created() {
     this.getApprovalGetData();
   },
   components: {
     approvalStateModal,
-    Alert
+    Alert,
+    pdf
   },
   //computed: {
   //   isState: function() {
@@ -237,6 +244,8 @@ export default {
   // },
   data() {
     return {
+      host: "http://m.jikyung.com",
+      numPages: undefined,
       iframe: {
         pdfFilePath: "",
         loaded: false
@@ -299,6 +308,13 @@ export default {
       }
     };
   },
+  // mounted() {
+  //   setTimeout(() => {
+  //     this.iframe.pdfFilePath.then(pdf => {
+  //       this.numPages = pdf.numPages;
+  //     });
+  //   }, 500);
+  // },
   methods: {
     editState(el) {
       let userId = el.currentTarget.getAttribute("data_userId");
@@ -555,17 +571,41 @@ export default {
       this.fhid = id;
       let $this = this;
 
-      let host = "http://59.19.86.14";
+      // let host = "http://59.19.86.14:81";
 
       this.approvalRecFileData.forEach(function(value, key) {
         if ($this.fhid === value.fileHistoryId) {
           $this.iframe.loaded = true;
 
           if (!helper.isNull(value.previewPath)) {
-            $this.iframe.pdfFilePath = host + value.previewPath;
-            console.log($this.iframe.pdfFilePath);
+            //    $this.iframe.pdfFilePath = host + value.previewPath;
+
+            $this.iframe.pdfFilePath = pdf.createLoadingTask(
+              $this.host + value.previewPath
+            );
+
+            console.log($this.host + value.previewPath);
+
+            setTimeout(() => {
+              pdf
+                .createLoadingTask($this.host + value.previewPath)
+                .then(pdf => {
+                  $this.numPages = pdf.numPages;
+                  console.log($this.numPages);
+                });
+            }, 1000);
           } else {
-            $this.iframe.pdfFilePath = host + value.filePath;
+            // $this.iframe.pdfFilePath = host + value.filePath;
+            $this.iframe.pdfFilePath = pdf.createLoadingTask(
+              $this.host + value.filePath
+            );
+
+            setTimeout(() => {
+              pdf.createLoadingTask($this.host + value.filePath).then(pdf => {
+                $this.numPages = pdf.numPages;
+                console.log($this.numPages);
+              });
+            }, 1000);
           }
         }
       });
